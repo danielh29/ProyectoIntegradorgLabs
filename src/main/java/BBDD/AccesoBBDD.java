@@ -119,38 +119,52 @@ public class AccesoBBDD {
 	}
 	
     public void insertarDatosAlumnos() {
-    		 try {
-                 String nombre = alumnos.getTextField().getText();
-                 int numeroExp = Integer.parseInt(alumnos.getTextField_1().getText());
-                 int idAlumno = Integer.parseInt(alumnos.getTextField_2().getText());
-                 int idProyecto = Integer.parseInt(alumnos.getTextField_3().getText());
+    	try {
+    	    String nombre = alumnos.getTextField().getText();
+    	    int numeroExp = Integer.parseInt(alumnos.getTextField_1().getText());
+    	    int idAlumno = Integer.parseInt(alumnos.getTextField_2().getText());
+    	    
+    	    // Verificar si el campo textField_3 está vacío
+    	    String textField3Value = alumnos.getTextField_3().getText();
+    	    Integer idProyecto = null;
+    	    if (!textField3Value.isEmpty()) {
+    	        idProyecto = Integer.parseInt(textField3Value);
+    	    }
+    	    
+    	    Connection conexion = getConexion();
+    	    
+    	    // Consulta para insertar los datos en la tabla ALUMNOS
+    	    String consulta = "INSERT INTO ALUMNOS (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
+    	    
+    	    // Crear el objeto PreparedStatement
+    	    PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+    	    
+    	    // Insertar los datos en la consulta
+    	    preparedStatement.setInt(1, idAlumno);
+    	    preparedStatement.setInt(2, numeroExp);
+    	    preparedStatement.setString(3, nombre);
+    	    
+    	    if (idProyecto != null) {
+    	        preparedStatement.setInt(4, idProyecto);
+    	    } else {
+    	        preparedStatement.setNull(4, java.sql.Types.INTEGER);
+    	    }
+    	    
+    	    // Ejecutar la consulta
+    	    preparedStatement.executeUpdate();
+    	    
+    	    // Cerrar el PreparedStatement y la conexión
+    	    preparedStatement.close();
+    	    conexion.close();
+    	    
+    	    System.out.println("Datos insertados correctamente en la tabla Alumnos.");
+    	} catch (SQLException e) {
+    	    System.out.println("Error al insertar los datos: " + e.getMessage());
+    	} catch (NumberFormatException e) {
+    	    System.out.println("Error de formato numérico: " + e.getMessage());
+    	}
 
-                 Connection conexion = getConexion();
-
-                 // Consulta para insertar los datos en la tabla ALUMNOS
-                 String consulta = "INSERT INTO ALUMNOS (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
-
-                 // Crear el objeto PreparedStatement
-                 PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
-
-                 // Insertar los datos en la consulta
-                 preparedStatement.setInt(1, idAlumno);
-                 preparedStatement.setInt(2, numeroExp);
-                 preparedStatement.setString(3, nombre);
-                 preparedStatement.setInt(4, idProyecto);
-
-                 // Ejecutar la consulta
-                 preparedStatement.executeUpdate();
-
-                 // Cerrar el PreparedStatement y la conexión
-                 preparedStatement.close();
-                 conexion.close();
-
-                 System.out.println("Datos insertados correctamente en la tabla Alumnos.");
-             } catch (SQLException e) {
-                 System.out.println("Error al insertar los datos: " + e.getMessage());
-             }
-    	 }  
+}  
     
     
     public void insertarDatosAreas() {
