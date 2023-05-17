@@ -99,7 +99,7 @@ public class altas {
 
 		buttonadd1 = new JButton("");
 		buttonadd1.setBorderPainted(false);
-		buttonadd1.setBounds(426, 188, 90, 78);
+		buttonadd1.setBounds(426, 199, 90, 78);
 		buttonadd1.setIcon(new ImageIcon(resizedAnadir));
 		buttonadd1.setContentAreaFilled(false);
 		buttonadd1.setFocusPainted(false);
@@ -109,7 +109,7 @@ public class altas {
 
 		buttonadd2 = new JButton("");
 		buttonadd2.setBorderPainted(false);
-		buttonadd2.setBounds(426, 260, 90, 78);
+		buttonadd2.setBounds(426, 330, 90, 78);
 		buttonadd2.setIcon(new ImageIcon(resizedAnadir));
 		buttonadd2.setContentAreaFilled(false);
 		buttonadd2.setFocusPainted(false);
@@ -118,7 +118,7 @@ public class altas {
 
 		buttonadd3 = new JButton("");
 		buttonadd3.setBorderPainted(false);
-		buttonadd3.setBounds(426, 330, 90, 78);
+		buttonadd3.setBounds(426, 465, 90, 78);
 		buttonadd3.setIcon(new ImageIcon(resizedAnadir));
 		buttonadd3.setContentAreaFilled(false);
 		buttonadd3.setFocusPainted(false);
@@ -144,12 +144,12 @@ public class altas {
 
 		lblNewLabel_2 = new JLabel("Áreas");
 		lblNewLabel_2.setFont(new Font("Academy Engraved LET", Font.PLAIN, 38));
-		lblNewLabel_2.setBounds(524, 256, 179, 89);
+		lblNewLabel_2.setBounds(526, 319, 179, 89);
 		panel.add(lblNewLabel_2);
 
 		lblNewLabel_3 = new JLabel("Proyectos Integradores");
 		lblNewLabel_3.setFont(new Font("Academy Engraved LET", Font.PLAIN, 38));
-		lblNewLabel_3.setBounds(525, 329, 392, 89);
+		lblNewLabel_3.setBounds(528, 454, 504, 89);
 		panel.add(lblNewLabel_3);
 		frame.setVisible(true);
 

@@ -1,17 +1,41 @@
 package BBDD;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import mvc.vistas.*;
 
 public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/loginpi";
 	private String usuario = "root";
-	private String pass = "landsend00";
+	private String pass = "root";
 
 	Connection con = null;
 
 	public AccesoBBDD() {
 	}
+		//Constructores clases externas
+	
+	    altasAlumnos alumnos;
+
+	    public AccesoBBDD(altasAlumnos alumnos) {
+	        this.alumnos = alumnos;
+	    }
+	    
+	    altasAreas areas;
+	    
+	    public AccesoBBDD(altasAreas areas){
+	    	this.areas = areas;
+	    }
+	    
+	    altasPI proyectos;
+	    
+	    public AccesoBBDD(altasPI proyectos) {
+	    	this.proyectos = proyectos;
+	    }
 
 	// nos conectamos a la BBDD
 	public Connection getConexion() {
@@ -93,5 +117,138 @@ public class AccesoBBDD {
 
 		return answer;
 	}
+	
+    public void insertarDatosAlumnos() {
+    		 try {
+                 String nombre = alumnos.getTextField().getText();
+                 int numeroExp = Integer.parseInt(alumnos.getTextField_1().getText());
+                 int idAlumno = Integer.parseInt(alumnos.getTextField_2().getText());
+                 int idProyecto = Integer.parseInt(alumnos.getTextField_3().getText());
 
-}
+                 Connection conexion = getConexion();
+
+                 // Consulta para insertar los datos en la tabla ALUMNOS
+                 String consulta = "INSERT INTO ALUMNOS (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
+
+                 // Crear el objeto PreparedStatement
+                 PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+
+                 // Insertar los datos en la consulta
+                 preparedStatement.setInt(1, idAlumno);
+                 preparedStatement.setInt(2, numeroExp);
+                 preparedStatement.setString(3, nombre);
+                 preparedStatement.setInt(4, idProyecto);
+
+                 // Ejecutar la consulta
+                 preparedStatement.executeUpdate();
+
+                 // Cerrar el PreparedStatement y la conexión
+                 preparedStatement.close();
+                 conexion.close();
+
+                 System.out.println("Datos insertados correctamente en la tabla Alumnos.");
+             } catch (SQLException e) {
+                 System.out.println("Error al insertar los datos: " + e.getMessage());
+             }
+    	 }  
+    
+    
+    public void insertarDatosAreas() {
+    		try {
+                int idArea = Integer.parseInt(areas.getTextField().getText());
+        		String descripcion = areas.getTextField_1().getText();
+        		
+                Connection conexion = getConexion();	
+                
+                String consulta2 = "INSERT INTO AREAS (ID_Area, DESCRIPCION) VALUES (?, ?)";
+                
+                PreparedStatement preparedStatement = conexion.prepareStatement(consulta2);
+
+                preparedStatement.setInt(1, idArea);
+                preparedStatement.setString(2, descripcion);
+
+                preparedStatement.executeUpdate();
+
+                preparedStatement.close();
+                conexion.close();
+        		
+                System.out.println("Datos insertados correctamente en la tabla Areas.");
+        	}catch(SQLException e) {
+                System.out.println("Error al insertar los datos: " + e.getMessage());
+        	}
+    	}
+
+	public void insertarDatosPI() throws ParseException {
+		try {
+
+			int idProyecto = Integer.parseInt(proyectos.getTextField_7().getText());
+			String nombre = proyectos.getTextField().getText();
+			int notaObtenida = Integer.parseInt(proyectos.getTextField_8().getText());
+			String fechaTexto = proyectos.getTextField_4().getText();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+			Date ano = dateFormat.parse(fechaTexto);
+			try {
+				ano = dateFormat.parse(fechaTexto);
+			}catch(ParseException e) {
+				System.out.println("Error al convertir la fecha: " + e.getMessage());
+				return;
+			}
+			
+			int grupo = Integer.parseInt(proyectos.getTextField_5().getText());
+			String urlProyecto = proyectos.getTextField_1().getText();
+			int curso = Integer.parseInt(proyectos.getTextField_6().getText());
+			int idArea = Integer.parseInt(proyectos.getTextField_2().getText());
+			
+            Connection conexion = getConexion();	
+            
+            String consulta3 = "INSERT INTO PROYECTO (ID_Proyecto, Nombre, Nota_Obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            PreparedStatement preparedStatement = conexion.prepareStatement(consulta3);
+			
+            preparedStatement.setInt(1, idProyecto);
+            preparedStatement.setString(2, nombre);
+            preparedStatement.setInt(3, notaObtenida);
+            preparedStatement.setDate(4, new java.sql.Date(ano.getTime()));
+            preparedStatement.setInt(5, grupo);
+            preparedStatement.setString(6, urlProyecto);
+            preparedStatement.setInt(7, curso);
+            preparedStatement.setInt(8, idArea);
+			
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            conexion.close();
+		}catch(SQLException e) {
+            System.out.println("Error al insertar los datos: " + e.getMessage());
+    	}
+    	
+	}
+    	/*public void borrarDatosAreas() {
+		try {
+            int idArea = Integer.parseInt(areas.getTextField().getText());
+    		String descripcion = areas.getTextField_1().getText();
+    		
+            Connection conexion = getConexion();	
+            
+            String consulta5 = "DELETE INTO AREAS (ID_Area, DESCRIPCION) VALUES (?, ?)";
+            
+            PreparedStatement preparedStatement = conexion.prepareStatement(consulta5);
+
+            preparedStatement.setInt(1, idArea);
+            preparedStatement.setString(2, descripcion);
+
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            conexion.close();
+    		
+            System.out.println("Datos insertados correctamente en la tabla Areas.");
+    	}catch(SQLException e) {
+            System.out.println("Error al insertar los datos: " + e.getMessage());
+    	}*/
+	
+    }
+ 
+    	
+        	
+ 
+

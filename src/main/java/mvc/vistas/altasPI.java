@@ -5,10 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.http.WebSocket.Listener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import BBDD.AccesoBBDD;
 import mvc.control.altasAlumnosB;
 import mvc.control.altasConsultas;
 import mvc.control.altasHome;
@@ -17,6 +19,7 @@ import mvc.control.altasPiAñadir;
 import mvc.control.altasPiConsultas;
 
 public class altasPI {
+
 	private JFrame frame;
 	private JPanel panel;
 	private JButton button1;
@@ -32,8 +35,6 @@ public class altasPI {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton button1_1;
-	private JLabel lblComponentes;
-	private JTextField textField_3;
 	private JLabel lblGrupo;
 	private JTextField textField_4;
 	private JLabel lblGrupo_1;
@@ -44,6 +45,194 @@ public class altasPI {
 	private JTextField textField_7;
 	private JLabel lblGrupo_2;
 	private JTextField textField_8;
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public JButton getButtonadd1() {
+		return buttonadd1;
+	}
+
+	public void setButtonadd1(JButton buttonadd1) {
+		this.buttonadd1 = buttonadd1;
+	}
+
+	public JButton getButtonadd2() {
+		return buttonadd2;
+	}
+
+	public void setButtonadd2(JButton buttonadd2) {
+		this.buttonadd2 = buttonadd2;
+	}
+
+	public JButton getButtonadd3() {
+		return buttonadd3;
+	}
+
+	public void setButtonadd3(JButton buttonadd3) {
+		this.buttonadd3 = buttonadd3;
+	}
+
+	public JLabel getLblNewLabel_1() {
+		return lblNewLabel_1;
+	}
+
+	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
+		this.lblNewLabel_1 = lblNewLabel_1;
+	}
+
+	public JLabel getLblNewLabel_2() {
+		return lblNewLabel_2;
+	}
+
+	public void setLblNewLabel_2(JLabel lblNewLabel_2) {
+		this.lblNewLabel_2 = lblNewLabel_2;
+	}
+
+	public JLabel getLblNewLabel_3() {
+		return lblNewLabel_3;
+	}
+
+	public void setLblNewLabel_3(JLabel lblNewLabel_3) {
+		this.lblNewLabel_3 = lblNewLabel_3;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
+
+	public JButton getButton1_1() {
+		return button1_1;
+	}
+
+	public void setButton1_1(JButton button1_1) {
+		this.button1_1 = button1_1;
+	}
+
+	public JLabel getLblGrupo() {
+		return lblGrupo;
+	}
+
+	public void setLblGrupo(JLabel lblGrupo) {
+		this.lblGrupo = lblGrupo;
+	}
+
+	public JTextField getTextField_4() {
+		return textField_4;
+	}
+
+	public void setTextField_4(JTextField textField_4) {
+		this.textField_4 = textField_4;
+	}
+
+	public JLabel getLblGrupo_1() {
+		return lblGrupo_1;
+	}
+
+	public void setLblGrupo_1(JLabel lblGrupo_1) {
+		this.lblGrupo_1 = lblGrupo_1;
+	}
+
+	public JTextField getTextField_5() {
+		return textField_5;
+	}
+
+	public void setTextField_5(JTextField textField_5) {
+		this.textField_5 = textField_5;
+	}
+
+	public JLabel getLblCurso() {
+		return lblCurso;
+	}
+
+	public void setLblCurso(JLabel lblCurso) {
+		this.lblCurso = lblCurso;
+	}
+
+	public JTextField getTextField_6() {
+		return textField_6;
+	}
+
+	public void setTextField_6(JTextField textField_6) {
+		this.textField_6 = textField_6;
+	}
+
+	public JLabel getLblIdProyecto() {
+		return lblIdProyecto;
+	}
+
+	public void setLblIdProyecto(JLabel lblIdProyecto) {
+		this.lblIdProyecto = lblIdProyecto;
+	}
+
+	public JTextField getTextField_7() {
+		return textField_7;
+	}
+
+	public void setTextField_7(JTextField textField_7) {
+		this.textField_7 = textField_7;
+	}
+
+	public JLabel getLblGrupo_2() {
+		return lblGrupo_2;
+	}
+
+	public void setLblGrupo_2(JLabel lblGrupo_2) {
+		this.lblGrupo_2 = lblGrupo_2;
+	}
+
+	public JTextField getTextField_8() {
+		return textField_8;
+	}
+
+	public void setTextField_8(JTextField textField_8) {
+		this.textField_8 = textField_8;
+	}
+
+	public void setButton1(JButton button1) {
+		this.button1 = button1;
+	}
+
+	public void setButton2(JButton button2) {
+		this.button2 = button2;
+	}
+
+	public void setButton3(JButton button3) {
+		this.button3 = button3;
+	}
 
 	public altasPI() {
 
@@ -112,7 +301,7 @@ public class altasPI {
 		button1_1.setIcon(new ImageIcon(resizedAnadirImage));
 		button1_1.setContentAreaFilled(false);
 		
-		button1_1.setBounds(1289, 289, 90, 78);
+		button1_1.setBounds(1168, 628, 90, 78);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
@@ -130,11 +319,6 @@ public class altasPI {
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNewLabel.setBounds(46, 231, 174, 62);
 		panel.add(lblNewLabel);
-		
-		lblComponentes = new JLabel("Componentes:");
-		lblComponentes.setFont(new Font("SansSerif", Font.PLAIN, 30));
-		lblComponentes.setBounds(46, 282, 229, 62);
-		panel.add(lblComponentes);
 		
 		JLabel lblNExpediente = new JLabel("URL:");
 		lblNExpediente.setFont(new Font("SansSerif", Font.PLAIN, 30));
@@ -161,12 +345,6 @@ public class altasPI {
 		textField.setBounds(192, 249, 926, 39);
 		panel.add(textField);
 		textField.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBackground(new Color(211, 233, 250));
-		textField_3.setBounds(270, 289, 848, 39);
-		panel.add(textField_3);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
@@ -276,5 +454,18 @@ public class altasPI {
 	public void setAltas (altas altas) {
 		//boton que va a altas
 		setControlador3(altas);
-	}
+	
+	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+	button1_1.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla PROYECTO
+	        try {
+				accesoBBDD.insertarDatosPI();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	    }
+	});
+ }
 }
