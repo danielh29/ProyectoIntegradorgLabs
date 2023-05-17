@@ -8,15 +8,16 @@ import mvc.vistas.*;
 public class EscuchadorPrincipalSignUp implements ActionListener {
 	// declaramos la vista principal
 	VistaPrincipal v;
+	VistaSignUp vs;
 
-	public EscuchadorPrincipalSignUp(VistaPrincipal vista) {
+	public void setEscuchadorPrincipalSignUp(VistaPrincipal vista, VistaSignUp sign) {
 		this.v = vista;
+		vs=sign;
 	}
 
 	// le damos funcionalidad al boton
 	public void actionPerformed(ActionEvent e) {
 		v.hacerInisible();
-		VistaSignUp s = new VistaSignUp();
-		s.hacerVisible();
+		vs.hacerVisible();
 	}
 }

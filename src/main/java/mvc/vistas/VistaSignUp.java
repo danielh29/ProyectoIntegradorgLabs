@@ -12,6 +12,7 @@ public class VistaSignUp extends JFrame {
 	private JPasswordField txtPass;
 	private JPasswordField txtRepetirPass;
 	private JLabel alert;
+	VistaLogin login;
 
 	public VistaSignUp() {
 		inicializar();
@@ -69,7 +70,7 @@ public class VistaSignUp extends JFrame {
 		getContentPane().add(alert);
 
 		EscuchadorSignUp escuchador = new EscuchadorSignUp();
-		escuchador.setVistaPrincipal(this);
+		escuchador.setVistaPrincipal(this, login);
 		botonSignup.addActionListener(escuchador);
 
 	}
@@ -81,7 +82,9 @@ public class VistaSignUp extends JFrame {
 	public void hacerInisible() {
 		setVisible(false);
 	}
-
+	public void setVistaLogin(VistaLogin x) {
+		login=x;
+	}
 	public JLabel getAlert() {
 		return alert;
 	}

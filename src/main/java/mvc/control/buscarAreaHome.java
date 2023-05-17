@@ -3,28 +3,29 @@ package mvc.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import mvc.vistas.consultaAreas;
-import mvc.vistas.consultas;
+import mvc.vistas.buscarAlumnos;
+import mvc.vistas.buscarArea;
 import mvc.vistas.home;
 
-public class consultasAreasConsultas implements ActionListener {
+public class buscarAreaHome implements ActionListener {
 
-	consultaAreas ca;
-	consultas c;
+	buscarArea ba;
+	home h;
 
 	/**
 	 * Método que nos permite trabajar con una vista principal V
 	 * @param vista, Clase Vista Principal
 	 */
-	public void setVentanaUsuario (consultaAreas consulArea, consultas consultas) {
-		ca=consulArea;
-		c=consultas;
+	public void setVentanaUsuario (buscarArea buscarArea, home home) {
+		ba=buscarArea;
+		h=home;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		ca.dispose();
-		c.hacerVisible();
+		
+		ba.dispose();
+		h.hacerVisible();
 
 	}
 

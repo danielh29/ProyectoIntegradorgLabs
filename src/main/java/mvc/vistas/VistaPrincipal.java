@@ -7,7 +7,7 @@ import mvc.control.*;
 
 public class VistaPrincipal extends JFrame {
 	VistaLogin login;
-
+	VistaSignUp sign;
 	public VistaPrincipal() {
 		inicializar();
 	}
@@ -37,18 +37,23 @@ public class VistaPrincipal extends JFrame {
 		JButton botonLogIn = new JButton("Log In");
 		botonLogIn.setBounds(482, 349, 117, 29);
 		getContentPane().add(botonLogIn);
-		EscuchadorPrincipalLogIn escuchador = new EscuchadorPrincipalLogIn(this);
-		escuchador.actionPerformed(null);
+		EscuchadorPrincipalLogIn escuchador = new EscuchadorPrincipalLogIn();
+		escuchador.setEscuchadorPrincipalLogIn(this, login);
 		botonLogIn.addActionListener(escuchador);
 
 		JButton botonSignUp = new JButton("Sign Up");
 		botonSignUp.setBounds(686, 349, 117, 29);
 		getContentPane().add(botonSignUp);
-		EscuchadorPrincipalSignUp escuchador2 = new EscuchadorPrincipalSignUp(this);
-		escuchador2.actionPerformed(null);
+		EscuchadorPrincipalSignUp escuchador2 = new EscuchadorPrincipalSignUp();
+		escuchador2.setEscuchadorPrincipalSignUp(this, sign);
 		botonSignUp.addActionListener(escuchador2);
 	}
-
+	public void setVistaLogin(VistaLogin x) {
+		login=x;
+	}
+	public void setVistaSignUp(VistaSignUp x) {
+		sign=x;
+	}
 	public void hacerVisible() {
 		setVisible(true);
 	}

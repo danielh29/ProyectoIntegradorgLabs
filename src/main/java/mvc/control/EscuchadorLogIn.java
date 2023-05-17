@@ -17,8 +17,9 @@ public class EscuchadorLogIn implements ActionListener {
 
 	}
 
-	public void setVistaPrincipal(VistaLogin vista) {
+	public void setVistaPrincipal(VistaLogin vista, home home) {
 		v = vista;
+		h = home;
 	}
 
 	// le damos funcionalidad al boton
@@ -33,7 +34,6 @@ public class EscuchadorLogIn implements ActionListener {
 		try {
 			// acceso conseguido
 			if (bbdd.logIn(user, pass) == 1) {
-				h = new home();
 				v.hacerInisible();
 				h.hacerVisible();
 				// contraseña incorrecta

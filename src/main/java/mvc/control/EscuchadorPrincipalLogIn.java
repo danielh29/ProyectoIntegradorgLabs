@@ -9,15 +9,16 @@ import BBDD.*;
 public class EscuchadorPrincipalLogIn implements ActionListener {
 	// declaramos la vista principal
 	VistaPrincipal v;
+	VistaLogin vl;
 
-	public EscuchadorPrincipalLogIn(VistaPrincipal vista) {
+	public void setEscuchadorPrincipalLogIn(VistaPrincipal vista, VistaLogin vistaLogin) {
 		this.v = vista;
+		vl = vistaLogin;
 	}
 
 	// le damos funcionalidad al boton
 	public void actionPerformed(ActionEvent e) {
 		v.hacerInisible();
-		VistaLogin l = new VistaLogin();
-		l.hacerVisible();
+		vl.hacerVisible();
 	}
 }

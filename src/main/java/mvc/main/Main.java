@@ -24,10 +24,23 @@ public class Main {
 				altasAreas aar = new altasAreas();
 				consultaAlumnos ca = new consultaAlumnos();
 				consultaAreas car = new consultaAreas();
+				buscarAlumnos ba = new buscarAlumnos();
+				buscarArea bar = new buscarArea();
+				buscarPI bp = new buscarPI();
 
 				principal.hacerVisible();
 
-				// Seteo de los botones de la vista principal
+				//Seteo de los botones de la vista principal
+				principal.setVistaLogin(login);
+				principal.setVistaSignUp(signup);
+				
+				//Seteo de los botones de Vista Login
+				login.setHome(vistaHome);
+				
+				//Seteo de los botones de VistaSingUp
+				signup.setVistaLogin(login);
+				
+				// Seteo de los botones del home
 				vistaHome.setAltas(al);
 				vistaHome.setConsultas(co);
 
@@ -35,8 +48,9 @@ public class Main {
 				co.setAltas(al);
 				co.setHome(vistaHome);
 				// Botones secundarios
-				co.setConsultaAlumnos(ca);
-				co.setConsultaAreas(car);
+				co.setBuscarAlumnos(ba);
+				co.setBuscarAreas(bar);
+				co.setBuscarPI(bp);
 
 				// Seteo de los botones de la vista Altas
 				al.setConsultas(co);
@@ -70,6 +84,21 @@ public class Main {
 				car.setAltas(al);
 				car.setHome(vistaHome);
 				car.setConsultas(co);
+				
+				//Seteo de los botones de la vista buscarAlumno
+				ba.setAltas(al);
+				ba.setHome(vistaHome);
+				ba.setConsultas(co);
+				
+				//Seteo de los botones de la vista buscarAreas
+				bar.setAltas(al);
+				bar.setConsultas(co);
+				bar.setHome(vistaHome);
+				
+				//Seteo de los botones de la vista buscarPI
+				bp.setHome(vistaHome);
+				bp.setAltas(al);
+				bp.setConsultas(co);
 
 			}
 		});

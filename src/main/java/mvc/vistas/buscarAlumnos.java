@@ -9,6 +9,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import mvc.control.buscarAlumnosAñadir;
+import mvc.control.buscarAlumnosConsultas;
+import mvc.control.buscarAlumnosHome;
+import mvc.control.consultasAltas;
+import mvc.control.consultasHome;
+
 public class buscarAlumnos {
 	private JFrame frame;
 	private JPanel panel;
@@ -19,6 +25,9 @@ public class buscarAlumnos {
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
 
+	private home h;
+	private altas a;
+	private consultas c;
 	public buscarAlumnos() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
@@ -119,7 +128,41 @@ public class buscarAlumnos {
 	public void hacerVisible() {
     	frame.setVisible(true);
 	}
-
+	public void dispose() {
+		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+	}
+	//Metodo que crea un nuevo controlador
+	public void setControlador(home x) {
+		buscarAlumnosHome escuchador = new buscarAlumnosHome();
+		escuchador.setVentanaUsuario(this, x);
+		button1.addActionListener(escuchador);
+	}
+	//Metodo que crea un nuevo controlador
+	public void setControlador2(altas x) {
+		buscarAlumnosAñadir escuchador = new buscarAlumnosAñadir();
+		escuchador.setVentanaUsuario(this, x);
+		button2.addActionListener(escuchador);
+	}
+	//Metodo que crea un nuevo controlador
+	public void setControlador3(consultas x) {
+		buscarAlumnosConsultas escuchador = new buscarAlumnosConsultas();
+		escuchador.setVentanaUsuario(this, x);
+		button3.addActionListener(escuchador);
+	}
+	public void setAltas(altas altas) {
+		a=altas;
+		//boton que va a altas
+		setControlador2(a);
+	}
+	public void setHome(home home) {
+		h=home;
+		//boton que vuelve a home
+	    setControlador(h);
+	}
+	public void setConsultas (consultas consultas) {
+		c=consultas;
+		setControlador3(c);
+	}
 	public JButton getButton1() {
 		return button1;
 	}

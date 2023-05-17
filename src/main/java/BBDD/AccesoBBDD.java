@@ -11,7 +11,7 @@ public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/loginpi";
 	private String usuario = "root";
-	private String pass = "root";
+	private String pass = "";
 
 	Connection con = null;
 

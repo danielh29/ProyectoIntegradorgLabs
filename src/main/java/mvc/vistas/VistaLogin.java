@@ -61,7 +61,7 @@ public class VistaLogin extends JFrame {
 		getContentPane().add(alert);
 
 		EscuchadorLogIn escuchador = new EscuchadorLogIn();
-		escuchador.setVistaPrincipal(this);
+		escuchador.setVistaPrincipal(this, home);
 		btn.addActionListener(escuchador);
 	}
 
@@ -73,6 +73,9 @@ public class VistaLogin extends JFrame {
 		setVisible(false);
 	}
 
+	public void setHome(home x) {
+		home = x;
+	}
 	public JLabel getAlert() {
 		return alert;
 	}

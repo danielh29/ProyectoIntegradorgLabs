@@ -14,6 +14,7 @@ import mvc.control.consultasAltas;
 import mvc.control.consultasAlumnosB;
 import mvc.control.consultasAreasB;
 import mvc.control.consultasHome;
+import mvc.control.consultasPIB;
 
 public class consultas {
 	private JFrame frame;
@@ -192,35 +193,35 @@ public class consultas {
 	    setControlador(h);
 	}
 	//Metodo que crea un nuevo controlador
-	public void setControlador3(consultaAlumnos x) {
+	public void setControlador3(buscarAlumnos x) {
 		consultasAlumnosB escuchador = new consultasAlumnosB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd1.addActionListener(escuchador);
 	}
 	//Metodo que crea un nuevo controlador
-	public void setControlador4(consultaAreas x) {
+	public void setControlador4(buscarArea x) {
 		consultasAreasB escuchador = new consultasAreasB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd2.addActionListener(escuchador);
 	}
-//	//Metodo que crea un nuevo controlador
-//	public void setControlador5(consultaPI x) {
-//		consultasPIB escuchador = new consultasPIB();
-//		escuchador.setVentanaUsuario(this, x);
-//		buttonadd1.addActionListener(escuchador);
-//	}
-	
-	public void setConsultaAlumnos(consultaAlumnos x) {
-		//boton que vuelve a home
-	    setControlador3(x);
+	//Metodo que crea un nuevo controlador
+	public void setControlador5(buscarPI x) {
+		consultasPIB escuchador = new consultasPIB();
+		escuchador.setVentanaUsuario(this, x);
+		buttonadd3.addActionListener(escuchador);
 	}
-	public void setConsultaAreas(consultaAreas x) {
+	
+	public void setBuscarAreas(buscarArea x) {
 		//boton que vuelve a home
 	    setControlador4(x);
 	}
-//	public void setConsultaPI(consultaPI x) {
-//		//boton que vuelve a home
-//	    setControlador5(x);
-//	}
+	public void setBuscarAlumnos(buscarAlumnos x) {
+		//boton que vuelve a home
+	    setControlador3(x);
+	}
+	public void setBuscarPI(buscarPI x) {
+		//boton que vuelve a home
+	    setControlador5(x);
+	}
 	
 }

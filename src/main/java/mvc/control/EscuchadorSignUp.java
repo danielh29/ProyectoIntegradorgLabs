@@ -15,8 +15,9 @@ public class EscuchadorSignUp implements ActionListener {
 
 	}
 
-	public void setVistaPrincipal(VistaSignUp vista) {
+	public void setVistaPrincipal(VistaSignUp vista, VistaLogin vistaLogin) {
 		s = vista;
+		l = vistaLogin;
 	}
 
 	// le damos funcionalidad al boton
@@ -48,7 +49,6 @@ public class EscuchadorSignUp implements ActionListener {
 			if (res == 4) {
 				System.out.println("Enhorabuena!");
 				s.hacerInisible();
-				l = new VistaLogin();
 				l.hacerVisible();
 			}
 			// control de errores
