@@ -30,18 +30,29 @@ public class EscuchadorSignUp implements ActionListener {
 		bbdd.getConexion();
 
 		try {
-			//el usuario ya existe
-			if (bbdd.signUp(user, pass, repetirPass) == 1) {
-				s.getAlert().setText("Usuario ya existe, prueba con otro nombre");
-				//las contraseñas no coinciden
-			} else if (bbdd.signUp(user, pass, repetirPass) == 2) {
-				s.getAlert().setText("Las contraseñas no coinciden, intentalo de nuevo");
-				//consigue acceso creando un usuario
-			} else if (bbdd.signUp(user, pass, repetirPass) == 3) {
+			int res = bbdd.signUp(user, pass, repetirPass);
+			// el usuario ya existe
+			if (res == 1) {
+				s.getAlert().setText("Usuario ya existe, prueba con otro nombre.");
+			}
+			// las contraseñas no coinciden
+			if (res == 2) {
+				s.getAlert().setText("Las contraseñas no coinciden, intentalo de nuevo.");
+			}
+			//contraseña menor a 5 caracteres
+			if (res == 3) {
+				s.getAlert().setText("Contraseña menor a 5 caracteres, intentalo de nuevo.");
+
+			}
+			// consigue acceso creando un usuario
+			if (res == 4) {
+				System.out.println("Enhorabuena!");
 				s.hacerInisible();
+				l = new VistaLogin();
 				l.hacerVisible();
 			}
 			// control de errores
+
 		} catch (Exception e2) {
 			System.out.println("Error en la query:" + e2.getMessage());
 		}

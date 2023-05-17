@@ -6,23 +6,16 @@ import mvc.vistas.*;
 
 public class Main {
 	public static void main(String[] args) {
-
-		// altas vistAltas = new altas();
-		// altasAlumnos vistAltasAlumnos = new altasAlumnos();
-		// altasAreas vistAltasAreas = new altasAreas();
-		// altasPI vistAltasPI = new altasPI();
-		// consultas vistaConsultas = new consultas();
-		// buscarAlumnos vistBuscarAlumnos = new buscarAlumnos();
-		// buscarArea vistArea = new buscarArea();
-		// buscarPI vistaBuscarPI = new buscarPI();
-		// consultaAlumnos vistAlumnos = new consultaAlumnos();
-		// consultaAreas vistAreas = new consultaAreas();
 		EventQueue.invokeLater(new Runnable() {
+
 
 			@Override
 			public void run() {
 
 				VistaPrincipal principal = new VistaPrincipal();
+				VistaLogin login = new VistaLogin();
+				VistaSignUp signup = new VistaSignUp();
+
 				home vistaHome = new home();
 				consultas co = new consultas();
 				altas al = new altas();
@@ -31,8 +24,6 @@ public class Main {
 				altasAreas aar = new altasAreas();
 				consultaAlumnos ca = new consultaAlumnos();
 				consultaAreas car = new consultaAreas();
-				VistaLogin login = new VistaLogin();
-				VistaSignUp signup = new VistaSignUp();
 
 				principal.hacerVisible();
 
@@ -79,6 +70,7 @@ public class Main {
 				car.setAltas(al);
 				car.setHome(vistaHome);
 				car.setConsultas(co);
+
 			}
 		});
 	}

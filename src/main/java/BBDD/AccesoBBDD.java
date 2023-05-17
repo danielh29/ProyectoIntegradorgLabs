@@ -104,14 +104,20 @@ public class AccesoBBDD {
 			// la contraseña no coincide
 			if (!password.equals(repetirPassword)) {
 				answer = 2;
-				System.out.println("Las contraseñas no coinciden");
+				System.out.println("error, las contraseñas no coinciden");
 			} else {
 				// el usuario no existe y las contraseñas son iguales asique almacenamos los
 				// datos en la BBDD
-				String queryInsert = "INSERT INTO USUARIOS VALUES ('" + user + "','" + password + "',null)";
-				int insertar = stmt.executeUpdate(queryInsert);
-				answer = 3;
-				System.out.println("Usuario añadido correctamente");
+				if (password.length() < 5) {
+					answer = 3;
+					System.out.println("Error, contraseña menor a 5 caracteres");
+				} else {
+					String queryInsert = "INSERT INTO USUARIOS VALUES ('" + user + "','" + password + "',null)";
+					int insertar = stmt.executeUpdate(queryInsert);
+					answer = 4;
+					System.out.println("Usuario añadido correctamente");
+				}
+
 			}
 		}
 

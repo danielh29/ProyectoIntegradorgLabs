@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import mvc.vistas.*;
+import mvc.main.*;
 import BBDD.*;
 
 public class EscuchadorLogIn implements ActionListener {
