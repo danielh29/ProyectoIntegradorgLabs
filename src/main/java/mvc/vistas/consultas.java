@@ -107,7 +107,7 @@ public class consultas {
 
 		buttonadd2 = new JButton("");
 		buttonadd2.setBorderPainted(false);
-		buttonadd2.setBounds(426, 256, 90, 78);
+		buttonadd2.setBounds(426, 315, 90, 78);
 		buttonadd2.setIcon(new ImageIcon(resizedAnadir));
 		buttonadd2.setContentAreaFilled(false);
 		buttonadd2.setFocusPainted(false);
@@ -116,7 +116,7 @@ public class consultas {
 
 		buttonadd3 = new JButton("");
 		buttonadd3.setBorderPainted(false);
-		buttonadd3.setBounds(426, 331, 90, 78);
+		buttonadd3.setBounds(426, 452, 90, 78);
 		buttonadd3.setIcon(new ImageIcon(resizedAnadir));
 		buttonadd3.setContentAreaFilled(false);
 		buttonadd3.setFocusPainted(false);
@@ -142,12 +142,12 @@ public class consultas {
 
 		lblNewLabel_2 = new JLabel("Áreas");
 		lblNewLabel_2.setFont(new Font("Academy Engraved LET", Font.PLAIN, 38));
-		lblNewLabel_2.setBounds(526, 256, 179, 89);
+		lblNewLabel_2.setBounds(527, 304, 179, 89);
 		panel.add(lblNewLabel_2);
 
 		lblNewLabel_3 = new JLabel("Proyectos Integradores");
 		lblNewLabel_3.setFont(new Font("Academy Engraved LET", Font.PLAIN, 38));
-		lblNewLabel_3.setBounds(526, 331, 711, 89);
+		lblNewLabel_3.setBounds(526, 441, 859, 89);
 		panel.add(lblNewLabel_3);
 		frame.setVisible(true);
 

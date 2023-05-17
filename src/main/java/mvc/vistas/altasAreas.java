@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import BBDD.AccesoBBDD;
 import mvc.control.altasAreasAñadir;
 import mvc.control.altasAreasConsultas;
 import mvc.control.altasAreasHome;
@@ -16,6 +17,7 @@ import mvc.control.homeAñadir;
 import mvc.control.homeConsultas;
 
 public class altasAreas {
+
 	private JFrame frame;
 	private JPanel panel;
 	private JButton button1;
@@ -31,6 +33,114 @@ public class altasAreas {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JButton button1_1;
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public JButton getButtonadd1() {
+		return buttonadd1;
+	}
+
+	public void setButtonadd1(JButton buttonadd1) {
+		this.buttonadd1 = buttonadd1;
+	}
+
+	public JButton getButtonadd2() {
+		return buttonadd2;
+	}
+
+	public void setButtonadd2(JButton buttonadd2) {
+		this.buttonadd2 = buttonadd2;
+	}
+
+	public JButton getButtonadd3() {
+		return buttonadd3;
+	}
+
+	public void setButtonadd3(JButton buttonadd3) {
+		this.buttonadd3 = buttonadd3;
+	}
+
+	public JLabel getLblNewLabel_1() {
+		return lblNewLabel_1;
+	}
+
+	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
+		this.lblNewLabel_1 = lblNewLabel_1;
+	}
+
+	public JLabel getLblNewLabel_2() {
+		return lblNewLabel_2;
+	}
+
+	public void setLblNewLabel_2(JLabel lblNewLabel_2) {
+		this.lblNewLabel_2 = lblNewLabel_2;
+	}
+
+	public JLabel getLblNewLabel_3() {
+		return lblNewLabel_3;
+	}
+
+	public void setLblNewLabel_3(JLabel lblNewLabel_3) {
+		this.lblNewLabel_3 = lblNewLabel_3;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
+
+	public JButton getButton1_1() {
+		return button1_1;
+	}
+
+	public void setButton1_1(JButton button1_1) {
+		this.button1_1 = button1_1;
+	}
+
+	public void setButton1(JButton button1) {
+		this.button1 = button1;
+	}
+
+	public void setButton2(JButton button2) {
+		this.button2 = button2;
+	}
+
+	public void setButton3(JButton button3) {
+		this.button3 = button3;
+	}
 
 	public altasAreas() {
 
@@ -99,7 +209,7 @@ public class altasAreas {
 		button1_1.setIcon(new ImageIcon(resizedAnadirImage));
 		button1_1.setContentAreaFilled(false);
 		
-		button1_1.setBounds(1282, 512, 90, 78);
+		button1_1.setBounds(1236, 556, 90, 78);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
@@ -197,5 +307,14 @@ public class altasAreas {
 	public void setHome(home h) {
         //Boton que va a consultas
         setControlador3(h);
-	}
+	
+	
+	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+	button1_1.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla AREAS
+	        accesoBBDD.insertarDatosAreas();
+	    }
+	});
+}
 }
