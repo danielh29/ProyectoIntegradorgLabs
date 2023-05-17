@@ -14,6 +14,8 @@ public class VistaPrincipal extends JFrame {
 	public VistaPrincipal() {
 		inicializar();
 	}
+	
+	
 
 	public void inicializar() {
 		JPanel panel = new JPanel() {
