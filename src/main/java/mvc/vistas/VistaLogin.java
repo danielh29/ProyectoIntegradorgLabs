@@ -1,5 +1,8 @@
 package mvc.vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.*;
 
 import mvc.control.EscuchadorLogIn;
@@ -8,6 +11,7 @@ public class VistaLogin extends JFrame {
 	private JTextField txtUser;
 	private JPasswordField txtPass;
 	private JLabel alert;
+	private home home;
 
 	public VistaLogin() {
 		inicializar();
@@ -15,6 +19,19 @@ public class VistaLogin extends JFrame {
 	}
 
 	public void inicializar() {
+		JPanel panel = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				// Carga y dibuja la imagen de fondo
+				ImageIcon imageIcon = new ImageIcon("Imagenes/fondo.png");
+				Image image = imageIcon.getImage();
+				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+
+		setContentPane(panel);
 		setSize(1350, 820);
 		getContentPane().setLayout(null);
 

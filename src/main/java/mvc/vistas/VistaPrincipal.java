@@ -1,7 +1,6 @@
 package mvc.vistas;
 
 import java.awt.*;
-
 import javax.swing.*;
 
 import mvc.control.*;
@@ -10,33 +9,24 @@ public class VistaPrincipal extends JFrame {
 	VistaLogin login;
 
 	public VistaPrincipal() {
-
 		inicializar();
-
 	}
 
 	public void inicializar() {
-
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = toolkit.getScreenSize();
-
-		JFrame frame = new JFrame("Home Page");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		JPanel panel = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
-
 				// Carga y dibuja la imagen de fondo
 				ImageIcon imageIcon = new ImageIcon("Imagenes/fondo.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
-				setVisible(true);
 				super.paintComponent(g);
 			}
 		};
 
+		setContentPane(panel);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1350, 820);
 		getContentPane().setLayout(null);
 
@@ -66,5 +56,4 @@ public class VistaPrincipal extends JFrame {
 	public void hacerInisible() {
 		setVisible(false);
 	}
-
 }

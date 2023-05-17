@@ -6,7 +6,7 @@ public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/loginpi";
 	private String usuario = "root";
-	private String pass = "landsend00";
+	private String pass = "root";
 
 	Connection con = null;
 
@@ -80,14 +80,20 @@ public class AccesoBBDD {
 			// la contraseña no coincide
 			if (!password.equals(repetirPassword)) {
 				answer = 2;
-				System.out.println("Las contraseñas no coinciden");
+				System.out.println("error, las contraseñas no coinciden");
 			} else {
 				// el usuario no existe y las contraseñas son iguales asique almacenamos los
 				// datos en la BBDD
-				String queryInsert = "INSERT INTO USUARIOS VALUES ('" + user + "','" + password + "',null)";
-				int insertar = stmt.executeUpdate(queryInsert);
-				answer = 3;
-				System.out.println("Usuario añadido correctamente");
+				if (password.length() < 5) {
+					answer = 3;
+					System.out.println("Error, contraseña menor a 5 caracteres");
+				} else {
+					String queryInsert = "INSERT INTO USUARIOS VALUES ('" + user + "','" + password + "',null)";
+					int insertar = stmt.executeUpdate(queryInsert);
+					answer = 4;
+					System.out.println("Usuario añadido correctamente");
+				}
+
 			}
 		}
 
