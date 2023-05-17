@@ -11,11 +11,11 @@ public class Main {
 
 			@Override
 			public void run() {
-
+	
 				VistaPrincipal principal = new VistaPrincipal();
 				VistaLogin login = new VistaLogin();
 				VistaSignUp signup = new VistaSignUp();
-
+	
 				home vistaHome = new home();
 				consultas co = new consultas();
 				altas al = new altas();
@@ -27,9 +27,9 @@ public class Main {
 				buscarAlumnos ba = new buscarAlumnos();
 				buscarArea bar = new buscarArea();
 				buscarPI bp = new buscarPI();
-
+	
 				principal.hacerVisible();
-
+				
 				//Seteo de los botones de la vista principal
 				principal.setVistaLogin(login);
 				principal.setVistaSignUp(signup);
@@ -43,7 +43,7 @@ public class Main {
 				// Seteo de los botones del home
 				vistaHome.setAltas(al);
 				vistaHome.setConsultas(co);
-
+	
 				// Seteo de los botones de la vista Consultas
 				co.setAltas(al);
 				co.setHome(vistaHome);
@@ -51,7 +51,7 @@ public class Main {
 				co.setBuscarAlumnos(ba);
 				co.setBuscarAreas(bar);
 				co.setBuscarPI(bp);
-
+	
 				// Seteo de los botones de la vista Altas
 				al.setConsultas(co);
 				al.setHome(vistaHome);
@@ -59,27 +59,27 @@ public class Main {
 				al.setAltasAlumnos(aa);
 				al.setAltasPI(ap);
 				al.setAltasAreas(aar);
-
+	
 				// Seteo de los botones de la vista altasAlumnos
 				aa.setHome(vistaHome);
 				aa.setAltas(al);
 				aa.setConsultas(co);
-
+	
 				// Seteo de los botones de la vista altasAreas
 				aar.setAltas(al);
 				aar.setConsultas(co);
 				aar.setHome(vistaHome);
-
+	
 				// Seteo de los botones de la vista altasPI
 				ap.setAltas(al);
 				ap.setHome(vistaHome);
 				ap.setConsultas(co);
-
+	
 				// Seteo de los botones de la vista consultaAlumno
 				ca.setHome(vistaHome);
 				ca.setAltas(al);
 				ca.setConsultas(co);
-
+	
 				// Seteo de los botones de la vista consultaAreas
 				car.setAltas(al);
 				car.setHome(vistaHome);
@@ -99,7 +99,8 @@ public class Main {
 				bp.setHome(vistaHome);
 				bp.setAltas(al);
 				bp.setConsultas(co);
-
+				
+			
 			}
 		});
 	}

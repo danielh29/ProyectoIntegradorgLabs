@@ -14,7 +14,7 @@ public class VistaLogin extends JFrame {
 	private JLabel alert;
 	private JButton btn;
 	private home home;
-
+	EscuchadorLogIn comprobar;
 	public VistaLogin() {
 		inicializar();
 
@@ -32,7 +32,7 @@ public class VistaLogin extends JFrame {
 				super.paintComponent(g);
 			}
 		};
-
+		
 		setContentPane(panel);
 		setSize(1350, 820);
 		getContentPane().setLayout(null);
@@ -57,7 +57,6 @@ public class VistaLogin extends JFrame {
 		btn = new JButton("Log In");
 		btn.setBounds(629, 339, 117, 29);
 		getContentPane().add(btn);
-		setControlador();
 		
 		alert = new JLabel("");
 		alert.setBounds(486, 379, 337, 16);
@@ -74,13 +73,14 @@ public class VistaLogin extends JFrame {
 		setVisible(false);
 	}
 	//Metodo que crea un nuevo controlador
-	public void setControlador() {
+	public void setControlador(home x) {
 		EscuchadorLogIn escuchador = new EscuchadorLogIn();
-		escuchador.setVistaPrincipal(this, home);
+		escuchador.setVistaPrincipal(this, x);
 		btn.addActionListener(escuchador);
 	}
 	public void setHome(home x) {
 		home = x;
+		setControlador(x);
 	}
 	public JLabel getAlert() {
 		return alert;

@@ -30,7 +30,7 @@ public class EscuchadorLogIn implements ActionListener {
 
 		AccesoBBDD bbdd = new AccesoBBDD();
 		bbdd.getConexion();
-//dependiendo de lo que devuelva el metodo query, haremos visible una pantalla u otra, o editaremos el JLabel oara hacerle saber al usuario del error.
+		//dependiendo de lo que devuelva el metodo query, haremos visible una pantalla u otra, o editaremos el JLabel oara hacerle saber al usuario del error.
 		try {
 			// acceso conseguido
 			if (bbdd.logIn(user, pass) == 1) {
@@ -46,7 +46,7 @@ public class EscuchadorLogIn implements ActionListener {
 			}
 			// control de errores
 		} catch (Exception e2) {
-			System.out.println("Error en la query:" + e2.getMessage());
+			System.out.println("Error en la query: " + e2.getMessage());
 		}
 		// cuando se falla 3 veces, se cierra el programa
 		if (counter == 0) {
