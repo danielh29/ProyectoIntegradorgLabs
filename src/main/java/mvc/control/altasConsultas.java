@@ -25,6 +25,7 @@ public class altasConsultas implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		a.dispose();
+		a.hacerInVisible();
 		c.hacerVisible();
 
 	}

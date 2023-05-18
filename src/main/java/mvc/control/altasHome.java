@@ -24,6 +24,7 @@ public class altasHome implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		a.dispose();
+		a.hacerInVisible();
 		v.hacerVisible();
 
 	}
