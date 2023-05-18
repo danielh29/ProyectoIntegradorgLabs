@@ -404,7 +404,6 @@ public class altasPI {
 		panel.add(textField_8);
 
 		
-		frame.setVisible(true);
 
 	}
 

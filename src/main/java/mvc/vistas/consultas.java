@@ -150,7 +150,7 @@ public class consultas {
 		lblNewLabel_3.setFont(new Font("Academy Engraved LET", Font.PLAIN, 38));
 		lblNewLabel_3.setBounds(526, 441, 859, 89);
 		panel.add(lblNewLabel_3);
-		frame.setVisible(true);
+		frame.setVisible(false);
 
 	}
 	public void hacerVisible() {
