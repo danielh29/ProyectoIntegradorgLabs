@@ -257,7 +257,6 @@ public class altasAreas {
 		panel.add(textField_2);
 
 		
-		frame.setVisible(true);
 
 	}
 

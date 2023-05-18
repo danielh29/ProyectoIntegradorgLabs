@@ -135,7 +135,7 @@ public class consultaAlumnos {
 		panel.add(textField_2);
 
 		
-		frame.setVisible(true);
+		frame.setVisible(false);
 
 	}
 

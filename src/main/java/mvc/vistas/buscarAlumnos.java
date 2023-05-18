@@ -122,7 +122,7 @@ public class buscarAlumnos {
 		txtHola.setBounds(656, 298, 375, 69);
 		panel.add(txtHola);
 		txtHola.setColumns(10);
-		frame.setVisible(true);
+		frame.setVisible(false);
 
 	}
 	public void hacerVisible() {

@@ -153,7 +153,7 @@ public class consultaAreas {
 		textField_2.setBounds(1111, 445, 261, 39);
 		panel.add(textField_2);
 
-		frame.setVisible(true);
+		frame.setVisible(false);
 
 	}
 

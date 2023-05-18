@@ -1,8 +1,13 @@
 package mvc.vistas;
 
+import java.awt.*;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 import mvc.control.EscuchadorLogIn;
@@ -14,7 +19,13 @@ public class VistaLogin extends JFrame {
 	private JLabel alert;
 	private JButton btn;
 	private home home;
+    private static JButton botonFondo;
+    private static List<ImageIcon> frames;
+    private static int currentFrameIndex;
+    private static final int ICON_WIDTH = 167;
+    private static final int ICON_HEIGHT = 79;
 	EscuchadorLogIn comprobar;
+	
 	public VistaLogin() {
 		inicializar();
 
@@ -53,14 +64,67 @@ public class VistaLogin extends JFrame {
 		txtPass = new JPasswordField();
 		txtPass.setBounds(616, 301, 130, 26);
 		getContentPane().add(txtPass);
-
-		btn = new JButton("Log In");
-		btn.setBounds(629, 339, 117, 29);
-		getContentPane().add(btn);
 		
-		alert = new JLabel("");
-		alert.setBounds(486, 379, 337, 16);
-		getContentPane().add(alert);
+		
+		//BOTÓN PRINCIPAL
+  		btn = new JButton("");
+  		btn.setBounds(601, 340, 167, 79);
+  		getContentPane().add(btn);
+          // Establecer la opacidad del botón
+          btn.setOpaque(false);
+          btn.setContentAreaFilled(false);
+          btn.setBorderPainted(false);
+
+          // Establecer el fondo del botón como transparente
+          btn.setBackground(new Color(0, 0, 0, 0));
+        
+        //BOTÖN FONDO
+		frames = new ArrayList<>();
+
+        // Carga las imágenes del GIF en una lista
+        for (int i = 1; i <= 47; i++) {
+            String imagePath = "ImagenesGif/imagen (" + i + ").png";
+            ImageIcon frame = new ImageIcon(imagePath);
+            ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
+            frames.add(scaledFrame);
+        }
+
+        // Configura el primer frame como icono inicial del botón
+        currentFrameIndex = 0;
+
+        // Inicia un temporizador para cambiar automáticamente los frames
+        int delay = 10; // Intervalo en milisegundos entre cada cambio de frame
+        Timer timer = new Timer(delay, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                botonFondo.doClick(); // Simula un clic en el botón para cambiar el frame
+            }
+        });
+        timer.start();
+        
+		
+		        botonFondo = new JButton();
+		        botonFondo.setBounds(601, 339, 170, 70);
+		        botonFondo.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Cambia la imagen del botón al siguiente frame
+		                currentFrameIndex = (currentFrameIndex + 1) % frames.size();
+		                botonFondo.setIcon(frames.get(currentFrameIndex));
+		            }
+		        });
+		        botonFondo.setIcon(frames.get(currentFrameIndex));
+		        
+		          botonFondo.setOpaque(false);
+		          botonFondo.setContentAreaFilled(false);
+		          botonFondo.setBorderPainted(false);
+		          botonFondo.setBackground(new Color(0, 0, 0, 0));
+		        
+		        getContentPane().add(botonFondo);
+		        
+		        alert = new JLabel("");
+				alert.setBounds(486, 379, 337, 16);
+				getContentPane().add(alert);
 
 		
 	}
@@ -105,5 +169,11 @@ public class VistaLogin extends JFrame {
 	public void setTxtPass(JPasswordField txtPass) {
 		this.txtPass = txtPass;
 	}
+	
+	private static ImageIcon scaleImageIcon(ImageIcon icon, int width, int height) {
+        Image image = icon.getImage();
+        Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
+    }
 
 }

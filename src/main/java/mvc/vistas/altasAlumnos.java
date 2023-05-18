@@ -242,7 +242,6 @@ public class altasAlumnos {
 
 
 		
-		frame.setVisible(true);
 
 	}
 	public void hacerVisible() {

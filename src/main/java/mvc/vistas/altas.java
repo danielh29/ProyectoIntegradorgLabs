@@ -151,7 +151,6 @@ public class altas {
 		lblNewLabel_3.setFont(new Font("Academy Engraved LET", Font.PLAIN, 38));
 		lblNewLabel_3.setBounds(528, 454, 504, 89);
 		panel.add(lblNewLabel_3);
-		frame.setVisible(true);
 
 	}
 

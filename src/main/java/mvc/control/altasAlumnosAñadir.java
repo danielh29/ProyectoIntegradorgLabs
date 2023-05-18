@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import mvc.vistas.altas;
 import mvc.vistas.altasAlumnos;
 
+/**
+ * La clase {@code altasAlumnosAñadir} implementa la interfaz {@code ActionListener} y se utiliza como controlador para el evento de acción de agregar en la vista {@code altasAlumnos}.
+ */
 public class altasAlumnosAñadir implements ActionListener {
 
 	altas a;
