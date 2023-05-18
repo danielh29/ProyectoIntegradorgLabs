@@ -36,7 +36,7 @@ public class VistaLogin extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				// Carga y dibuja la imagen de fondo
-				ImageIcon imageIcon = new ImageIcon("Imagenes/fondo.png");
+				ImageIcon imageIcon = new ImageIcon("Imagenes/FondoLogin.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
@@ -82,8 +82,8 @@ public class VistaLogin extends JFrame {
 		frames = new ArrayList<>();
 
         // Carga las imágenes del GIF en una lista
-        for (int i = 1; i <= 47; i++) {
-            String imagePath = "ImagenesGif/imagen (" + i + ").png";
+        for (int i = 0; i <= 13; i++) {
+            String imagePath = "ImagenesGifL/imagen (" + i + ").png";
             ImageIcon frame = new ImageIcon(imagePath);
             ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
             frames.add(scaledFrame);
@@ -123,7 +123,7 @@ public class VistaLogin extends JFrame {
 		        getContentPane().add(botonFondo);
 		        
 		        alert = new JLabel("");
-				alert.setBounds(486, 379, 337, 16);
+				alert.setBounds(486, 450, 337, 16);
 				getContentPane().add(alert);
 
 		

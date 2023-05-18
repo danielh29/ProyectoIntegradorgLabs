@@ -1,7 +1,12 @@
 package mvc.vistas;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -13,6 +18,11 @@ public class VistaSignUp extends JFrame {
 	private JPasswordField txtRepetirPass;
 	private JLabel alert;
 	private JButton botonSignup;
+	private static JButton botonFondoSignUp;
+	private static List<ImageIcon> framesSignUp= new ArrayList<>();
+	private static int currentFrameIndexSignUp;
+    private static final int ICON_WIDTH = 235;
+    private static final int ICON_HEIGHT = 164;
 	VistaLogin login;
 
 	public VistaSignUp() {
@@ -25,7 +35,7 @@ public class VistaSignUp extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				// Carga y dibuja la imagen de fondo
-				ImageIcon imageIcon = new ImageIcon("Imagenes/fondo.png");
+				ImageIcon imageIcon = new ImageIcon("Imagenes/FondoLogin.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
@@ -53,10 +63,61 @@ public class VistaSignUp extends JFrame {
 		txtPass = new JPasswordField();
 		txtPass.setBounds(619, 292, 130, 26);
 		getContentPane().add(txtPass);
-
-		botonSignup = new JButton("Sign Up");
-		botonSignup.setBounds(632, 357, 117, 29);
+//BOTÖN CON FUNCIONALIDAD
+		botonSignup = new JButton("");
+		botonSignup.setBounds(686, 349, 235, 164);
 		getContentPane().add(botonSignup);
+		// Establecer la opacidad del botón
+        botonSignup.setOpaque(false);
+        botonSignup.setContentAreaFilled(false);
+        botonSignup.setBorderPainted(false);
+        // Establecer el fondo del botón como transparente
+        botonSignup.setBackground(new Color(0, 0, 0, 0));
+        
+//BOTÓN DISEÑO SIGNUP
+        // Carga las imágenes del GIF en una lista
+           for (int i = 1; i <= 13; i++) {
+               String imagePath = "ImagenesGifS/imagen (" + i + ").png";
+               ImageIcon frame = new ImageIcon(imagePath);
+               ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
+               framesSignUp.add(scaledFrame);
+           }
+
+           // Configura el primer frame como icono inicial del botón
+           currentFrameIndexSignUp = 0;
+
+           // Inicia un temporizador para cambiar automáticamente los frames
+           int delayS = 10; // Intervalo en milisegundos entre cada cambio de frame
+           Timer timerS = new Timer(delayS, new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent e) {
+                   botonFondoSignUp.doClick(); // Simula un clic en el botón para cambiar el frame
+               }
+           });
+           timerS.start();
+           
+   		
+   		        botonFondoSignUp = new JButton();
+   		        botonFondoSignUp.setBounds(686, 349, 235, 164);
+   		        botonFondoSignUp.addActionListener(new ActionListener() {
+   		            @Override
+   		            public void actionPerformed(ActionEvent e) {
+   		                // Cambia la imagen del botón al siguiente frame
+   		                currentFrameIndexSignUp = (currentFrameIndexSignUp + 1) % framesSignUp.size();
+   		                botonFondoSignUp.setIcon(framesSignUp.get(currentFrameIndexSignUp));
+   		            }
+   		        });
+   		        botonFondoSignUp.setIcon(framesSignUp.get(currentFrameIndexSignUp));
+   		        
+   		          botonFondoSignUp.setOpaque(false);
+   		          botonFondoSignUp.setContentAreaFilled(false);
+   		          botonFondoSignUp.setBorderPainted(false);
+   		          botonFondoSignUp.setBackground(new Color(0, 0, 0, 0));
+   		        
+   		        getContentPane().add(botonFondoSignUp);
+		
+		
+		
 		
 		JLabel labelRepetirPass = new JLabel("Repetir Contraseña");
 		labelRepetirPass.setBounds(488, 325, 130, 16);
@@ -122,4 +183,10 @@ public class VistaSignUp extends JFrame {
 	public void setTxtPass(JPasswordField txtPass) {
 		this.txtPass = txtPass;
 	}
+	
+	private static ImageIcon scaleImageIcon(ImageIcon icon, int width, int height) {
+        Image image = icon.getImage();
+        Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
+    }
 }

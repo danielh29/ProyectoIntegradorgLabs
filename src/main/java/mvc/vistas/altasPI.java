@@ -423,6 +423,7 @@ public class altasPI {
 	}
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		frame.setVisible(false);
 	}
 	//Metodo que crea un nuevo controlador
 	public void setControlador(home x) {

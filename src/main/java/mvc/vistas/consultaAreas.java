@@ -162,6 +162,7 @@ public class consultaAreas {
 	}
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		frame.setVisible(false);
 	}
 	public JButton getButton1() {
 		return button1;

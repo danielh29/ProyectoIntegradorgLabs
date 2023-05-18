@@ -1,6 +1,11 @@
 package mvc.vistas;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.*;
 
 import mvc.control.*;
@@ -11,6 +16,14 @@ public class VistaPrincipal extends JFrame {
 	private JButton botonSignUp;
 	VistaLogin login;
 	VistaSignUp sign;
+    private static JButton botonFondoLogIn;
+    private static JButton botonFondoSignUp;
+    private static List<ImageIcon> framesLogIn = new ArrayList<>();
+    private static List<ImageIcon> framesSignUp= new ArrayList<>();
+    private static int currentFrameIndexLogIn;
+    private static int currentFrameIndexSignUp;
+    private static final int ICON_WIDTH = 235;
+    private static final int ICON_HEIGHT = 164;
 	public VistaPrincipal() {
 		inicializar();
 	}
@@ -22,7 +35,7 @@ public class VistaPrincipal extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				// Carga y dibuja la imagen de fondo
-				ImageIcon imageIcon = new ImageIcon("Imagenes/fondo.png");
+				ImageIcon imageIcon = new ImageIcon("Imagenes/FondoLogin.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
@@ -36,17 +49,123 @@ public class VistaPrincipal extends JFrame {
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Bienvenido");
-		lblNewLabel.setBounds(610, 240, 163, 16);
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Agency FB", Font.BOLD | Font.ITALIC, 99));
+		lblNewLabel.setBounds(468, 75, 402, 99);
 		getContentPane().add(lblNewLabel);
 
-		botonLogIn = new JButton("Log In");
-		botonLogIn.setBounds(482, 349, 117, 29);
-		getContentPane().add(botonLogIn);
 		
+//BOTÓN LOGIN FUNCIONAL
+		botonLogIn = new JButton("");
+		botonLogIn.setBounds(364, 349, 235, 164);
+		getContentPane().add(botonLogIn);
+		// Establecer la opacidad del botón
+        botonLogIn.setOpaque(false);
+        botonLogIn.setContentAreaFilled(false);
+        botonLogIn.setBorderPainted(false);
+        // Establecer el fondo del botón como transparente
+        botonLogIn.setBackground(new Color(0, 0, 0, 0));
+//BOTÓN DISEÑO LOGIN
+     // Carga las imágenes del GIF en una lista
+        for (int i = 0; i <= 13; i++) {
+            String imagePath = "ImagenesGifL/imagen (" + i + ").png";
+            ImageIcon frame = new ImageIcon(imagePath);
+            ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
+            framesLogIn.add(scaledFrame);
+        }
 
-		botonSignUp = new JButton("Sign Up");
-		botonSignUp.setBounds(686, 349, 117, 29);
+        // Configura el primer frame como icono inicial del botón
+        currentFrameIndexLogIn = 0;
+
+        // Inicia un temporizador para cambiar automáticamente los frames
+        int delay = 10; // Intervalo en milisegundos entre cada cambio de frame
+        Timer timer = new Timer(delay, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                botonFondoLogIn.doClick(); // Simula un clic en el botón para cambiar el frame
+            }
+        });
+        timer.start();
+        
+		
+		        botonFondoLogIn = new JButton();
+		        botonFondoLogIn.setBounds(364, 349, 235, 164);
+		        botonFondoLogIn.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Cambia la imagen del botón al siguiente frame
+		                currentFrameIndexLogIn = (currentFrameIndexLogIn + 1) % framesLogIn.size();
+		                botonFondoLogIn.setIcon(framesLogIn.get(currentFrameIndexLogIn));
+		            }
+		        });
+		        botonFondoLogIn.setIcon(framesLogIn.get(currentFrameIndexLogIn));
+		        
+		          botonFondoLogIn.setOpaque(false);
+		          botonFondoLogIn.setContentAreaFilled(false);
+		          botonFondoLogIn.setBorderPainted(false);
+		          botonFondoLogIn.setBackground(new Color(0, 0, 0, 0));
+		        
+		        getContentPane().add(botonFondoLogIn);
+		
+		
+//BOTÓN SIGNUP FUNCIONAL
+		botonSignUp = new JButton("");
+		botonSignUp.setBounds(686, 349, 235, 164);
 		getContentPane().add(botonSignUp);
+		// Establecer la opacidad del botón
+        botonSignUp.setOpaque(false);
+        botonSignUp.setContentAreaFilled(false);
+        botonSignUp.setBorderPainted(false);
+        // Establecer el fondo del botón como transparente
+        botonSignUp.setBackground(new Color(0, 0, 0, 0));
+        
+//BOTÓN DISEÑO SIGNUP
+        // Carga las imágenes del GIF en una lista
+           for (int i = 1; i <= 13; i++) {
+               String imagePath = "ImagenesGifS/imagen (" + i + ").png";
+               ImageIcon frame = new ImageIcon(imagePath);
+               ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
+               framesSignUp.add(scaledFrame);
+           }
+
+           // Configura el primer frame como icono inicial del botón
+           currentFrameIndexSignUp = 0;
+
+           // Inicia un temporizador para cambiar automáticamente los frames
+           int delayS = 10; // Intervalo en milisegundos entre cada cambio de frame
+           Timer timerS = new Timer(delayS, new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent e) {
+                   botonFondoSignUp.doClick(); // Simula un clic en el botón para cambiar el frame
+               }
+           });
+           timerS.start();
+           
+   		
+   		        botonFondoSignUp = new JButton();
+   		        botonFondoSignUp.setBounds(686, 349, 235, 164);
+   		        botonFondoSignUp.addActionListener(new ActionListener() {
+   		            @Override
+   		            public void actionPerformed(ActionEvent e) {
+   		                // Cambia la imagen del botón al siguiente frame
+   		                currentFrameIndexSignUp = (currentFrameIndexSignUp + 1) % framesSignUp.size();
+   		                botonFondoSignUp.setIcon(framesSignUp.get(currentFrameIndexSignUp));
+   		            }
+   		        });
+   		        botonFondoSignUp.setIcon(framesSignUp.get(currentFrameIndexSignUp));
+   		        
+   		          botonFondoSignUp.setOpaque(false);
+   		          botonFondoSignUp.setContentAreaFilled(false);
+   		          botonFondoSignUp.setBorderPainted(false);
+   		          botonFondoSignUp.setBackground(new Color(0, 0, 0, 0));
+   		        
+   		        getContentPane().add(botonFondoSignUp);
+		
+		
+		
+		
+		
+		
 		
 	}
 	public void setVistaLogin(VistaLogin x) {
@@ -76,4 +195,10 @@ public class VistaPrincipal extends JFrame {
 	public void hacerInvisible() {
 		setVisible(false);
 	}
+	
+	private static ImageIcon scaleImageIcon(ImageIcon icon, int width, int height) {
+        Image image = icon.getImage();
+        Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImage);
+    }
 }
