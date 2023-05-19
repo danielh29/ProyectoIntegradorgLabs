@@ -8,8 +8,8 @@ import BBDD.AccesoBBDD;
 import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 import mvc.vistas.buscarArea;
-import mvc.vistas.consultaAlumnos;
-import mvc.vistas.consultaAreas;
+import mvc.vistas.editarAlumnos;
+import mvc.vistas.editarAreas;
 import mvc.vistas.consultas;
 
 public class consultasAreasB implements ActionListener {

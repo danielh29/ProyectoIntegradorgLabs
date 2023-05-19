@@ -3,15 +3,15 @@ package mvc.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import mvc.vistas.consultaAlumnos;
+import mvc.vistas.editarAlumnos;
 import mvc.vistas.consultas;
 import mvc.vistas.home;
 
 public class consultaAlumnoHome implements ActionListener {
 	
 	home h;
-	consultaAlumnos ca;
-	public void setVentanaUsuario(home home, consultaAlumnos consuAlum) {
+	editarAlumnos ca;
+	public void setVentanaUsuario(home home, editarAlumnos consuAlum) {
 		h=home;
 		ca=consuAlum;
 	}

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import BBDD.AccesoBBDD;
 import mvc.modelo.datosAlumno;
 import mvc.vistas.buscarAlumnos;
-import mvc.vistas.consultaAlumnos;
+import mvc.vistas.editarAlumnos;
 import mvc.vistas.consultas;
 
 public class consultasAlumnosB implements ActionListener {

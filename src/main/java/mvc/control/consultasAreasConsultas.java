@@ -3,20 +3,20 @@ package mvc.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import mvc.vistas.consultaAreas;
+import mvc.vistas.editarAreas;
 import mvc.vistas.consultas;
 import mvc.vistas.home;
 
 public class consultasAreasConsultas implements ActionListener {
 
-	consultaAreas ca;
+	editarAreas ca;
 	consultas c;
 
 	/**
 	 * Método que nos permite trabajar con una vista principal V
 	 * @param vista, Clase Vista Principal
 	 */
-	public void setVentanaUsuario (consultaAreas consulArea, consultas consultas) {
+	public void setVentanaUsuario (editarAreas consulArea, consultas consultas) {
 		ca=consulArea;
 		c=consultas;
 	}

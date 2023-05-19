@@ -8,7 +8,7 @@ import BBDD.AccesoBBDD;
 import mvc.modelo.datosAreas;
 import mvc.modelo.datosPI;
 import mvc.vistas.buscarPI;
-import mvc.vistas.consultaAlumnos;
+import mvc.vistas.editarAlumnos;
 import mvc.vistas.consultas;
 
 public class consultasPIB implements ActionListener {

@@ -5,19 +5,19 @@ import java.awt.event.ActionListener;
 
 import mvc.vistas.altas;
 import mvc.vistas.altasPI;
-import mvc.vistas.consultaAlumnos;
+import mvc.vistas.editarAlumnos;
 import mvc.vistas.consultas;
 
 public class consultasAlumnoAñadir implements ActionListener {
 
-	consultaAlumnos c;
+	editarAlumnos c;
 	altas a;
 
 	/**
 	 * Método que nos permite trabajar con una vista principal V
 	 * @param vista, Clase Vista Principal
 	 */
-	public void setVentanaUsuario (consultaAlumnos consultas, altas altas) {
+	public void setVentanaUsuario (editarAlumnos consultas, altas altas) {
 		c=consultas;
 		a=altas;
 	}

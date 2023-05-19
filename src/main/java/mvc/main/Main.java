@@ -22,8 +22,8 @@ public class Main {
 				altasAlumnos aa = new altasAlumnos();
 				altasPI ap = new altasPI();
 				altasAreas aar = new altasAreas();
-				consultaAlumnos ca = new consultaAlumnos();
-				consultaAreas car = new consultaAreas();
+				editarAlumnos ca = new editarAlumnos();
+				editarAreas car = new editarAreas();
 				buscarAlumnos ba = new buscarAlumnos();
 				buscarArea bar = new buscarArea();
 				buscarPI bp = new buscarPI();

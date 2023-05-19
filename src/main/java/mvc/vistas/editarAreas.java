@@ -15,7 +15,7 @@ import mvc.control.consultasAlumnosB;
 import mvc.control.consultasAreasB;
 import mvc.control.consultasAreasConsultas;
 
-public class consultaAreas {
+public class editarAreas {
 	private JFrame frame;
 	private JPanel panel;
 	private JButton button1;
@@ -33,7 +33,7 @@ public class consultaAreas {
 	private JButton button1_1;
 	private JButton button1_2;
 
-	public consultaAreas() {
+	public editarAreas() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();

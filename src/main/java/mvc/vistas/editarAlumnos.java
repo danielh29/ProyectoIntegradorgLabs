@@ -16,7 +16,7 @@ import mvc.control.consultasAlumnoAñadir;
 import mvc.control.consultasAlumnoConsultas;
 import mvc.control.consultasHome;
 
-public class consultaAlumnos {
+public class editarAlumnos {
 	private JFrame frame;
 	private JPanel panel;
 	private JButton button1;
@@ -32,7 +32,7 @@ public class consultaAlumnos {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-	public consultaAlumnos() {
+	public editarAlumnos() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
