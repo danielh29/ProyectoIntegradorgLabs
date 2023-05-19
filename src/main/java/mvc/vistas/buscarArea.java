@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.http.WebSocket.Listener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -14,6 +15,7 @@ import mvc.control.buscarAreaConsulta;
 import mvc.control.buscarAreaHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
+import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 
 public class buscarArea {
@@ -132,20 +134,27 @@ public class buscarArea {
 		panelScroll2.setBounds(400,250,417,437);
 		frame.add(panelScroll2);
 		
-		//Listado conceptos
-		DefaultListModel<datosAreas> modelo = new DefaultListModel<datosAreas>();
-		modelo.addElement(new datosAreas());
-		modelo.addElement(new datosAreas());
-		modelo.addElement(new datosAreas());
+//		//Listado conceptos
+//		DefaultListModel<datosAreas> modelo = new DefaultListModel<datosAreas>();
+//		modelo.addElement(new datosAreas());
+//		modelo.addElement(new datosAreas());
+//		modelo.addElement(new datosAreas());
 		
 		datosAreas = new JList<datosAreas>();
 		panelScroll2.setViewportView(datosAreas);
-		datosAreas.setModel(modelo);
+		
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 //		ListenerListadoAlumnos escuchadorLista = new ListenerListadoAlumnos();
 //		listAlumnos.addListSelectionListener(escuchadorLista);
 		
+	}
+	public void setListaArea(ArrayList<datosAreas> listaAreas) {
+		DefaultListModel<datosAreas> modelo = new DefaultListModel<datosAreas>();
+		modelo.addAll(listaAreas);
+		//Esto no sé si puedes hacerlo o hay que hacer un foreach
+		datosAreas.setModel(modelo);
+
 	}
 	public void hacerVisible() {
     	frame.setVisible(true);

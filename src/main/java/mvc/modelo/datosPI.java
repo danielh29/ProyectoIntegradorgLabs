@@ -56,8 +56,8 @@ public class datosPI {
 		return Ano;
 	}
 
-	public void setAno(Date ano) {
-		Ano = ano;
+	public void setAno(Date ano2) {
+		Ano = ano2;
 	}
 
 	public int getGrupo() {
@@ -91,4 +91,18 @@ public class datosPI {
 	public void setID_Area(int iD_Area) {
 		ID_Area = iD_Area;
 	}
+	@Override
+	public String toString() {
+	    return "datosPI{" +
+	            "ID_Proyecto=" + ID_Proyecto +
+	            ", Nombre='" + Nombre + '\'' +
+	            ", Nota_Obtenida=" + Nota_Obtenida +
+	            ", Ano=" + Ano +
+	            ", Grupo=" + Grupo +
+	            ", URL_Proyecto='" + URL_Proyecto + '\'' +
+	            ", Curso=" + Curso +
+	            ", ID_Area=" + ID_Area +
+	            '}';
+	}
+
 }

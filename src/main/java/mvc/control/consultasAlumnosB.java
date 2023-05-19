@@ -26,7 +26,6 @@ public class consultasAlumnosB implements ActionListener {
 		
 		AccesoBBDD acceso = new AccesoBBDD();
 		
-		acceso.consultarDatosAlumnos();
 		listaAlumnos=acceso.obtenerDatosAlumnos();
 		
 		ba.setListaAlumnos(listaAlumnos);

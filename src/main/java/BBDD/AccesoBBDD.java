@@ -266,45 +266,6 @@ public class AccesoBBDD {
     	
 	}
 	
-	public void consultarDatosAlumnos() {
-	    try {
-	        Connection conexion = getConexion();
-	        
-	        // Consulta para obtener los datos de los alumnos
-	        String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM ALUMNOS";
-	        
-	        // Crear el objeto PreparedStatement
-	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
-	        
-	        // Ejecutar la consulta y obtener el resultado
-	        ResultSet resultSet = preparedStatement.executeQuery();
-	        
-	        // Iterar sobre el resultado y procesar los datos
-	        while (resultSet.next()) {
-	            int idAlumno = resultSet.getInt("ID_Alumno");
-	            int numeroExp = resultSet.getInt("Numero_exp");
-	            String nombre = resultSet.getString("Nombre");
-	            int idProyecto = resultSet.getInt("ID_Proyecto");
-	            
-	            // Hacer algo con los datos obtenidos, por ejemplo, imprimirlos en la consola
-	            System.out.println("ID_Alumno: " + idAlumno);
-	            System.out.println("Numero_exp: " + numeroExp);
-	            System.out.println("Nombre: " + nombre);
-	            System.out.println("ID_Proyecto: " + idProyecto);
-	            System.out.println("-------------------");
-	        }
-	        System.out.println("AARON");
-	        // Cerrar el ResultSet, el PreparedStatement y la conexión
-	        resultSet.close();
-	        preparedStatement.close();
-	        conexion.close();
-	        
-	        System.out.println("Consulta de datos de alumnos completada.");
-	    } catch (SQLException e) {
-	        System.out.println("Error al consultar los datos de los alumnos: " + e.getMessage());
-	    }
-	}
-	
 	public ArrayList<datosAlumno> obtenerDatosAlumnos() {
         ArrayList<datosAlumno> listaAlumnos = new ArrayList<>();
         
@@ -335,10 +296,7 @@ public class AccesoBBDD {
                 alumno.setID_Proyecto(idProyecto);
                 
                 listaAlumnos.add(alumno);
-                System.out.println(listaAlumnos);
-                
             }
-            System.out.println("SegundoMetodo");
             // Cerrar el ResultSet, el PreparedStatement y la conexión
             resultSet.close();
             preparedStatement.close();
@@ -351,7 +309,98 @@ public class AccesoBBDD {
         
         return listaAlumnos;
     }
-
+	
+	public ArrayList<datosAreas> obtenerDatosAreas() {
+		
+		ArrayList<datosAreas> AREAS = new ArrayList<>();
+		try {
+		Connection conexion = getConexion();
+        
+        // Consulta para obtener los datos de los alumnos
+        String consulta = "SELECT ID_Area, DESCRIPCION FROM AREAS";
+        
+        // Crear el objeto PreparedStatement
+        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+        
+        // Ejecutar la consulta y obtener el resultado
+        ResultSet resultSet = preparedStatement.executeQuery();
+        
+        // Iterar sobre el resultado y procesar los datos
+        while (resultSet.next()) {
+            int idArea = resultSet.getInt("ID_Area");
+            String descripcion = resultSet.getString("DESCRIPCION");
+            
+            // Crear un objeto datosAlumno y agregarlo a la lista
+            datosAreas areasob = new datosAreas();
+            areasob.setID_Area(idArea);
+            areasob.setDESCRIPCION(descripcion);
+            AREAS.add(areasob);
+            
+        }
+        // Cerrar el ResultSet, el PreparedStatement y la conexión
+        resultSet.close();
+        preparedStatement.close();
+        conexion.close();
+	
+        System.out.println("Consulta de datos de alumnos completada.");
+    } catch (SQLException e) {
+        System.out.println("Error al consultar los datos de los alumnos: " + e.getMessage());
+    }
+    
+    return AREAS;
+		
+	}
+	public ArrayList<datosPI> obtenerDatosPI() {
+		
+		ArrayList<datosPI> PI = new ArrayList<>();
+		try {
+		Connection conexion = getConexion();
+        
+        // Consulta para obtener los datos de los alumnos
+        String consulta = "SELECT ID_Proyecto, nombre, Nota_obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area  FROM PROYECTO";
+        
+        // Crear el objeto PreparedStatement
+        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+        
+        // Ejecutar la consulta y obtener el resultado
+        ResultSet resultSet = preparedStatement.executeQuery();
+        
+        // Iterar sobre el resultado y procesar los datos
+        while (resultSet.next()) {
+            int ID_Proyecto = resultSet.getInt("ID_Proyecto");
+            String nombre = resultSet.getString("nombre");
+            int Nota_obtenida = resultSet.getInt("Nota_obtenida");
+            Date Ano = resultSet.getDate("Ano");
+        	int Grupo = resultSet.getInt("Grupo");
+        	String URL_Proyecto = resultSet.getString("URL_Proyecto");
+        	int Curso = resultSet.getInt("Curso");
+        	int ID_Area = resultSet.getInt("ID_Area");
+            
+            // Crear un objeto datosAlumno y agregarlo a la lista
+            datosPI datosPI = new datosPI();
+            datosPI.setID_Proyecto(ID_Proyecto);
+            datosPI.setNombre(nombre);
+            datosPI.setAno((java.sql.Date) Ano);
+            datosPI.setGrupo(Grupo);
+            datosPI.setURL_Proyecto(URL_Proyecto);
+            datosPI.setCurso(Curso);
+            datosPI.setID_Area(ID_Area);
+            PI.add(datosPI);
+            
+        }
+        // Cerrar el ResultSet, el PreparedStatement y la conexión
+        resultSet.close();
+        preparedStatement.close();
+        conexion.close();
+	
+        System.out.println("Consulta de datos de alumnos completada.");
+    } catch (SQLException e) {
+        System.out.println("Error al consultar los datos de los alumnos: " + e.getMessage());
+    }
+    
+    return PI;
+		
+	}
 }
  
     	

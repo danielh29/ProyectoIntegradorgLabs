@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.http.WebSocket.Listener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -14,6 +15,7 @@ import mvc.control.buscarPIConsultas;
 import mvc.control.buscarPIHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
+import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 import mvc.modelo.datosPI;
 
@@ -133,17 +135,24 @@ public class buscarPI {
 		panelScroll2.setBounds(400,250,417,437);
 		frame.add(panelScroll2);
 		
-		//Listado conceptos
-		DefaultListModel<datosPI> modelo = new DefaultListModel<datosPI>();
-		modelo.addElement(new datosPI());
-		modelo.addElement(new datosPI());
-		modelo.addElement(new datosPI());
+//		//Listado conceptos
+//		DefaultListModel<datosPI> modelo = new DefaultListModel<datosPI>();
+//		modelo.addElement(new datosPI());
+//		modelo.addElement(new datosPI());
+//		modelo.addElement(new datosPI());
 		
 		datosPI = new JList<datosPI>();
 		panelScroll2.setViewportView(datosPI);
-		datosPI.setModel(modelo);
+		
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
+	}
+	public void setListaPI(ArrayList<datosPI> listaPI) {
+		DefaultListModel<datosPI> modelo = new DefaultListModel<datosPI>();
+		modelo.addAll(listaPI);
+		//Esto no sé si puedes hacerlo o hay que hacer un foreach
+		datosPI.setModel(modelo);
+
 	}
 	public void hacerVisible() {
     	frame.setVisible(true);

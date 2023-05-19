@@ -29,6 +29,9 @@ public class datosAreas {
 		public void setDESCRIPCION(String dESCRIPCION) {
 			DESCRIPCION = dESCRIPCION;
 		}
-		
+		@Override
+	    public String toString() {
+	        return "datosAreas [ID_Area= " + ID_Area + ", DESCRIPCION= " + DESCRIPCION+" ]";
+	    }
 
 }
