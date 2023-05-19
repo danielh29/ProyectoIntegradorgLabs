@@ -14,6 +14,8 @@ import mvc.control.buscarAlumnosConsultas;
 import mvc.control.buscarAlumnosHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
+import mvc.modelo.datosAlumno;
+import mvc.modelo.datosAreas;
 
 public class buscarAlumnos {
 	private JFrame frame;
@@ -24,6 +26,9 @@ public class buscarAlumnos {
 	private JButton buttonadd1;
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
+	
+	private JScrollPane scrollPane;
+	private JList <datosAlumno> datosAlumnos;
 
 	private home h;
 	private altas a;
@@ -105,24 +110,40 @@ public class buscarAlumnos {
 
 		///////////////////////////// LABELS//////////////////////////////////
 
-		JLabel lblNewLabel = new JLabel("Introduzca el ID de Alumno");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(new Color(247, 254, 255));
-		lblNewLabel.setFont(new Font("Kefa", Font.PLAIN, 90));
-		lblNewLabel.setBounds(150, 6, 1174, 119);
-		panel.add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Introduzca el ID de Alumno");
+//		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblNewLabel.setForeground(new Color(247, 254, 255));
+//		lblNewLabel.setFont(new Font("Kefa", Font.PLAIN, 90));
+//		lblNewLabel.setBounds(150, 6, 1174, 119);
+//		panel.add(lblNewLabel);
+//		
+//		lblNewLabel_1 = new JLabel("ID Alumno:");
+//		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
+//		lblNewLabel_1.setBounds(255, 272, 364, 102);
+//		panel.add(lblNewLabel_1);
+//		
+//		txtHola = new JTextField();
+//		txtHola.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
+//		txtHola.setBounds(656, 298, 375, 69);
+//		panel.add(txtHola);
+//		txtHola.setColumns(10);
+//		frame.setVisible(false);
 		
-		lblNewLabel_1 = new JLabel("ID Alumno:");
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-		lblNewLabel_1.setBounds(255, 272, 364, 102);
-		panel.add(lblNewLabel_1);
+		JScrollPane panelScroll2 = new JScrollPane();
+		panelScroll2.setBounds(400,250,417,437);
+		frame.getContentPane().add(panelScroll2);
 		
-		txtHola = new JTextField();
-		txtHola.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-		txtHola.setBounds(656, 298, 375, 69);
-		panel.add(txtHola);
-		txtHola.setColumns(10);
-		frame.setVisible(false);
+		//Listado conceptos
+		DefaultListModel<datosAlumno> modelo = new DefaultListModel<datosAlumno>();
+		modelo.addElement(new datosAlumno());
+		modelo.addElement(new datosAlumno());
+		modelo.addElement(new datosAlumno());
+		
+		datosAlumnos = new JList<datosAlumno>();
+		panelScroll2.setViewportView(datosAlumnos);
+		datosAlumnos.setModel(modelo);
+		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
 
 	}
 	public void hacerVisible() {

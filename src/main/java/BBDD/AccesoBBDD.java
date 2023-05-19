@@ -14,7 +14,7 @@ public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/loginpi";
 	private String usuario = "root";
-	private String pass = "29072002Dan";
+	private String pass = "";
 
 	Connection con = null;
 
@@ -265,53 +265,45 @@ public class AccesoBBDD {
     	
 	}
 	
-    public void consultarDatosAlumnos() {
-    	try {
-    	    String nombre = alumnos.getTextField().getText();
-    	    int numeroExp = Integer.parseInt(alumnos.getTextField_1().getText());
-    	    int idAlumno = Integer.parseInt(alumnos.getTextField_2().getText());
-    	    
-    	    // Verificar si el campo textField_3 está vacío
-    	    String textField3Value = alumnos.getTextField_3().getText();
-    	    Integer idProyecto = null;
-    	    if (!textField3Value.isEmpty()) {
-    	        idProyecto = Integer.parseInt(textField3Value);
-    	    }
-    	    
-    	    Connection conexion = getConexion();
-    	    
-    	    // Consulta para insertar los datos en la tabla ALUMNOS
-    	    String consulta = "SELECT INTO ALUMNOS (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
-    	    
-    	    // Crear el objeto PreparedStatement
-    	    PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
-    	    
-    	    // Insertar los datos en la consulta
-    	    preparedStatement.setInt(1, idAlumno);
-    	    preparedStatement.setInt(2, numeroExp);
-    	    preparedStatement.setString(3, nombre);
-    	    
-    	    if (idProyecto != null) {
-    	        preparedStatement.setInt(4, idProyecto);
-    	    } else {
-    	        preparedStatement.setNull(4, java.sql.Types.INTEGER);
-    	    }
-    	    
-    	    // Ejecutar la consulta
-    	    preparedStatement.executeUpdate();
-    	    
-    	    // Cerrar el PreparedStatement y la conexión
-    	    preparedStatement.close();
-    	    conexion.close();
-    	    
-    	    System.out.println("Datos insertados correctamente en la tabla Alumnos.");
-    	} catch (SQLException e) {
-    	    System.out.println("Error al insertar los datos: " + e.getMessage());
-    	} catch (NumberFormatException e) {
-    	    System.out.println("Error de formato numérico: " + e.getMessage());
-    	}
-	
-    }
+	public void consultarDatosAlumnos() {
+	    try {
+	        Connection conexion = getConexion();
+	        
+	        // Consulta para obtener los datos de los alumnos
+	        String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM ALUMNOS";
+	        
+	        // Crear el objeto PreparedStatement
+	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+	        
+	        // Ejecutar la consulta y obtener el resultado
+	        ResultSet resultSet = preparedStatement.executeQuery();
+	        
+	        // Iterar sobre el resultado y procesar los datos
+	        while (resultSet.next()) {
+	            int idAlumno = resultSet.getInt("ID_Alumno");
+	            int numeroExp = resultSet.getInt("Numero_exp");
+	            String nombre = resultSet.getString("Nombre");
+	            int idProyecto = resultSet.getInt("ID_Proyecto");
+	            
+	            // Hacer algo con los datos obtenidos, por ejemplo, imprimirlos en la consola
+	            System.out.println("ID_Alumno: " + idAlumno);
+	            System.out.println("Numero_exp: " + numeroExp);
+	            System.out.println("Nombre: " + nombre);
+	            System.out.println("ID_Proyecto: " + idProyecto);
+	            System.out.println("-------------------");
+	        }
+	        
+	        // Cerrar el ResultSet, el PreparedStatement y la conexión
+	        resultSet.close();
+	        preparedStatement.close();
+	        conexion.close();
+	        
+	        System.out.println("Consulta de datos de alumnos completada.");
+	    } catch (SQLException e) {
+	        System.out.println("Error al consultar los datos de los alumnos: " + e.getMessage());
+	    }
+	}
+
 }
  
     	

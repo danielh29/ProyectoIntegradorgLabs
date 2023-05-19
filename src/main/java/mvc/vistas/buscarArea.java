@@ -14,6 +14,7 @@ import mvc.control.buscarAreaConsulta;
 import mvc.control.buscarAreaHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
+import mvc.modelo.datosAreas;
 
 public class buscarArea {
 	private JFrame frame;
@@ -24,6 +25,9 @@ public class buscarArea {
 	private JButton buttonadd1;
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
+	
+	private JScrollPane scrollPane;
+	private JList <datosAreas> datosAreas;
 
 	private home h;
 	private altas a;
@@ -105,25 +109,43 @@ public class buscarArea {
 
 		///////////////////////////// LABELS//////////////////////////////////
 
-		JLabel lblNewLabel = new JLabel("Introduzca el ID del área");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(new Color(247, 254, 255));
-		lblNewLabel.setFont(new Font("Kefa", Font.PLAIN, 90));
-		lblNewLabel.setBounds(150, 6, 1174, 119);
-		panel.add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Introduzca el ID del área");
+//		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblNewLabel.setForeground(new Color(247, 254, 255));
+//		lblNewLabel.setFont(new Font("Kefa", Font.PLAIN, 90));
+//		lblNewLabel.setBounds(150, 6, 1174, 119);
+//		panel.add(lblNewLabel);
+//		
+//		lblNewLabel_1 = new JLabel("ID Area:");
+//		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
+//		lblNewLabel_1.setBounds(255, 272, 364, 102);
+//		panel.add(lblNewLabel_1);
+//		
+//		txtHola = new JTextField();
+//		txtHola.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
+//		txtHola.setBounds(656, 298, 375, 69);
+//		panel.add(txtHola);
+//		txtHola.setColumns(10);
+//		frame.setVisible(false);
 		
-		lblNewLabel_1 = new JLabel("ID Area:");
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-		lblNewLabel_1.setBounds(255, 272, 364, 102);
-		panel.add(lblNewLabel_1);
+		JScrollPane panelScroll2 = new JScrollPane();
+		panelScroll2.setBounds(400,250,417,437);
+		frame.add(panelScroll2);
 		
-		txtHola = new JTextField();
-		txtHola.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-		txtHola.setBounds(656, 298, 375, 69);
-		panel.add(txtHola);
-		txtHola.setColumns(10);
-		frame.setVisible(false);
-
+		//Listado conceptos
+		DefaultListModel<datosAreas> modelo = new DefaultListModel<datosAreas>();
+		modelo.addElement(new datosAreas());
+		modelo.addElement(new datosAreas());
+		modelo.addElement(new datosAreas());
+		
+		datosAreas = new JList<datosAreas>();
+		panelScroll2.setViewportView(datosAreas);
+		datosAreas.setModel(modelo);
+		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+//		ListenerListadoAlumnos escuchadorLista = new ListenerListadoAlumnos();
+//		listAlumnos.addListSelectionListener(escuchadorLista);
+		
 	}
 	public void hacerVisible() {
     	frame.setVisible(true);
