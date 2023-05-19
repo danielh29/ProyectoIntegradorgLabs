@@ -5,6 +5,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import mvc.modelo.datosAlumno;
+import mvc.modelo.datosAreas;
+import mvc.modelo.datosPI;
 import mvc.vistas.*;
 
 public class AccesoBBDD {
@@ -36,6 +39,25 @@ public class AccesoBBDD {
 	    public AccesoBBDD(altasPI proyectos) {
 	    	this.proyectos = proyectos;
 	    }
+	    
+	    datosAlumno consultarAlumno;
+	    
+	    public AccesoBBDD(datosAlumno consultarAlumno){
+	    	this.consultarAlumno = consultarAlumno;
+	    }
+	    
+	    datosAreas consultarAreas;
+	    
+	    public AccesoBBDD(datosAreas consultarAreas) {
+	    	this.consultarAreas = consultarAreas;
+	    }
+	    
+	    datosPI consultarPI;
+	    
+	    public AccesoBBDD(datosPI consultarPI) {
+	    	this.consultarPI = consultarPI;
+	    }
+	    
 
 	// nos conectamos a la BBDD
 	public Connection getConexion() {
@@ -242,31 +264,55 @@ public class AccesoBBDD {
     	}
     	
 	}
-    	/*public void borrarDatosAreas() {
-		try {
-            int idArea = Integer.parseInt(areas.getTextField().getText());
-    		String descripcion = areas.getTextField_1().getText();
-    		
-            Connection conexion = getConexion();	
-            
-            String consulta5 = "DELETE INTO AREAS (ID_Area, DESCRIPCION) VALUES (?, ?)";
-            
-            PreparedStatement preparedStatement = conexion.prepareStatement(consulta5);
-
-            preparedStatement.setInt(1, idArea);
-            preparedStatement.setString(2, descripcion);
-
-            preparedStatement.executeUpdate();
-
-            preparedStatement.close();
-            conexion.close();
-    		
-            System.out.println("Datos insertados correctamente en la tabla Areas.");
-    	}catch(SQLException e) {
-            System.out.println("Error al insertar los datos: " + e.getMessage());
-    	}*/
+	
+    public void consultarDatosAlumnos() {
+    	try {
+    	    String nombre = alumnos.getTextField().getText();
+    	    int numeroExp = Integer.parseInt(alumnos.getTextField_1().getText());
+    	    int idAlumno = Integer.parseInt(alumnos.getTextField_2().getText());
+    	    
+    	    // Verificar si el campo textField_3 está vacío
+    	    String textField3Value = alumnos.getTextField_3().getText();
+    	    Integer idProyecto = null;
+    	    if (!textField3Value.isEmpty()) {
+    	        idProyecto = Integer.parseInt(textField3Value);
+    	    }
+    	    
+    	    Connection conexion = getConexion();
+    	    
+    	    // Consulta para insertar los datos en la tabla ALUMNOS
+    	    String consulta = "SELECT INTO ALUMNOS (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
+    	    
+    	    // Crear el objeto PreparedStatement
+    	    PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+    	    
+    	    // Insertar los datos en la consulta
+    	    preparedStatement.setInt(1, idAlumno);
+    	    preparedStatement.setInt(2, numeroExp);
+    	    preparedStatement.setString(3, nombre);
+    	    
+    	    if (idProyecto != null) {
+    	        preparedStatement.setInt(4, idProyecto);
+    	    } else {
+    	        preparedStatement.setNull(4, java.sql.Types.INTEGER);
+    	    }
+    	    
+    	    // Ejecutar la consulta
+    	    preparedStatement.executeUpdate();
+    	    
+    	    // Cerrar el PreparedStatement y la conexión
+    	    preparedStatement.close();
+    	    conexion.close();
+    	    
+    	    System.out.println("Datos insertados correctamente en la tabla Alumnos.");
+    	} catch (SQLException e) {
+    	    System.out.println("Error al insertar los datos: " + e.getMessage());
+    	} catch (NumberFormatException e) {
+    	    System.out.println("Error de formato numérico: " + e.getMessage());
+    	}
 	
     }
+}
  
     	
         	
