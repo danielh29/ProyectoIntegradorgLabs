@@ -35,7 +35,7 @@ public class VistaPrincipal extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				// Carga y dibuja la imagen de fondo
-				ImageIcon imageIcon = new ImageIcon("Imagenes/FondoLogin.png");
+				ImageIcon imageIcon = new ImageIcon("Imagenes/FondoVistaPrincipal.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
@@ -57,7 +57,7 @@ public class VistaPrincipal extends JFrame {
 		
 //BOTÓN LOGIN FUNCIONAL
 		botonLogIn = new JButton("");
-		botonLogIn.setBounds(364, 349, 235, 164);
+		botonLogIn.setBounds(364, 600, 235, 164);
 		getContentPane().add(botonLogIn);
 		// Establecer la opacidad del botón
         botonLogIn.setOpaque(false);
@@ -89,7 +89,7 @@ public class VistaPrincipal extends JFrame {
         
 		
 		        botonFondoLogIn = new JButton();
-		        botonFondoLogIn.setBounds(364, 349, 235, 164);
+		        botonFondoLogIn.setBounds(364, 600, 235, 164);
 		        botonFondoLogIn.addActionListener(new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
@@ -110,7 +110,7 @@ public class VistaPrincipal extends JFrame {
 		
 //BOTÓN SIGNUP FUNCIONAL
 		botonSignUp = new JButton("");
-		botonSignUp.setBounds(686, 349, 235, 164);
+		botonSignUp.setBounds(686, 600, 235, 164);
 		getContentPane().add(botonSignUp);
 		// Establecer la opacidad del botón
         botonSignUp.setOpaque(false);
@@ -143,7 +143,7 @@ public class VistaPrincipal extends JFrame {
            
    		
    		        botonFondoSignUp = new JButton();
-   		        botonFondoSignUp.setBounds(686, 349, 235, 164);
+   		        botonFondoSignUp.setBounds(686, 600, 235, 164);
    		        botonFondoSignUp.addActionListener(new ActionListener() {
    		            @Override
    		            public void actionPerformed(ActionEvent e) {

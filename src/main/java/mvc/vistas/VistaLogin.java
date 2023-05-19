@@ -49,26 +49,30 @@ public class VistaLogin extends JFrame {
 		getContentPane().setLayout(null);
 
 		JLabel labelUser = new JLabel("Usuario");
-		labelUser.setBounds(524, 279, 61, 16);
+		labelUser.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 50));
+		labelUser.setBounds(517, 374, 153, 46);
 		getContentPane().add(labelUser);
 
 		JLabel labelPass = new JLabel("Contraseña");
-		labelPass.setBounds(524, 307, 90, 16);
+		labelPass.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 50));
+		labelPass.setBounds(474, 482, 200, 62);
 		getContentPane().add(labelPass);
 
 		txtUser = new JTextField();
-		txtUser.setBounds(616, 273, 130, 26);
+		txtUser.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtUser.setBounds(659, 375, 252, 45);
 		getContentPane().add(txtUser);
 		txtUser.setColumns(10);
 
 		txtPass = new JPasswordField();
-		txtPass.setBounds(616, 301, 130, 26);
+		txtPass.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtPass.setBounds(659, 494, 252, 45);
 		getContentPane().add(txtPass);
 		
 		
 		//BOTÓN PRINCIPAL
   		btn = new JButton("");
-  		btn.setBounds(601, 340, 167, 79);
+  		btn.setBounds(601, 613, 167, 79);
   		getContentPane().add(btn);
           // Establecer la opacidad del botón
           btn.setOpaque(false);
@@ -104,7 +108,7 @@ public class VistaLogin extends JFrame {
         
 		
 		        botonFondo = new JButton();
-		        botonFondo.setBounds(601, 339, 170, 70);
+		        botonFondo.setBounds(601, 613, 170, 70);
 		        botonFondo.addActionListener(new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
