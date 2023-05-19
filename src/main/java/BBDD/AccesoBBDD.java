@@ -3,6 +3,7 @@ package BBDD;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import mvc.modelo.datosAlumno;
@@ -292,7 +293,7 @@ public class AccesoBBDD {
 	            System.out.println("ID_Proyecto: " + idProyecto);
 	            System.out.println("-------------------");
 	        }
-	        
+	        System.out.println("AARON");
 	        // Cerrar el ResultSet, el PreparedStatement y la conexión
 	        resultSet.close();
 	        preparedStatement.close();
@@ -303,6 +304,53 @@ public class AccesoBBDD {
 	        System.out.println("Error al consultar los datos de los alumnos: " + e.getMessage());
 	    }
 	}
+	
+	public ArrayList<datosAlumno> obtenerDatosAlumnos() {
+        ArrayList<datosAlumno> listaAlumnos = new ArrayList<>();
+        
+        try {
+            Connection conexion = getConexion();
+            
+            // Consulta para obtener los datos de los alumnos
+            String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM ALUMNOS";
+            
+            // Crear el objeto PreparedStatement
+            PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+            
+            // Ejecutar la consulta y obtener el resultado
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            // Iterar sobre el resultado y procesar los datos
+            while (resultSet.next()) {
+                int idAlumno = resultSet.getInt("ID_Alumno");
+                int numeroExp = resultSet.getInt("Numero_exp");
+                String nombre = resultSet.getString("Nombre");
+                int idProyecto = resultSet.getInt("ID_Proyecto");
+                
+                // Crear un objeto datosAlumno y agregarlo a la lista
+                datosAlumno alumno = new datosAlumno();
+                alumno.setID_Alumno(idAlumno);
+                alumno.setNumero_exp(numeroExp);
+                alumno.setNombre(nombre);
+                alumno.setID_Proyecto(idProyecto);
+                
+                listaAlumnos.add(alumno);
+                System.out.println(listaAlumnos);
+                
+            }
+            System.out.println("SegundoMetodo");
+            // Cerrar el ResultSet, el PreparedStatement y la conexión
+            resultSet.close();
+            preparedStatement.close();
+            conexion.close();
+            
+            System.out.println("Consulta de datos de alumnos completada.");
+        } catch (SQLException e) {
+            System.out.println("Error al consultar los datos de los alumnos: " + e.getMessage());
+        }
+        
+        return listaAlumnos;
+    }
 
 }
  

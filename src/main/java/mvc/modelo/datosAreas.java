@@ -29,5 +29,6 @@ public class datosAreas {
 		public void setDESCRIPCION(String dESCRIPCION) {
 			DESCRIPCION = dESCRIPCION;
 		}
+		
 
 }

@@ -2,7 +2,9 @@ package mvc.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import mvc.modelo.datosAlumno;
 import mvc.vistas.buscarArea;
 import mvc.vistas.consultaAlumnos;
 import mvc.vistas.consultaAreas;

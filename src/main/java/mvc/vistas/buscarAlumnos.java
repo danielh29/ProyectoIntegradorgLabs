@@ -5,10 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.http.WebSocket.Listener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import BBDD.AccesoBBDD;
 import mvc.control.buscarAlumnosAñadir;
 import mvc.control.buscarAlumnosConsultas;
 import mvc.control.buscarAlumnosHome;
@@ -134,18 +136,27 @@ public class buscarAlumnos {
 		frame.getContentPane().add(panelScroll2);
 		
 		//Listado conceptos
-		DefaultListModel<datosAlumno> modelo = new DefaultListModel<datosAlumno>();
-		modelo.addElement(new datosAlumno());
-		modelo.addElement(new datosAlumno());
-		modelo.addElement(new datosAlumno());
+//		DefaultListModel<datosAlumno> modelo = new DefaultListModel<datosAlumno>();
+//		modelo.addElement(new datosAlumno());
+//		modelo.addElement(new datosAlumno());
+//		modelo.addElement(new datosAlumno());
 		
 		datosAlumnos = new JList<datosAlumno>();
 		panelScroll2.setViewportView(datosAlumnos);
-		datosAlumnos.setModel(modelo);
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 
 	}
+	
+	public void setListaAlumnos(ArrayList<datosAlumno> alumnos) {
+		DefaultListModel<datosAlumno> modelo = new DefaultListModel<datosAlumno>();
+		modelo.addAll(alumnos);
+		//Esto no sé si puedes hacerlo o hay que hacer un foreach
+		datosAlumnos.setModel(modelo);
+
+	}
+	
+	
 	public void hacerVisible() {
     	frame.setVisible(true);
 	}

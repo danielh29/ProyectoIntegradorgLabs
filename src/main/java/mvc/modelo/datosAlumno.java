@@ -1,12 +1,12 @@
 package mvc.modelo;
 
 public class datosAlumno {
-    private String ID_Alumno;
+    private int ID_Alumno;
     private int Numero_exp;
     private String Nombre;
     private int ID_Proyecto;
     
-    public datosAlumno(String ID_Alumno, int Numero_exp, String Nombre, int ID_Proyecto) {
+    public datosAlumno(int ID_Alumno, int Numero_exp, String Nombre, int ID_Proyecto) {
         this.ID_Alumno = ID_Alumno;
         this.Numero_exp = Numero_exp;
         this.Nombre = Nombre;
@@ -17,11 +17,11 @@ public class datosAlumno {
     	
     }
     
-    public String getID_Alumno() {
+    public int getID_Alumno() {
         return ID_Alumno;
     }
     
-    public void setID_Alumno(String ID_Alumno) {
+    public void setID_Alumno(int ID_Alumno) {
         this.ID_Alumno = ID_Alumno;
     }
     
@@ -47,5 +47,10 @@ public class datosAlumno {
     
     public void setID_Proyecto(int ID_Proyecto) {
         this.ID_Proyecto = ID_Proyecto;
+    }
+    @Override
+    public String toString() {
+        return "datosAlumno [idAlumno=" + ID_Alumno + ", numeroExp=" + Numero_exp + ", nombre=" + Nombre
+                + ", idProyecto=" + ID_Proyecto + "]";
     }
 }
