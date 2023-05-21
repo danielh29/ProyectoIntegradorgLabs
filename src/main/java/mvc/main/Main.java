@@ -27,6 +27,7 @@ public class Main {
 				buscarAlumnos ba = new buscarAlumnos();
 				buscarArea bar = new buscarArea();
 				buscarPI bp = new buscarPI();
+				editarAlumnos ea = new editarAlumnos();
 	
 				principal.hacerVisible();
 				
@@ -89,11 +90,18 @@ public class Main {
 				ba.setAltas(al);
 				ba.setHome(vistaHome);
 				ba.setConsultas(co);
+				ba.setEditarAlumnos(ea);
+				
+				//Seteo de los botones de la vista editarAlumnos
+				ea.setAltas(al);
+				ea.setConsultas(co);
+				ea.setHome(vistaHome);
 				
 				//Seteo de los botones de la vista buscarAreas
 				bar.setAltas(al);
 				bar.setConsultas(co);
 				bar.setHome(vistaHome);
+				bar.setEditarAreas(car);
 				
 				//Seteo de los botones de la vista buscarPI
 				bp.setHome(vistaHome);

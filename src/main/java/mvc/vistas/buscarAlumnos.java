@@ -11,6 +11,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import BBDD.AccesoBBDD;
+import mvc.control.buscarAlumnoEditarAlumno;
 import mvc.control.buscarAlumnosAñadir;
 import mvc.control.buscarAlumnosConsultas;
 import mvc.control.buscarAlumnosHome;
@@ -30,7 +31,7 @@ public class buscarAlumnos {
 	private JTextField txtHola;
 	
 	private JScrollPane scrollPane;
-	private JList <datosAlumno> datosAlumnos;
+	public JList <datosAlumno> datosAlumnos;
 
 	private home h;
 	private altas a;
@@ -135,16 +136,9 @@ public class buscarAlumnos {
 		panelScroll2.setBounds(400,250,417,437);
 		frame.getContentPane().add(panelScroll2);
 		
-		//Listado conceptos
-//		DefaultListModel<datosAlumno> modelo = new DefaultListModel<datosAlumno>();
-//		modelo.addElement(new datosAlumno());
-//		modelo.addElement(new datosAlumno());
-//		modelo.addElement(new datosAlumno());
-		
 		datosAlumnos = new JList<datosAlumno>();
 		panelScroll2.setViewportView(datosAlumnos);
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
 
 	}
 	
@@ -181,6 +175,15 @@ public class buscarAlumnos {
 		buscarAlumnosConsultas escuchador = new buscarAlumnosConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
+	}
+	public void setControlador4(editarAlumnos x) {
+		buscarAlumnoEditarAlumno escuchador = new buscarAlumnoEditarAlumno();
+		escuchador.setVentana(this, x);
+		buttonadd1.addActionListener(escuchador);
+		datosAlumnos.addListSelectionListener(escuchador);
+	}
+	public void setEditarAlumnos ( editarAlumnos editarAlumnos) {
+		setControlador4(editarAlumnos);
 	}
 	public void setAltas(altas altas) {
 		a=altas;

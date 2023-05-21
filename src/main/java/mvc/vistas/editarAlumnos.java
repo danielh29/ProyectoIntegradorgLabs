@@ -15,6 +15,7 @@ import mvc.control.consultaAlumnoHome;
 import mvc.control.consultasAlumnoAñadir;
 import mvc.control.consultasAlumnoConsultas;
 import mvc.control.consultasHome;
+import mvc.modelo.datosAlumno;
 
 public class editarAlumnos {
 	private JFrame frame;

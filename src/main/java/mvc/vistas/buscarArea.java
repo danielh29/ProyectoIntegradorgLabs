@@ -12,6 +12,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import mvc.control.buscarAreaAñadir;
 import mvc.control.buscarAreaConsulta;
+import mvc.control.buscarAreaEditarArea;
 import mvc.control.buscarAreaHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
@@ -180,6 +181,16 @@ public class buscarArea {
 		buscarAreaConsulta escuchador = new buscarAreaConsulta();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
+	}
+	//Metodo que crea un nuevo controlador
+	public void setControlador4(editarAreas x) {
+		buscarAreaEditarArea escuchador = new buscarAreaEditarArea();
+		escuchador.setVentana(this, x);
+		buttonadd1.addActionListener(escuchador);
+		datosAreas.addListSelectionListener(escuchador);
+	}
+	public void setEditarAreas(editarAreas editarAreas) {
+		setControlador4(editarAreas);
 	}
 	public void setAltas(altas altas) {
 		a=altas;

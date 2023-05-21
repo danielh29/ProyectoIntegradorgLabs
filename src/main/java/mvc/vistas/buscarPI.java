@@ -135,12 +135,6 @@ public class buscarPI {
 		panelScroll2.setBounds(400,250,417,437);
 		frame.add(panelScroll2);
 		
-//		//Listado conceptos
-//		DefaultListModel<datosPI> modelo = new DefaultListModel<datosPI>();
-//		modelo.addElement(new datosPI());
-//		modelo.addElement(new datosPI());
-//		modelo.addElement(new datosPI());
-		
 		datosPI = new JList<datosPI>();
 		panelScroll2.setViewportView(datosPI);
 		
