@@ -15,7 +15,7 @@ public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/loginpi";
 	private String usuario = "root";
-	private String pass = "";
+	private String pass = "root";
 
 	Connection con = null;
 
@@ -57,6 +57,18 @@ public class AccesoBBDD {
 	    
 	    public AccesoBBDD(datosPI consultarPI) {
 	    	this.consultarPI = consultarPI;
+	    }
+	    
+	    editarAlumnos editarAlumno;
+	    
+	    public AccesoBBDD(editarAlumnos editarAlumno) {
+	    	this.editarAlumno = editarAlumno;
+	    }
+	    
+	    editarAreas editarArea;
+	    
+	    public AccesoBBDD(editarAreas editarArea) {
+	    	this.editarArea = editarArea;
 	    }
 	    
 
@@ -399,6 +411,184 @@ public class AccesoBBDD {
     }
     
     return PI;
+		
+	}
+	
+	public void editarDatosAlumnos() {
+	    try {
+	        String nombre = editarAlumno.getTextField().getText();
+	        int numeroExp = Integer.parseInt(editarAlumno.getTextField_1().getText());
+	        int idAlumno = Integer.parseInt(editarAlumno.getTextField_2().getText());
+	        int idProyecto = Integer.parseInt(editarAlumno.getTextField_3().getText());
+	        String nuevoIdAlumnoString = editarAlumno.getTextField_4().getText();
+	        Integer nuevoIdAlumno = null; // Valor por defecto
+	        
+	        if (!nuevoIdAlumnoString.isEmpty()) {
+	            nuevoIdAlumno = Integer.parseInt(nuevoIdAlumnoString);
+	        }
+	        
+	        Connection conexion = getConexion();
+	        
+	        String consulta;
+	        PreparedStatement preparedStatement;
+	        
+	        if (nuevoIdAlumno != null) {
+	            consulta = "UPDATE ALUMNOS SET Numero_exp = ?, Nombre = ?, ID_Proyecto = ?, ID_Alumno = ? WHERE ID_Alumno = ?";
+	            preparedStatement = conexion.prepareStatement(consulta);
+	            preparedStatement.setInt(1, numeroExp);
+	            preparedStatement.setString(2, nombre);
+	            preparedStatement.setInt(3, idProyecto);
+	            preparedStatement.setInt(4, nuevoIdAlumno);
+	            preparedStatement.setInt(5, idAlumno);
+	        } else {
+	            consulta = "UPDATE ALUMNOS SET Numero_exp = ?, Nombre = ?, ID_Proyecto = ? WHERE ID_Alumno = ?";
+	            preparedStatement = conexion.prepareStatement(consulta);
+	            preparedStatement.setInt(1, numeroExp);
+	            preparedStatement.setString(2, nombre);
+	            preparedStatement.setInt(3, idProyecto);
+	            preparedStatement.setInt(4, idAlumno);
+	        }
+	        
+	        int filasActualizadas = preparedStatement.executeUpdate();
+	        
+	        preparedStatement.close();
+	        conexion.close();
+	        
+	        if (filasActualizadas > 0) {
+	            System.out.println("Datos actualizados correctamente en la tabla Alumnos.");
+	        } else {
+	            System.out.println("No se encontró ningún alumno con el ID especificado.");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al actualizar los datos: " + e.getMessage());
+	    } catch (NumberFormatException e) {
+	        System.out.println("Error de formato numérico: " + e.getMessage());
+	    }
+	}
+
+
+	
+	public void editarDatosAreas() {
+	    try {
+	        int idArea = Integer.parseInt(editarArea.getTextField().getText());
+	        String descripcion = editarArea.getTextField_1().getText();
+	        
+	        // Obtener el nuevo valor de ID_Area
+	        String nuevoIdAreaString = editarArea.getTextField_2().getText();
+	        Integer nuevoIdArea = null; // Valor por defecto
+	        
+	        if (!nuevoIdAreaString.isEmpty()) {
+	            nuevoIdArea = Integer.parseInt(nuevoIdAreaString);
+	        }
+	        
+	        Connection conexion = getConexion();
+	        
+	        String consulta;
+	        PreparedStatement preparedStatement;
+	        
+	        if (nuevoIdArea != null) {
+	            consulta = "UPDATE AREAS SET ID_Area = ?, DESCRIPCION = ? WHERE ID_Area = ?";
+	            preparedStatement = conexion.prepareStatement(consulta);
+	            preparedStatement.setInt(1, nuevoIdArea);
+	            preparedStatement.setString(2, descripcion);
+	            preparedStatement.setInt(3, idArea);
+	        } else {
+	            consulta = "UPDATE AREAS SET DESCRIPCION = ? WHERE ID_Area = ?";
+	            preparedStatement = conexion.prepareStatement(consulta);
+	            preparedStatement.setString(1, descripcion);
+	            preparedStatement.setInt(2, idArea);
+	        }
+	        
+	        preparedStatement.executeUpdate();
+	        
+	        preparedStatement.close();
+	        conexion.close();
+	        
+	        System.out.println("Datos actualizados correctamente en la tabla Areas.");
+	    } catch (SQLException e) {
+	        System.out.println("Error al actualizar los datos: " + e.getMessage());
+	    } catch (NumberFormatException e) {
+	        System.out.println("Error de formato numérico: " + e.getMessage());
+	    }
+	}
+	
+	/*         ///////////////EDITAR PI///////////////////////////////        */
+	
+	public void editarPI() {
+		
+	}
+	
+	
+	public void borrarDatosAlumnos() {
+	    try {
+	        int idAlumno = Integer.parseInt(editarAlumno.getTextField_2().getText());
+
+	        Connection conexion = getConexion();
+
+	        // Consulta para eliminar los datos de la tabla ALUMNOS
+	        String consulta = "DELETE FROM ALUMNOS WHERE ID_Alumno = ?";
+
+	        // Crear el objeto PreparedStatement
+	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+
+	        // Insertar los datos en la consulta
+	        preparedStatement.setInt(1, idAlumno);
+
+	        // Ejecutar la consulta
+	        int filasBorradas = preparedStatement.executeUpdate();
+
+	        // Cerrar el PreparedStatement y la conexión
+	        preparedStatement.close();
+	        conexion.close();
+
+	        if (filasBorradas > 0) {
+	            System.out.println("Datos eliminados correctamente de la tabla Alumnos.");
+	        } else {
+	            System.out.println("No se encontró ningún alumno con el ID especificado.");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al eliminar los datos: " + e.getMessage());
+	    } catch (NumberFormatException e) {
+	        System.out.println("Error de formato numérico: " + e.getMessage());
+	    }
+	}
+
+	public void borrarDatosAreas() {
+	    try {
+	        int idArea = Integer.parseInt(editarArea.getTextField().getText());
+
+	        Connection conexion = getConexion();
+
+	        // Consulta para eliminar los datos de la tabla AREAS
+	        String consulta = "DELETE FROM AREAS WHERE ID_Area = ?";
+
+	        // Crear el objeto PreparedStatement
+	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+
+	        // Insertar los datos en la consulta
+	        preparedStatement.setInt(1, idArea);
+
+	        // Ejecutar la consulta
+	        int filasBorradas = preparedStatement.executeUpdate();
+
+	        // Cerrar el PreparedStatement y la conexión
+	        preparedStatement.close();
+	        conexion.close();
+
+	        if (filasBorradas > 0) {
+	            System.out.println("Datos eliminados correctamente de la tabla Areas.");
+	        } else {
+	            System.out.println("No se encontró ninguna área con el ID especificado.");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al eliminar los datos: " + e.getMessage());
+	    } catch (NumberFormatException e) {
+	        System.out.println("Error de formato numérico: " + e.getMessage());
+	    }
+	}
+
+	/*  /////////////////// BORRAR DATOS PI ///////////////// */
+	public void borrarDatosPI() {
 		
 	}
 }

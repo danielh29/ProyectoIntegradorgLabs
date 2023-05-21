@@ -9,8 +9,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import BBDD.AccesoBBDD;
 import mvc.control.altasAreasAñadir;
 import mvc.control.altasAreasConsultas;
+import mvc.control.buscarAlumnoEditarAlumno;
 import mvc.control.consultaAlumnoHome;
 import mvc.control.consultasAlumnoAñadir;
 import mvc.control.consultasAlumnoConsultas;
@@ -18,6 +20,7 @@ import mvc.control.consultasHome;
 import mvc.modelo.datosAlumno;
 
 public class editarAlumnos {
+
 	private JFrame frame;
 	private JPanel panel;
 	private JButton button1;
@@ -34,8 +37,27 @@ public class editarAlumnos {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+	private JLabel lblNuevoIdAlumno;
+	private JTextField textField_4;
 
 	
+	public JLabel getLblNuevoIdAlumno() {
+		return lblNuevoIdAlumno;
+	}
+
+	public void setLblNuevoIdAlumno(JLabel lblNuevoIdAlumno) {
+		this.lblNuevoIdAlumno = lblNuevoIdAlumno;
+	}
+
+	public JTextField getTextField_4() {
+		return textField_4;
+	}
+
+	public void setTextField_4(JTextField textField_4) {
+		this.textField_4 = textField_4;
+	}
+
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -152,6 +174,14 @@ public class editarAlumnos {
 		this.button5 = button5;
 	}
 
+	public JTextField getTextField_3() {
+		return textField_3;
+	}
+
+	public void setTextField_3(JTextField textField_3) {
+		this.textField_3 = textField_3;
+	}
+	
 	public editarAlumnos() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
@@ -218,7 +248,7 @@ public class editarAlumnos {
 		button4.setContentAreaFilled(false);
 		button4.setIcon(new ImageIcon(resizedModImage));
 		button4.setBorderPainted(false);
-		button4.setBounds(974, 523, 122, 113);
+		button4.setBounds(1166, 551, 43, 39);
 		
 		ImageIcon imagenEliminarIcon = new ImageIcon("Imagenes/cancelar.png");
 		Image resizedEliminarImage = imagenEliminarIcon.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH);
@@ -231,7 +261,7 @@ public class editarAlumnos {
 		button5.setFocusPainted(false);
 		button5.setIcon(new ImageIcon(resizedEliminarImage));
 		button5.setContentAreaFilled(false);
-		button5.setBounds(1136, 523, 122, 113);
+		button5.setBounds(1229, 551, 43, 39);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
@@ -244,7 +274,7 @@ public class editarAlumnos {
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
-		lblNewLabel.setBounds(59, 431, 174, 62);
+		lblNewLabel.setBounds(46, 431, 174, 62);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNExpediente = new JLabel("Nº Expediente:");
@@ -254,12 +284,12 @@ public class editarAlumnos {
 		
 		JLabel lblIdAlumno = new JLabel("ID Alumno:");
 		lblIdAlumno.setFont(new Font("SansSerif", Font.PLAIN, 30));
-		lblIdAlumno.setBounds(930, 431, 174, 62);
+		lblIdAlumno.setBounds(533, 431, 174, 62);
 		panel.add(lblIdAlumno);
 		
 		textField = new JTextField();
 		textField.setBackground(new Color(211, 233, 250));
-		textField.setBounds(192, 445, 667, 39);
+		textField.setBounds(176, 451, 303, 39);
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -272,8 +302,30 @@ public class editarAlumnos {
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBackground(new Color(211, 233, 250));
-		textField_2.setBounds(1111, 445, 261, 39);
+		textField_2.setBounds(717, 451, 123, 39);
 		panel.add(textField_2);
+		
+		JLabel lblIdProyecto = new JLabel("ID Proyecto:");
+		lblIdProyecto.setFont(new Font("SansSerif", Font.PLAIN, 30));
+		lblIdProyecto.setBounds(625, 528, 174, 62);
+		panel.add(lblIdProyecto);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBackground(new Color(211, 233, 250));
+		textField_3.setBounds(809, 548, 319, 39);
+		panel.add(textField_3);
+		
+		lblNuevoIdAlumno = new JLabel("Nuevo ID Alumno:");
+		lblNuevoIdAlumno.setFont(new Font("SansSerif", Font.PLAIN, 30));
+		lblNuevoIdAlumno.setBounds(867, 431, 240, 62);
+		panel.add(lblNuevoIdAlumno);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBackground(new Color(211, 233, 250));
+		textField_4.setBounds(1117, 451, 123, 39);
+		panel.add(textField_4);
 		
 		
 		frame.setVisible(false);
@@ -316,6 +368,7 @@ public class editarAlumnos {
 		escuchador2.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador2);
 	}
+	
 	public void setHome(home x) {
 		setControlador(x);
 	}
@@ -326,7 +379,20 @@ public class editarAlumnos {
 	public void setConsultas(consultas c) {
         //Boton que va a consultas
         setControlador2(c);
-	}
 	
+	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+	button4.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla ALUMNOS
+	        accesoBBDD.editarDatosAlumnos();
+	    }
+	});
 	
+	button5.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla ALUMNOS
+	        accesoBBDD.borrarDatosAlumnos();
+	    }
+	});
+}
 }

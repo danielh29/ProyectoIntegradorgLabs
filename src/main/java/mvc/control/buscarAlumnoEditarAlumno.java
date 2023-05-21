@@ -45,6 +45,7 @@ public class buscarAlumnoEditarAlumno implements ActionListener, ListSelectionLi
                 ea.getTextField().setText(alumno.getNombre());
                 ea.getTextField_1().setText(String.valueOf(alumno.getNumero_exp()));
                 ea.getTextField_2().setText(String.valueOf(alumno.getID_Alumno()));
+                ea.getTextField_3().setText(String.valueOf(alumno.getID_Proyecto()));
 
                 // Ocultar la ventana buscarAlumnos
                 ba.dispose();

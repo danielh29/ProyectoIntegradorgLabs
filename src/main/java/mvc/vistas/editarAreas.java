@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import BBDD.AccesoBBDD;
 import mvc.control.consultaAreasAñadir;
 import mvc.control.consultaAreasHome;
 import mvc.control.consultasAlumnosB;
@@ -32,6 +33,8 @@ public class editarAreas {
 	private JTextField textField_1;
 	private JButton button1_1;
 	private JButton button1_2;
+	private JLabel lblNuevoIdrea;
+	private JTextField textField_2;
 	
 	public JFrame getFrame() {
 		return frame;
@@ -141,6 +144,22 @@ public class editarAreas {
 	public void setButton3(JButton button3) {
 		this.button3 = button3;
 	}
+	
+	public JLabel getLblNuevoIdrea() {
+		return lblNuevoIdrea;
+	}
+
+	public void setLblNuevoIdrea(JLabel lblNuevoIdrea) {
+		this.lblNuevoIdrea = lblNuevoIdrea;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
 
 	public editarAreas() {
 
@@ -206,7 +225,7 @@ public class editarAreas {
 		button1_1.setFocusPainted(false);
 		button1_1.setIcon(new ImageIcon(resizedModImage));
 		button1_1.setContentAreaFilled(false);
-		button1_1.setBounds(1085, 523, 122, 113);
+		button1_1.setBounds(1072, 523, 99, 99);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
@@ -220,7 +239,7 @@ public class editarAreas {
 		button1_2.setContentAreaFilled(false);
 		button1_2.setIcon(new ImageIcon(resizedEliminarImage));
 		button1_2.setBorderPainted(false);
-		button1_2.setBounds(1250, 523, 122, 113);
+		button1_2.setBounds(1181, 523, 99, 99);
 
 		panel.add(button1);
 		panel.add(button1_1);
@@ -249,6 +268,17 @@ public class editarAreas {
 		textField_1.setBackground(new Color(211, 233, 250));
 		textField_1.setBounds(314, 523, 727, 108);
 		panel.add(textField_1);
+		
+		lblNuevoIdrea = new JLabel("Nuevo ID Área:");
+		lblNuevoIdrea.setFont(new Font("SansSerif", Font.PLAIN, 30));
+		lblNuevoIdrea.setBounds(575, 431, 241, 62);
+		panel.add(lblNuevoIdrea);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBackground(new Color(211, 233, 250));
+		textField_2.setBounds(814, 445, 319, 39);
+		panel.add(textField_2);
 
 		frame.setVisible(false);
 
@@ -301,5 +331,21 @@ public class editarAreas {
 		consultasAreasConsultas escuchador = new consultasAreasConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
-	}
+	
+	
+	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+	button1_1.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla ALUMNOS
+	        accesoBBDD.editarDatosAreas();
+	    }
+	});
+	
+	button1_2.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla ALUMNOS
+	        accesoBBDD.borrarDatosAreas();
+	    }
+	});
+}
 }
