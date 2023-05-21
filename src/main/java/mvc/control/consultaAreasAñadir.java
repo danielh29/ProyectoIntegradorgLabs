@@ -11,6 +11,7 @@ public class consultaAreasAñadir implements ActionListener {
 
 	editarAreas ca;
 	altas a;
+	//editarPI e;
 
 	/**
 	 * Método que nos permite trabajar con una vista principal V
@@ -19,13 +20,14 @@ public class consultaAreasAñadir implements ActionListener {
 	public void setVentanaUsuario (editarAreas consulArea, altas altas) {
 		ca=consulArea;
 		a=altas;
+		//e=editar;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 		ca.dispose();
-		a.hacerVisible();
+		a.dispose();
 
 	}
 

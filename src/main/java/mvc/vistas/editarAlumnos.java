@@ -23,6 +23,8 @@ public class editarAlumnos {
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
+	private JButton button4;
+	private JButton button5;
 	private JButton buttonadd1;
 	private JButton buttonadd2;
 	private JButton buttonadd3;
@@ -32,6 +34,123 @@ public class editarAlumnos {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public JButton getButtonadd1() {
+		return buttonadd1;
+	}
+
+	public void setButtonadd1(JButton buttonadd1) {
+		this.buttonadd1 = buttonadd1;
+	}
+
+	public JButton getButtonadd2() {
+		return buttonadd2;
+	}
+
+	public void setButtonadd2(JButton buttonadd2) {
+		this.buttonadd2 = buttonadd2;
+	}
+
+	public JButton getButtonadd3() {
+		return buttonadd3;
+	}
+
+	public void setButtonadd3(JButton buttonadd3) {
+		this.buttonadd3 = buttonadd3;
+	}
+
+	public JLabel getLblNewLabel_1() {
+		return lblNewLabel_1;
+	}
+
+	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
+		this.lblNewLabel_1 = lblNewLabel_1;
+	}
+
+	public JLabel getLblNewLabel_2() {
+		return lblNewLabel_2;
+	}
+
+	public void setLblNewLabel_2(JLabel lblNewLabel_2) {
+		this.lblNewLabel_2 = lblNewLabel_2;
+	}
+
+	public JLabel getLblNewLabel_3() {
+		return lblNewLabel_3;
+	}
+
+	public void setLblNewLabel_3(JLabel lblNewLabel_3) {
+		this.lblNewLabel_3 = lblNewLabel_3;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
+
+	public void setButton1(JButton button1) {
+		this.button1 = button1;
+	}
+
+	public void setButton2(JButton button2) {
+		this.button2 = button2;
+	}
+
+	public void setButton3(JButton button3) {
+		this.button3 = button3;
+	}
+	
+	public JButton getButton4() {
+		return button4;
+	}
+
+	public void setButton4(JButton button4) {
+		this.button4 = button4;
+	}
+
+	public JButton getButton5() {
+		return button5;
+	}
+
+	public void setButton5(JButton button5) {
+		this.button5 = button5;
+	}
 
 	public editarAlumnos() {
 
@@ -89,18 +208,39 @@ public class editarAlumnos {
 		button3.setContentAreaFilled(false);
 		button3.setFocusPainted(false);
 		button3.setOpaque(false);
+		
+		ImageIcon imagenModificarIcon = new ImageIcon("Imagenes/lapiz.png");
+		Image resizedModImage = imagenModificarIcon.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH);
+		
+		button4 = new JButton("");
+		button4.setOpaque(false);
+		button4.setFocusPainted(false);
+		button4.setContentAreaFilled(false);
+		button4.setIcon(new ImageIcon(resizedModImage));
+		button4.setBorderPainted(false);
+		button4.setBounds(974, 523, 122, 113);
+		
+		ImageIcon imagenEliminarIcon = new ImageIcon("Imagenes/cancelar.png");
+		Image resizedEliminarImage = imagenEliminarIcon.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH);
+
+		
+		
+		button5 = new JButton("");
+		button5.setBorderPainted(false);
+		button5.setOpaque(false);
+		button5.setFocusPainted(false);
+		button5.setIcon(new ImageIcon(resizedEliminarImage));
+		button5.setContentAreaFilled(false);
+		button5.setBounds(1136, 523, 122, 113);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
-		button3.setIcon(new ImageIcon(resizedConsultar));
-		
-		
-		
-
 		
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
+		panel.add(button4);
+		panel.add(button5);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
@@ -134,7 +274,7 @@ public class editarAlumnos {
 		textField_2.setBackground(new Color(211, 233, 250));
 		textField_2.setBounds(1111, 445, 261, 39);
 		panel.add(textField_2);
-
+		
 		
 		frame.setVisible(false);
 
@@ -187,4 +327,6 @@ public class editarAlumnos {
         //Boton que va a consultas
         setControlador2(c);
 	}
+	
+	
 }

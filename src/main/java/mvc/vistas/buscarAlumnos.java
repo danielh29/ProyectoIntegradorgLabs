@@ -26,7 +26,6 @@ public class buscarAlumnos {
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
-	private JButton buttonadd1;
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
 	
@@ -97,40 +96,9 @@ public class buscarAlumnos {
 		// BOTONES DE BUSCAR
 		ImageIcon imagenAnadir = new ImageIcon("Imagenes/lupa.png");
 		Image resizedAnadir = imagenAnadir.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-
-		buttonadd1 = new JButton("");
-		buttonadd1.setBorderPainted(false);
-		buttonadd1.setBounds(1185, 298, 90, 78);
-		buttonadd1.setIcon(new ImageIcon(resizedAnadir));
-		buttonadd1.setContentAreaFilled(false);
-		buttonadd1.setFocusPainted(false);
-		buttonadd1.setOpaque(false);
-
-		panel.add(buttonadd1);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
-
-		///////////////////////////// LABELS//////////////////////////////////
-
-//		JLabel lblNewLabel = new JLabel("Introduzca el ID de Alumno");
-//		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-//		lblNewLabel.setForeground(new Color(247, 254, 255));
-//		lblNewLabel.setFont(new Font("Kefa", Font.PLAIN, 90));
-//		lblNewLabel.setBounds(150, 6, 1174, 119);
-//		panel.add(lblNewLabel);
-//		
-//		lblNewLabel_1 = new JLabel("ID Alumno:");
-//		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-//		lblNewLabel_1.setBounds(255, 272, 364, 102);
-//		panel.add(lblNewLabel_1);
-//		
-//		txtHola = new JTextField();
-//		txtHola.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-//		txtHola.setBounds(656, 298, 375, 69);
-//		panel.add(txtHola);
-//		txtHola.setColumns(10);
-//		frame.setVisible(false);
 		
 		JScrollPane panelScroll2 = new JScrollPane();
 		panelScroll2.setBounds(400,250,417,437);
@@ -179,7 +147,6 @@ public class buscarAlumnos {
 	public void setControlador4(editarAlumnos x) {
 		buscarAlumnoEditarAlumno escuchador = new buscarAlumnoEditarAlumno();
 		escuchador.setVentana(this, x);
-		buttonadd1.addActionListener(escuchador);
 		datosAlumnos.addListSelectionListener(escuchador);
 	}
 	public void setEditarAlumnos ( editarAlumnos editarAlumnos) {

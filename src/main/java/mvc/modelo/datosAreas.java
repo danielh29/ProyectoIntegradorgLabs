@@ -2,8 +2,8 @@ package mvc.modelo;
 
 public class datosAreas {
         //constructor y sus metodos
-		int ID_Area;
-		String DESCRIPCION;
+		private int ID_Area;
+		private String DESCRIPCION;
 		
 		public datosAreas(int ID_Area, String DESCRIPCION) {
 			this.ID_Area = ID_Area;
