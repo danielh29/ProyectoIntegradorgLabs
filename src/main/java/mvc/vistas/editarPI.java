@@ -403,7 +403,7 @@ public class editarPI {
 		public void setControlador(home x) {
 			editarPIHome escuchador = new editarPIHome();
 			escuchador.setVentanaUsuario(x, this);
-			button2.addActionListener(escuchador);
+			button1.addActionListener(escuchador);
 		}
 		//Metodo que crea un nuevo controlador
 		public void setControlador1(consultas x) {

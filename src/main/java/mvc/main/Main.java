@@ -110,6 +110,10 @@ public class Main {
 				bp.setConsultas(co);
 				bp.setEditarPI(ei);
 				
+				//Seteo de los botones de las vista editarPI
+				ei.setAltas(al);
+				ei.setHome(vistaHome);
+				ei.setConsultas(co);
 			
 			}
 		});
