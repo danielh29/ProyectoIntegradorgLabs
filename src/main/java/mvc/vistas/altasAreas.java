@@ -135,6 +135,8 @@ public class altasAreas {
 	}
 
 	public altasAreas() {
+		
+
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -157,6 +159,10 @@ public class altasAreas {
 				super.paintComponent(g);
 			}
 		};
+		
+		//Cambia el icono de la ventana de Java
+		ImageIcon icon = new ImageIcon("Imagenes/7.png");
+		frame.setIconImage(icon.getImage());
 
 		ImageIcon imagenHome = new ImageIcon("Imagenes/home.png");
 		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);

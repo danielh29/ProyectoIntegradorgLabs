@@ -12,13 +12,17 @@ import javax.swing.*;
 
 import mvc.control.EscuchadorLogIn;
 import mvc.control.EscuchadorSignUp;
+import mvc.control.loginBack;
+import mvc.vistas.*;
 
 public class VistaLogin extends JFrame {
 	private JTextField txtUser;
 	private JPasswordField txtPass;
 	private JLabel alert;
 	private JButton btn;
+	private JButton btn_atras;
 	private home home;
+	private VistaPrincipal VistaPrincipal;
     private static JButton botonFondo;
     private static List<ImageIcon> frames;
     private static int currentFrameIndex;
@@ -47,7 +51,12 @@ public class VistaLogin extends JFrame {
 		setContentPane(panel);
 		setSize(1350, 820);
 		getContentPane().setLayout(null);
-
+		
+		//Cambia el icono de la ventana de Java
+		ImageIcon icon = new ImageIcon("Imagenes/7.png");
+		setIconImage(icon.getImage());
+		
+		
 		JLabel labelUser = new JLabel("Usuario");
 		labelUser.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 50));
 		labelUser.setBounds(517, 374, 153, 46);
@@ -68,6 +77,20 @@ public class VistaLogin extends JFrame {
 		txtPass.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		txtPass.setBounds(659, 494, 252, 45);
 		getContentPane().add(txtPass);
+		
+		
+//Botón atras
+		btn_atras = new JButton("");
+		btn_atras.setBorderPainted(false);
+		btn_atras.setBounds(115, 677, 90, 78);
+		btn_atras.setContentAreaFilled(false);
+		btn_atras.setFocusPainted(false);
+		btn_atras.setOpaque(false);
+          ImageIcon imagenHome = new ImageIcon("Imagenes/back.png");
+  		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+		btn_atras.setIcon(new ImageIcon(resizedImage));
+		getContentPane().add(btn_atras);
+		
 		
 		
 		//BOTÓN PRINCIPAL
@@ -146,10 +169,24 @@ public class VistaLogin extends JFrame {
 		escuchador.setVistaPrincipal(this, x);
 		btn.addActionListener(escuchador);
 	}
+	public void setControlador2(VistaPrincipal vp) {
+		loginBack escuchador = new loginBack();
+		escuchador.setVistaPrincipal(this, vp);
+		btn_atras.addActionListener(escuchador);
+	}
+	
+	
 	public void setHome(home x) {
 		home = x;
 		setControlador(x);
 	}
+	
+	public void setVistaPrincipal (VistaPrincipal vp) {
+		VistaPrincipal = vp;
+		setControlador2(vp);
+		
+	}
+	
 	public JLabel getAlert() {
 		return alert;
 	}
@@ -172,6 +209,10 @@ public class VistaLogin extends JFrame {
 
 	public void setTxtPass(JPasswordField txtPass) {
 		this.txtPass = txtPass;
+	}
+	
+	public JButton getBtn_atras() {
+		return btn_atras;
 	}
 	
 	private static ImageIcon scaleImageIcon(ImageIcon icon, int width, int height) {

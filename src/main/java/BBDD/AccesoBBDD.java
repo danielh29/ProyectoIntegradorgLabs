@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 import mvc.modelo.datosPI;
@@ -13,9 +15,9 @@ import mvc.vistas.*;
 
 public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost/loginpi";
-	private String usuario = "root";
-	private String pass = "";
+	private String url = "jdbc:mysql://79.148.92.143:3306/loginpi";
+	private String usuario = "tu_usuario";
+	private String pass = "tu_contraseña";
 
 	Connection con = null;
 
@@ -77,9 +79,11 @@ public class AccesoBBDD {
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, usuario, pass);
+			
 			System.out.println("Conexión establecida");
 		} catch (Exception e) {
 			System.out.println("Error de Conexión con la BBDD" + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Error de Conexión con la BBDD");
 			e.printStackTrace();
 		}
 		return con;
@@ -92,7 +96,7 @@ public class AccesoBBDD {
 		Statement stmt = con.createStatement();
 
 		// buscamos los usuarios en la BBDD
-		String query = "SELECT usuario FROM USUARIOS WHERE usuario = '" + user + "'";
+		String query = "SELECT usuario FROM usuarios WHERE usuario = '" + user + "'";
 		ResultSet resultado = stmt.executeQuery(query);
 
 		// verificamos que la BBDD ha devueto algo (el usuario existe)
@@ -100,7 +104,7 @@ public class AccesoBBDD {
 			// verificamos que lo que ha devuelto coincide con lo escrito
 			if (resultado.getString("usuario").equals(user)) {
 				// buscamos la contraseña
-				String query2 = "SELECT contrasena FROM USUARIOS WHERE usuario = '" + user + "'";
+				String query2 = "SELECT contrasena FROM usuarios WHERE usuario = '" + user + "'";
 				ResultSet resultado2 = stmt.executeQuery(query2);
 				resultado2.next();
 				// verificamos que la contraseña coincide con el usuario
@@ -135,22 +139,26 @@ public class AccesoBBDD {
 		if (resultado1.next()) {
 			answer = 1;
 			System.out.println("Error, usuario ya existe");
+			JOptionPane.showMessageDialog(null, "Error, usuario ya existe");
 		} else {
 			// la contraseña no coincide
 			if (!password.equals(repetirPassword)) {
 				answer = 2;
 				System.out.println("error, las contraseñas no coinciden");
+				JOptionPane.showMessageDialog(null, "error, las contraseñas no coinciden");
 			} else {
 				// el usuario no existe y las contraseñas son iguales asique almacenamos los
 				// datos en la BBDD
 				if (password.length() < 5) {
 					answer = 3;
 					System.out.println("Error, contraseña menor a 5 caracteres");
+					JOptionPane.showMessageDialog(null, "Error, contraseña menor a 5 caracteres");
 				} else {
-					String queryInsert = "INSERT INTO USUARIOS VALUES ('" + user + "','" + password + "',null)";
+					String queryInsert = "INSERT INTO usuarios VALUES ('" + user + "','" + password + "',null)";
 					int insertar = stmt.executeUpdate(queryInsert);
 					answer = 4;
 					System.out.println("Usuario añadido correctamente");
+					JOptionPane.showMessageDialog(null, "Usuario añadido correctamente");
 				}
 
 			}
@@ -175,7 +183,7 @@ public class AccesoBBDD {
     	    Connection conexion = getConexion();
     	    
     	    // Consulta para insertar los datos en la tabla ALUMNOS
-    	    String consulta = "INSERT INTO ALUMNOS (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
+    	    String consulta = "INSERT INTO alumnos (ID_Alumno, Numero_exp, Nombre, ID_Proyecto) VALUES (?, ?, ?, ?)";
     	    
     	    // Crear el objeto PreparedStatement
     	    PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
@@ -199,10 +207,15 @@ public class AccesoBBDD {
     	    conexion.close();
     	    
     	    System.out.println("Datos insertados correctamente en la tabla Alumnos.");
+    	    JOptionPane.showMessageDialog(null, "Alumno insertado correctamente");
     	} catch (SQLException e) {
     	    System.out.println("Error al insertar los datos: " + e.getMessage());
+    	    JOptionPane.showMessageDialog(null, "Error al insertar los datos");
+
     	} catch (NumberFormatException e) {
     	    System.out.println("Error de formato numérico: " + e.getMessage());
+    	    JOptionPane.showMessageDialog(null, "Error de formato numérico");
+
     	}
 
 }  
@@ -215,7 +228,7 @@ public class AccesoBBDD {
         		
                 Connection conexion = getConexion();	
                 
-                String consulta2 = "INSERT INTO AREAS (ID_Area, DESCRIPCION) VALUES (?, ?)";
+                String consulta2 = "INSERT INTO areas (ID_Area, DESCRIPCION) VALUES (?, ?)";
                 
                 PreparedStatement preparedStatement = conexion.prepareStatement(consulta2);
 
@@ -228,8 +241,12 @@ public class AccesoBBDD {
                 conexion.close();
         		
                 System.out.println("Datos insertados correctamente en la tabla Areas.");
+        	    JOptionPane.showMessageDialog(null, "Area insertada correctamente");
+
         	}catch(SQLException e) {
                 System.out.println("Error al insertar los datos: " + e.getMessage());
+        	    JOptionPane.showMessageDialog(null, "Error al insertar los datos: " + e.getMessage());
+
         	}
     	}
 
@@ -246,6 +263,8 @@ public class AccesoBBDD {
 				ano = dateFormat.parse(fechaTexto);
 			}catch(ParseException e) {
 				System.out.println("Error al convertir la fecha: " + e.getMessage());
+	    	    JOptionPane.showMessageDialog(null, "Error al convertir la fecha: " + e.getMessage());
+
 				return;
 			}
 			
@@ -256,7 +275,7 @@ public class AccesoBBDD {
 			
             Connection conexion = getConexion();	
             
-            String consulta3 = "INSERT INTO PROYECTO (ID_Proyecto, Nombre, Nota_Obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String consulta3 = "INSERT INTO proyecto (ID_Proyecto, Nombre, Nota_Obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement preparedStatement = conexion.prepareStatement(consulta3);
 			
@@ -274,6 +293,8 @@ public class AccesoBBDD {
             conexion.close();
 		}catch(SQLException e) {
             System.out.println("Error al insertar los datos: " + e.getMessage());
+    	    JOptionPane.showMessageDialog(null, "Error al insertar los datos: " + e.getMessage());
+
     	}
     	
 	}
@@ -285,7 +306,7 @@ public class AccesoBBDD {
             Connection conexion = getConexion();
             
             // Consulta para obtener los datos de los alumnos
-            String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM ALUMNOS";
+            String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM alumno";
             
             // Crear el objeto PreparedStatement
             PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
@@ -329,7 +350,7 @@ public class AccesoBBDD {
 		Connection conexion = getConexion();
         
         // Consulta para obtener los datos de los alumnos
-        String consulta = "SELECT ID_Area, DESCRIPCION FROM AREAS";
+        String consulta = "SELECT ID_Area, DESCRIPCION FROM areas";
         
         // Crear el objeto PreparedStatement
         PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
@@ -369,7 +390,7 @@ public class AccesoBBDD {
 		Connection conexion = getConexion();
         
         // Consulta para obtener los datos de los alumnos
-        String consulta = "SELECT ID_Proyecto, nombre, Nota_obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area  FROM PROYECTO";
+        String consulta = "SELECT ID_Proyecto, nombre, Nota_obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area  FROM proyecto";
         
         // Crear el objeto PreparedStatement
         PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
@@ -433,7 +454,7 @@ public class AccesoBBDD {
 	        PreparedStatement preparedStatement;
 	        
 	        if (nuevoIdAlumno != null) {
-	            consulta = "UPDATE ALUMNOS SET Numero_exp = ?, Nombre = ?, ID_Proyecto = ?, ID_Alumno = ? WHERE ID_Alumno = ?";
+	            consulta = "UPDATE alumnos SET Numero_exp = ?, Nombre = ?, ID_Proyecto = ?, ID_Alumno = ? WHERE ID_Alumno = ?";
 	            preparedStatement = conexion.prepareStatement(consulta);
 	            preparedStatement.setInt(1, numeroExp);
 	            preparedStatement.setString(2, nombre);
@@ -441,7 +462,7 @@ public class AccesoBBDD {
 	            preparedStatement.setInt(4, nuevoIdAlumno);
 	            preparedStatement.setInt(5, idAlumno);
 	        } else {
-	            consulta = "UPDATE ALUMNOS SET Numero_exp = ?, Nombre = ?, ID_Proyecto = ? WHERE ID_Alumno = ?";
+	            consulta = "UPDATE alumnos SET Numero_exp = ?, Nombre = ?, ID_Proyecto = ? WHERE ID_Alumno = ?";
 	            preparedStatement = conexion.prepareStatement(consulta);
 	            preparedStatement.setInt(1, numeroExp);
 	            preparedStatement.setString(2, nombre);
@@ -456,13 +477,20 @@ public class AccesoBBDD {
 	        
 	        if (filasActualizadas > 0) {
 	            System.out.println("Datos actualizados correctamente en la tabla Alumnos.");
+	    	    JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+
 	        } else {
 	            System.out.println("No se encontró ningún alumno con el ID especificado.");
+	    	    JOptionPane.showMessageDialog(null, "No se encontró ningún alumno con el ID especificado.");
+
 	        }
 	    } catch (SQLException e) {
 	        System.out.println("Error al actualizar los datos: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
 	    } catch (NumberFormatException e) {
 	        System.out.println("Error de formato numérico: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
+
 	    }
 	}
 
@@ -487,13 +515,13 @@ public class AccesoBBDD {
 	        PreparedStatement preparedStatement;
 	        
 	        if (nuevoIdArea != null) {
-	            consulta = "UPDATE AREAS SET ID_Area = ?, DESCRIPCION = ? WHERE ID_Area = ?";
+	            consulta = "UPDATE areas SET ID_Area = ?, DESCRIPCION = ? WHERE ID_Area = ?";
 	            preparedStatement = conexion.prepareStatement(consulta);
 	            preparedStatement.setInt(1, nuevoIdArea);
 	            preparedStatement.setString(2, descripcion);
 	            preparedStatement.setInt(3, idArea);
 	        } else {
-	            consulta = "UPDATE AREAS SET DESCRIPCION = ? WHERE ID_Area = ?";
+	            consulta = "UPDATE areas SET DESCRIPCION = ? WHERE ID_Area = ?";
 	            preparedStatement = conexion.prepareStatement(consulta);
 	            preparedStatement.setString(1, descripcion);
 	            preparedStatement.setInt(2, idArea);
@@ -505,10 +533,14 @@ public class AccesoBBDD {
 	        conexion.close();
 	        
 	        System.out.println("Datos actualizados correctamente en la tabla Areas.");
+	        JOptionPane.showMessageDialog(null, "Datos actualizados correctamente en la tabla Areas.");
+
 	    } catch (SQLException e) {
 	        System.out.println("Error al actualizar los datos: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
 	    } catch (NumberFormatException e) {
 	        System.out.println("Error de formato numérico: " + e.getMessage());
+	        
 	    }
 	}
 	
@@ -526,7 +558,7 @@ public class AccesoBBDD {
 	        Connection conexion = getConexion();
 
 	        // Consulta para eliminar los datos de la tabla ALUMNOS
-	        String consulta = "DELETE FROM ALUMNOS WHERE ID_Alumno = ?";
+	        String consulta = "DELETE FROM alumnos WHERE ID_Alumno = ?";
 
 	        // Crear el objeto PreparedStatement
 	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
@@ -560,7 +592,7 @@ public class AccesoBBDD {
 	        Connection conexion = getConexion();
 
 	        // Consulta para eliminar los datos de la tabla AREAS
-	        String consulta = "DELETE FROM AREAS WHERE ID_Area = ?";
+	        String consulta = "DELETE FROM areas WHERE ID_Area = ?";
 
 	        // Crear el objeto PreparedStatement
 	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);

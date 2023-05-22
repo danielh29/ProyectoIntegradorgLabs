@@ -53,6 +53,10 @@ public class VistaPrincipal extends JFrame {
 		lblNewLabel.setFont(new Font("Agency FB", Font.BOLD | Font.ITALIC, 99));
 		lblNewLabel.setBounds(468, 75, 402, 99);
 		getContentPane().add(lblNewLabel);
+		
+		//Cambia el icono de la ventana de Java
+		ImageIcon icon = new ImageIcon("Imagenes/7.png");
+		setIconImage(icon.getImage());
 
 		
 //BOTÓN LOGIN FUNCIONAL
