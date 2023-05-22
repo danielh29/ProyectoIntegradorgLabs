@@ -22,6 +22,9 @@ public class home {
 	private consultas c;
 
 	public home() {
+		
+
+		
 		// Creacion de clases
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -44,6 +47,12 @@ public class home {
 				super.paintComponent(g);
 			}
 		};
+		
+		//Cambia el icono de la ventana de Java
+		ImageIcon icon = new ImageIcon("Imagenes/7.png");
+		frame.setIconImage(icon.getImage());
+		
+		//Iconos de los botones
 		ImageIcon imagenHome = new ImageIcon("Imagenes/home.png");
 		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
 		ImageIcon imagenAdd = new ImageIcon("Imagenes/mas.png");

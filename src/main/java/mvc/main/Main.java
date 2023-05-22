@@ -38,9 +38,11 @@ public class Main {
 				
 				//Seteo de los botones de Vista Login
 				login.setHome(vistaHome);
+				login.setVistaPrincipal(principal);
 				
 				//Seteo de los botones de VistaSingUp
 				signup.setVistaLogin(login);
+				signup.setVistaPrincipal(principal);
 				
 				// Seteo de los botones del home
 				vistaHome.setAltas(al);

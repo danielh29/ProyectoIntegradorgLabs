@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.*;
 
 import mvc.control.*;
+import java.awt.Font;
 
 public class VistaSignUp extends JFrame {
 	private JTextField txtUser;
@@ -18,6 +19,8 @@ public class VistaSignUp extends JFrame {
 	private JPasswordField txtRepetirPass;
 	private JLabel alert;
 	private JButton botonSignup;
+	private JButton btn_atras;
+	private VistaPrincipal VistaPrincipal;
 	private static JButton botonFondoSignUp;
 	private static List<ImageIcon> framesSignUp= new ArrayList<>();
 	private static int currentFrameIndexSignUp;
@@ -42,30 +45,54 @@ public class VistaSignUp extends JFrame {
 				super.paintComponent(g);
 			}
 		};
+		
+		//Cambia el icono de la ventana de Java
+		ImageIcon icon = new ImageIcon("Imagenes/7.png");
+		setIconImage(icon.getImage());
 
 		setContentPane(panel);
 		setSize(1350, 820);
 		getContentPane().setLayout(null);
 
 		JLabel labelUser = new JLabel("Usuario");
-		labelUser.setBounds(488, 270, 61, 16);
+		labelUser.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 50));
+		labelUser.setBounds(281, 238, 130, 55);
 		getContentPane().add(labelUser);
 
 		JLabel labelPass = new JLabel("Contraseña");
-		labelPass.setBounds(488, 297, 90, 16);
+		labelPass.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 50));
+		labelPass.setBounds(279, 300, 184, 69);
 		getContentPane().add(labelPass);
 
 		txtUser = new JTextField();
-		txtUser.setBounds(619, 264, 130, 26);
+		txtUser.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtUser.setBounds(511, 238, 252, 45);
 		getContentPane().add(txtUser);
 		txtUser.setColumns(10);
 
 		txtPass = new JPasswordField();
-		txtPass.setBounds(619, 292, 130, 26);
+		txtPass.setBounds(511, 300, 252, 45);
 		getContentPane().add(txtPass);
+		
+		//Botón atras
+				btn_atras = new JButton("");
+				btn_atras.setBorderPainted(false);
+				btn_atras.setBounds(115, 677, 90, 78);
+				btn_atras.setContentAreaFilled(false);
+				btn_atras.setFocusPainted(false);
+				btn_atras.setOpaque(false);
+		          ImageIcon imagenHome = new ImageIcon("Imagenes/back.png");
+		  		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+				btn_atras.setIcon(new ImageIcon(resizedImage));
+				getContentPane().add(btn_atras);
+		
+		
+		
+		
 //BOTÖN CON FUNCIONALIDAD
 		botonSignup = new JButton("");
-		botonSignup.setBounds(686, 349, 235, 164);
+		botonSignup.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		botonSignup.setBounds(931, 438, 235, 164);
 		getContentPane().add(botonSignup);
 		// Establecer la opacidad del botón
         botonSignup.setOpaque(false);
@@ -98,7 +125,7 @@ public class VistaSignUp extends JFrame {
            
    		
    		        botonFondoSignUp = new JButton();
-   		        botonFondoSignUp.setBounds(686, 349, 235, 164);
+   		        botonFondoSignUp.setBounds(931, 438, 235, 164);
    		        botonFondoSignUp.addActionListener(new ActionListener() {
    		            @Override
    		            public void actionPerformed(ActionEvent e) {
@@ -120,11 +147,13 @@ public class VistaSignUp extends JFrame {
 		
 		
 		JLabel labelRepetirPass = new JLabel("Repetir Contraseña");
-		labelRepetirPass.setBounds(488, 325, 130, 16);
+		labelRepetirPass.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 40));
+		labelRepetirPass.setBounds(244, 360, 286, 65);
 		getContentPane().add(labelRepetirPass);
 
 		txtRepetirPass = new JPasswordField();
-		txtRepetirPass.setBounds(619, 320, 130, 26);
+		txtRepetirPass.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtRepetirPass.setBounds(511, 360, 252, 45);
 		getContentPane().add(txtRepetirPass);
 
 		alert = new JLabel("");
@@ -146,11 +175,24 @@ public class VistaSignUp extends JFrame {
 		login=x;
 		setControlador(x);
 	}
+	
+	public void setVistaPrincipal (VistaPrincipal vp) {
+		VistaPrincipal = vp;
+		setControlador2(vp);
+		
+	}
+	
 	//Metodo que crea un nuevo controlador
 	public void setControlador(VistaLogin x) {
 		EscuchadorSignUp escuchador = new EscuchadorSignUp();
 		escuchador.setVistaPrincipal(this, login);
 		botonSignup.addActionListener(escuchador);
+	}
+	
+	public void setControlador2(VistaPrincipal vp) {
+		SignUpBack escuchador = new SignUpBack();
+		escuchador.setVistaPrincipal(this, vp);
+		btn_atras.addActionListener(escuchador);
 	}
 	public JLabel getAlert() {
 		return alert;

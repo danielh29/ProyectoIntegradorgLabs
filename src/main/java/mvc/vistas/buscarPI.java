@@ -51,7 +51,7 @@ public class buscarPI {
 			protected void paintComponent(Graphics g) {
 
 				// Carga y dibuja la imagen de fondo
-				ImageIcon imageIcon = new ImageIcon("Imagenes/fondo.png");
+				ImageIcon imageIcon = new ImageIcon("Imagenes/FondoConsultaProyectos.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
@@ -59,6 +59,10 @@ public class buscarPI {
 				super.paintComponent(g);
 			}
 		};
+		
+		//Cambia el icono de la ventana de Java
+		ImageIcon icon = new ImageIcon("Imagenes/7.png");
+		frame.setIconImage(icon.getImage());
 
 		ImageIcon imagenHome = new ImageIcon("Imagenes/home.png");
 		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
