@@ -15,9 +15,9 @@ import mvc.vistas.*;
 
 public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://79.148.92.143:3306/loginpi";
-	private String usuario = "tu_usuario";
-	private String pass = "tu_contraseña";
+	private String url = "jdbc:mysql://localhost/loginpi";
+	private String usuario = "root";
+	private String pass = "root";
 
 	Connection con = null;
 
@@ -71,6 +71,12 @@ public class AccesoBBDD {
 	    
 	    public AccesoBBDD(editarAreas editarArea) {
 	    	this.editarArea = editarArea;
+	    }
+	    
+	    editarPI editarPI;
+	    
+	    public AccesoBBDD(editarPI editarPI) {
+	    	this.editarPI = editarPI;
 	    }
 	    
 
@@ -259,6 +265,7 @@ public class AccesoBBDD {
 			String fechaTexto = proyectos.getTextField_4().getText();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 			Date ano = dateFormat.parse(fechaTexto);
+			
 			try {
 				ano = dateFormat.parse(fechaTexto);
 			}catch(ParseException e) {
@@ -546,9 +553,74 @@ public class AccesoBBDD {
 	
 	/*         ///////////////EDITAR PI///////////////////////////////        */
 	
-	public void editarPI() {
-		
+	public void editarDatosPI() throws ParseException {
+	    try {
+	        String idProyectoString = editarPI.getTextField().getText();
+	        int idProyecto = Integer.parseInt(idProyectoString);
+	        String nombre = editarPI.getTextField_3().getText();
+	        int notaObtenida = Integer.parseInt(editarPI.getTextField_4().getText());
+	        String fechaTexto = editarPI.getTextField_5().getText();
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	        Date ano = dateFormat.parse(fechaTexto);
+	        String nuevoIdProyecto = editarPI.getTextField_10().getText();
+	        Integer nuevoIdProyectoInteger = null; // Valor por defecto
+
+	        try {
+	            ano = dateFormat.parse(fechaTexto);
+	        } catch (ParseException e) {
+	            System.out.println("Error al convertir la fecha: " + e.getMessage());
+	            return;
+	        }
+
+	        int grupo = Integer.parseInt(editarPI.getTextField_6().getText());
+	        String urlProyecto = editarPI.getTextField_7().getText();
+	        int curso = Integer.parseInt(editarPI.getTextField_8().getText());
+	        int idArea = Integer.parseInt(editarPI.getTextField_9().getText());
+
+	        Connection conexion = getConexion();
+
+	        String consulta;
+	        PreparedStatement preparedStatement;
+
+	        if (!nuevoIdProyecto.isEmpty()) {
+	            nuevoIdProyectoInteger = Integer.parseInt(nuevoIdProyecto);
+	            consulta = "UPDATE PROYECTO SET ID_Proyecto = ?, Nombre = ?, Nota_Obtenida = ?, Ano = ?, Grupo = ?, URL_Proyecto = ?, Curso = ?, ID_Area = ? WHERE ID_Proyecto = ?";
+	            preparedStatement = conexion.prepareStatement(consulta);
+	            preparedStatement.setInt(1, nuevoIdProyectoInteger);
+	            preparedStatement.setString(2, nombre);
+	            preparedStatement.setInt(3, notaObtenida);
+	            preparedStatement.setDate(4, new java.sql.Date(ano.getTime()));
+	            preparedStatement.setInt(5, grupo);
+	            preparedStatement.setString(6, urlProyecto);
+	            preparedStatement.setInt(7, curso);
+	            preparedStatement.setInt(8, idArea);
+	            preparedStatement.setInt(9, idProyecto);
+	        } else {
+	            consulta = "UPDATE PROYECTO SET Nombre = ?, Nota_Obtenida = ?, Ano = ?, Grupo = ?, URL_Proyecto = ?, Curso = ?, ID_Area = ? WHERE ID_Proyecto = ?";
+	            preparedStatement = conexion.prepareStatement(consulta);
+	            preparedStatement.setString(1, nombre);
+	            preparedStatement.setInt(2, notaObtenida);
+	            preparedStatement.setDate(3, new java.sql.Date(ano.getTime()));
+	            preparedStatement.setInt(4, grupo);
+	            preparedStatement.setString(5, urlProyecto);
+	            preparedStatement.setInt(6, curso);
+	            preparedStatement.setInt(7, idArea);
+	            preparedStatement.setInt(8, idProyecto);
+	        }
+
+	        preparedStatement.executeUpdate();
+	        preparedStatement.close();
+	        conexion.close();
+	        
+	        System.out.println("Los datos del proyecto se han actualizado correctamente.");
+
+	    } catch (SQLException e) {
+	        System.out.println("Error al actualizar los datos: " + e.getMessage());
+	    }
 	}
+
+
+
 	
 	
 	public void borrarDatosAlumnos() {
@@ -619,10 +691,33 @@ public class AccesoBBDD {
 	    }
 	}
 
-	/*  /////////////////// BORRAR DATOS PI ///////////////// */
 	public void borrarDatosPI() {
-		
+	    try {
+	        String idProyectoString = editarPI.getTextField().getText();
+	        int idProyecto = Integer.parseInt(idProyectoString);
+
+	        Connection conexion = getConexion();
+
+	        String consulta = "DELETE FROM PROYECTO WHERE ID_Proyecto = ?";
+	        PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+	        preparedStatement.setInt(1, idProyecto);
+
+	        int filasBorradas = preparedStatement.executeUpdate();
+
+	        preparedStatement.close();
+	        conexion.close();
+	        
+	        if (filasBorradas > 0) {
+	            System.out.println("Los datos del proyecto se han borrado correctamente.");
+	        } else {
+	            System.out.println("No se encontró ningún proyecto con el ID especificado.");
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Error al borrar los datos: " + e.getMessage());
+	    }
 	}
+
 }
  
     	
