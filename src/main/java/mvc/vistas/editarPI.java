@@ -5,11 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.http.WebSocket.Listener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import BBDD.AccesoBBDD;
+
 import mvc.control.consultaAreasAñadir;
 import mvc.control.consultaAreasHome;
 import mvc.control.consultasAlumnoAñadir;
@@ -212,6 +214,7 @@ public class editarPI {
 	
 
 	public editarPI() {
+		
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -399,37 +402,7 @@ public class editarPI {
 		frame.setVisible(false);
 
 	}
-		//Metodo que crea un nuevo controlador
-		public void setControlador(home x) {
-			editarPIHome escuchador = new editarPIHome();
-			escuchador.setVentanaUsuario(x, this);
-			button1.addActionListener(escuchador);
-		}
-		//Metodo que crea un nuevo controlador
-		public void setControlador1(consultas x) {
-			 editarPIConsultas escuchador = new  editarPIConsultas();
-			escuchador.setVentanaUsuario(x, this);
-			button2.addActionListener(escuchador);
-		}
-		//Metodo que crea un nuevo controlador
-		public void setControlador2(altas x) {
-			editarPIAñadir escuchador2 = new editarPIAñadir();
-			escuchador2.setVentanaUsuario(x, this);
-			button3.addActionListener(escuchador2);
-		}
-		
-		public void setHome(home x) {
-			setControlador(x);
-		}
-		public void setAltas(altas a) {
-	        //Boton que va a altas
-	        setControlador2(a);
-		}
-		public void setConsultas(consultas c) {
-	        //Boton que va a consultas
-	        setControlador1(c);
-		}
-
+	
 	public void hacerVisible() {
     	frame.setVisible(true);
 	}
@@ -437,6 +410,7 @@ public class editarPI {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
+	
 	public JButton getButton1() {
 		return button1;
 	}
@@ -448,6 +422,58 @@ public class editarPI {
 	public JButton getButton3() {
 		return button3;
 	}
+	
+	public void setHome(home x) {
+		setControlador(x);
+	}
+	public void setAltas(altas a) {
+        //Boton que va a altas
+        setControlador2(a);
+	}
+	public void setConsultas(consultas c) {
+        //Boton que va a consultas
+        setControlador1(c);
+	}
+	
+	//Metodo que crea un nuevo controlador
+	public void setControlador(home x) {
+		editarPIHome escuchador = new editarPIHome();
+		escuchador.setVentanaUsuario(x, this);
+		button1.addActionListener(escuchador);
+	}
+	//Metodo que crea un nuevo controlador
+	public void setControlador1(consultas x) {
+		 editarPIConsultas escuchador = new  editarPIConsultas();
+		escuchador.setVentanaUsuario(x, this);
+		button2.addActionListener(escuchador);
+	}
+	//Metodo que crea un nuevo controlador
+	public void setControlador2(altas x) {
+		editarPIAñadir escuchador2 = new editarPIAñadir();
+		escuchador2.setVentanaUsuario(x, this);
+		button3.addActionListener(escuchador2);
+	
+	
+	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+	button1_1.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla ALUMNOS
+	        try {
+				accesoBBDD.editarDatosPI();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	    }
+	});
+	
+	button1_2.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	        // Insertar los datos en la tabla ALUMNOS
+				accesoBBDD.borrarDatosPI();
+	    }
+	});
 
-
+	
+}
 }

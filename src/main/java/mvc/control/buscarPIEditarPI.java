@@ -2,6 +2,7 @@ package mvc.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
@@ -53,7 +54,11 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
                 ei.getTextField().setText(String.valueOf(pi.getID_Proyecto()));
                 ei.getTextField_3().setText(pi.getNombre());
                 ei.getTextField_4().setText(String.valueOf(pi.getNota_Obtenida()));
-                ei.getTextField_5().setText(String.valueOf(pi.getAno()));
+                
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                String fechaTexto = dateFormat.format(pi.getAno());
+                ei.getTextField_5().setText(fechaTexto);
+                
                 ei.getTextField_6().setText(String.valueOf(pi.getGrupo()));
                 ei.getTextField_7().setText(pi.getURL_Proyecto());
                 ei.getTextField_8().setText(String.valueOf(pi.getCurso()));
@@ -67,6 +72,7 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
                 bandera = true;
             }
         }
+
     }
 
 }
