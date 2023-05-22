@@ -86,7 +86,7 @@ public class VistaLogin extends JFrame {
 		frames = new ArrayList<>();
 
         // Carga las imágenes del GIF en una lista
-        for (int i = 0; i <= 13; i++) {
+        for (int i = 1; i <= 2; i++) {
             String imagePath = "ImagenesGifL/imagen (" + i + ").png";
             ImageIcon frame = new ImageIcon(imagePath);
             ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
@@ -97,7 +97,7 @@ public class VistaLogin extends JFrame {
         currentFrameIndex = 0;
 
         // Inicia un temporizador para cambiar automáticamente los frames
-        int delay = 10; // Intervalo en milisegundos entre cada cambio de frame
+        int delay = 3000; // Intervalo en milisegundos entre cada cambio de frame
         Timer timer = new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

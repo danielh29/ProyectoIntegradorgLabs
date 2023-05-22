@@ -76,7 +76,7 @@ public class VistaSignUp extends JFrame {
         
 //BOTÓN DISEÑO SIGNUP
         // Carga las imágenes del GIF en una lista
-           for (int i = 1; i <= 13; i++) {
+           for (int i = 1; i <= 2; i++) {
                String imagePath = "ImagenesGifS/imagen (" + i + ").png";
                ImageIcon frame = new ImageIcon(imagePath);
                ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
@@ -87,7 +87,7 @@ public class VistaSignUp extends JFrame {
            currentFrameIndexSignUp = 0;
 
            // Inicia un temporizador para cambiar automáticamente los frames
-           int delayS = 10; // Intervalo en milisegundos entre cada cambio de frame
+           int delayS = 3000; // Intervalo en milisegundos entre cada cambio de frame
            Timer timerS = new Timer(delayS, new ActionListener() {
                @Override
                public void actionPerformed(ActionEvent e) {
