@@ -115,7 +115,6 @@ public class buscarAlumnos {
 		modelo.addAll(alumnos);
 		//Esto no sé si puedes hacerlo o hay que hacer un foreach
 		datosAlumnos.setModel(modelo);
-
 	}
 	
 	

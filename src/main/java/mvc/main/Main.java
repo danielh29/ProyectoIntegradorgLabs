@@ -28,6 +28,7 @@ public class Main {
 				buscarArea bar = new buscarArea();
 				buscarPI bp = new buscarPI();
 				editarAlumnos ea = new editarAlumnos();
+				editarPI ei = new editarPI();
 	
 				principal.hacerVisible();
 				
@@ -107,6 +108,7 @@ public class Main {
 				bp.setHome(vistaHome);
 				bp.setAltas(al);
 				bp.setConsultas(co);
+				bp.setEditarPI(ei);
 				
 			
 			}

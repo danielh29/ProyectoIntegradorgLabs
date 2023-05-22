@@ -10,8 +10,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import mvc.control.buscarAlumnoEditarAlumno;
 import mvc.control.buscarPIAñadir;
 import mvc.control.buscarPIConsultas;
+import mvc.control.buscarPIEditarPI;
 import mvc.control.buscarPIHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
@@ -116,7 +118,6 @@ public class buscarPI {
 		
 		datosPI = new JList<datosPI>();
 		panelScroll2.setViewportView(datosPI);
-		
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 	}
@@ -152,6 +153,17 @@ public class buscarPI {
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
+	
+	public void setControlador4(editarPI x) {
+		buscarPIEditarPI escuchador = new buscarPIEditarPI();
+		escuchador.setVentana(this, x);
+		datosPI.addListSelectionListener(escuchador);
+	}
+	
+	public void setEditarPI ( editarPI editarPI) {
+		setControlador4(editarPI);
+	}
+	
 	public void setAltas(altas altas) {
 		a=altas;
 		//boton que va a altas

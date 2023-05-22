@@ -12,9 +12,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import BBDD.AccesoBBDD;
 import mvc.control.consultaAreasAñadir;
 import mvc.control.consultaAreasHome;
+import mvc.control.consultasAlumnoAñadir;
+import mvc.control.consultasAlumnoConsultas;
 import mvc.control.consultasAlumnosB;
 import mvc.control.consultasAreasB;
 import mvc.control.consultasAreasConsultas;
+import mvc.control.editarPIAñadir;
+import mvc.control.editarPIConsultas;
+import mvc.control.editarPIHome;
 
 public class editarPI {
 
@@ -221,7 +226,7 @@ public class editarPI {
 			protected void paintComponent(Graphics g) {
 
 				// Carga y dibuja la imagen de fondo
-				ImageIcon imageIcon = new ImageIcon("Imagenes/modArea.png");
+				ImageIcon imageIcon = new ImageIcon("Imagenes/modPI.png");
 				Image image = imageIcon.getImage();
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 				setOpaque(false);
@@ -394,6 +399,36 @@ public class editarPI {
 		frame.setVisible(false);
 
 	}
+		//Metodo que crea un nuevo controlador
+		public void setControlador(home x) {
+			editarPIHome escuchador = new editarPIHome();
+			escuchador.setVentanaUsuario(x, this);
+			button2.addActionListener(escuchador);
+		}
+		//Metodo que crea un nuevo controlador
+		public void setControlador1(consultas x) {
+			 editarPIConsultas escuchador = new  editarPIConsultas();
+			escuchador.setVentanaUsuario(x, this);
+			button2.addActionListener(escuchador);
+		}
+		//Metodo que crea un nuevo controlador
+		public void setControlador2(altas x) {
+			editarPIAñadir escuchador2 = new editarPIAñadir();
+			escuchador2.setVentanaUsuario(x, this);
+			button3.addActionListener(escuchador2);
+		}
+		
+		public void setHome(home x) {
+			setControlador(x);
+		}
+		public void setAltas(altas a) {
+	        //Boton que va a altas
+	        setControlador2(a);
+		}
+		public void setConsultas(consultas c) {
+	        //Boton que va a consultas
+	        setControlador1(c);
+		}
 
 	public void hacerVisible() {
     	frame.setVisible(true);

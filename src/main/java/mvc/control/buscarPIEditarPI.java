@@ -2,6 +2,8 @@ package mvc.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import mvc.modelo.datosAlumno;
@@ -24,7 +26,9 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
     public void setVentana(buscarPI buscarPI, editarPI editarPI) {
         bi = buscarPI;
         ei = editarPI;
+        buscarPI.datosPI.addListSelectionListener(this); // Agregar como listener de eventos de selección
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -33,6 +37,7 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
             ei.hacerVisible();
         }
     }
+
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
@@ -50,7 +55,7 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
                 ei.getTextField_4().setText(String.valueOf(pi.getNota_Obtenida()));
                 ei.getTextField_5().setText(String.valueOf(pi.getAno()));
                 ei.getTextField_6().setText(String.valueOf(pi.getGrupo()));
-                ei.getTextField_3().setText(pi.getURL_Proyecto());
+                ei.getTextField_7().setText(pi.getURL_Proyecto());
                 ei.getTextField_8().setText(String.valueOf(pi.getCurso()));
                 ei.getTextField_9().setText(String.valueOf(pi.getID_Area()));
 
@@ -59,8 +64,10 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
 
                 // Mostrar la ventana editarAlumnos
                 ei.hacerVisible();
+                bandera = true;
             }
         }
     }
+
 }
 
