@@ -306,7 +306,7 @@ public class AccesoBBDD {
             Connection conexion = getConexion();
             
             // Consulta para obtener los datos de los alumnos
-            String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM alumno";
+            String consulta = "SELECT ID_Alumno, Numero_exp, Nombre, ID_Proyecto FROM alumnos";
             
             // Crear el objeto PreparedStatement
             PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
