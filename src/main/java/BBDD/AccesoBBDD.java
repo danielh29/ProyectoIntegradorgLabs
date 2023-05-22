@@ -15,9 +15,9 @@ import mvc.vistas.*;
 
 public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://79.148.92.143:3306/loginpi";
-	private String usuario = "tu_usuario";
-	private String pass = "tu_contraseña";
+	private String url = "jdbc:mysql://localhost/loginpi";
+	private String usuario = "root";
+	private String pass = "root";
 
 	Connection con = null;
 
