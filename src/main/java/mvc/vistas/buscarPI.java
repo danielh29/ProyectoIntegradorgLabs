@@ -10,8 +10,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import mvc.control.buscarAlumnoEditarAlumno;
 import mvc.control.buscarPIAñadir;
 import mvc.control.buscarPIConsultas;
+import mvc.control.buscarPIEditarPI;
 import mvc.control.buscarPIHome;
 import mvc.control.consultasAltas;
 import mvc.control.consultasHome;
@@ -30,7 +32,7 @@ public class buscarPI {
 	private JTextField txtHola;
 
 	private JScrollPane scrollPane;
-	private JList <datosPI> datosPI;
+	public JList <datosPI> datosPI;
 	
 	private home h;
 	private altas a;
@@ -110,34 +112,12 @@ public class buscarPI {
 		panel.add(button2);
 		panel.add(button3);
 
-		///////////////////////////// LABELS//////////////////////////////////
-
-//		JLabel lblNewLabel = new JLabel("Introduzca el ID del P.I.");
-//		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-//		lblNewLabel.setForeground(new Color(247, 254, 255));
-//		lblNewLabel.setFont(new Font("Kefa", Font.PLAIN, 90));
-//		lblNewLabel.setBounds(150, 6, 1174, 119);
-//		panel.add(lblNewLabel);
-//		
-//		lblNewLabel_1 = new JLabel("ID P.I.:");
-//		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-//		lblNewLabel_1.setBounds(255, 272, 364, 102);
-//		panel.add(lblNewLabel_1);
-//		
-//		txtHola = new JTextField();
-//		txtHola.setFont(new Font("Lucida Grande", Font.PLAIN, 65));
-//		txtHola.setBounds(656, 298, 375, 69);
-//		panel.add(txtHola);
-//		txtHola.setColumns(10);
-//		frame.setVisible(false);
-
 		JScrollPane panelScroll2 = new JScrollPane();
 		panelScroll2.setBounds(400,250,417,437);
 		frame.add(panelScroll2);
 		
 		datosPI = new JList<datosPI>();
 		panelScroll2.setViewportView(datosPI);
-		
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 	}
@@ -173,6 +153,17 @@ public class buscarPI {
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
+	
+	public void setControlador4(editarPI x) {
+		buscarPIEditarPI escuchador = new buscarPIEditarPI();
+		escuchador.setVentana(this, x);
+		datosPI.addListSelectionListener(escuchador);
+	}
+	
+	public void setEditarPI ( editarPI editarPI) {
+		setControlador4(editarPI);
+	}
+	
 	public void setAltas(altas altas) {
 		a=altas;
 		//boton que va a altas
