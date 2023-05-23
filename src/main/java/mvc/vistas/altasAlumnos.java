@@ -15,6 +15,12 @@ import mvc.control.altasAlumnosB;
 import mvc.control.altasAlumnosConsultas;
 import mvc.control.añadirAlumnosHome;
 
+/**
+ * esta clase es la vista que dará de alta a los alumnos nuevos
+ * 
+ * @author alexjun09
+ *
+ */
 public class altasAlumnos {
 
 	private JFrame frame;
@@ -32,94 +38,122 @@ public class altasAlumnos {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	
+
+	// setter y getters habituales
 	public JFrame getFrame() {
 		return frame;
 	}
+
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
+
 	public JPanel getPanel() {
 		return panel;
 	}
+
 	public void setPanel(JPanel panel) {
 		this.panel = panel;
 	}
+
 	public JButton getButtonadd1() {
 		return buttonadd1;
 	}
+
 	public void setButtonadd1(JButton buttonadd1) {
 		this.buttonadd1 = buttonadd1;
 	}
+
 	public JButton getButtonadd2() {
 		return buttonadd2;
 	}
+
 	public void setButtonadd2(JButton buttonadd2) {
 		this.buttonadd2 = buttonadd2;
 	}
+
 	public JButton getButtonadd3() {
 		return buttonadd3;
 	}
+
 	public void setButtonadd3(JButton buttonadd3) {
 		this.buttonadd3 = buttonadd3;
 	}
+
 	public JLabel getLblNewLabel_1() {
 		return lblNewLabel_1;
 	}
+
 	public void setLblNewLabel_1(JLabel lblNewLabel_1) {
 		this.lblNewLabel_1 = lblNewLabel_1;
 	}
+
 	public JLabel getLblNewLabel_2() {
 		return lblNewLabel_2;
 	}
+
 	public void setLblNewLabel_2(JLabel lblNewLabel_2) {
 		this.lblNewLabel_2 = lblNewLabel_2;
 	}
+
 	public JLabel getLblNewLabel_3() {
 		return lblNewLabel_3;
 	}
+
 	public void setLblNewLabel_3(JLabel lblNewLabel_3) {
 		this.lblNewLabel_3 = lblNewLabel_3;
 	}
+
 	public JTextField getTextField() {
 		return textField;
 	}
+
 	public void setTextField(JTextField textField) {
 		this.textField = textField;
 	}
+
 	public JTextField getTextField_1() {
 		return textField_1;
 	}
+
 	public void setTextField_1(JTextField textField_1) {
 		this.textField_1 = textField_1;
 	}
+
 	public JTextField getTextField_2() {
 		return textField_2;
 	}
+
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}
+
 	public void setButton1(JButton button1) {
 		this.button1 = button1;
 	}
+
 	public void setButton2(JButton button2) {
 		this.button2 = button2;
 	}
+
 	public void setButton3(JButton button3) {
 		this.button3 = button3;
 	}
-	
+
 	public JTextField getTextField_3() {
 		return textField_3;
 	}
+
 	public void setTextField_3(JTextField textField_3) {
 		this.textField_3 = textField_3;
 	}
+
 	private JTextField textField_3;
 
+	/**
+	 * constructor del objeto altas alumnos
+	 */
 	public altasAlumnos() {
-		
-	
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -142,8 +176,8 @@ public class altasAlumnos {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -179,133 +213,182 @@ public class altasAlumnos {
 		button3.setContentAreaFilled(false);
 		button3.setFocusPainted(false);
 		button3.setOpaque(false);
-		
+
 		button4 = new JButton("");
 		button4.setBorderPainted(false);
 		button4.setOpaque(false);
 		button4.setFocusPainted(false);
 		button4.setIcon(new ImageIcon(resizedAnadir));
 		button4.setContentAreaFilled(false);
-		
+
 		button4.setBounds(1236, 652, 90, 78);
-		
+
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 		button3.setIcon(new ImageIcon(resizedConsultar));
-		
-		
-		
 
-		
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
 		panel.add(button4);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNewLabel.setBounds(59, 431, 174, 62);
 		panel.add(lblNewLabel);
-		
+
 		JLabel lblNExpediente = new JLabel("Nº Expediente:");
 		lblNExpediente.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNExpediente.setBounds(59, 528, 229, 62);
 		panel.add(lblNExpediente);
-		
+
 		JLabel lblIdAlumno = new JLabel("ID Alumno:");
 		lblIdAlumno.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblIdAlumno.setBounds(930, 431, 174, 62);
 		panel.add(lblIdAlumno);
-		
+
 		textField = new JTextField();
 		textField.setBackground(new Color(211, 233, 250));
 		textField.setBounds(192, 445, 667, 39);
 		panel.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBackground(new Color(211, 233, 250));
 		textField_1.setBounds(283, 548, 319, 39);
 		panel.add(textField_1);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBackground(new Color(211, 233, 250));
 		textField_2.setBounds(1111, 445, 261, 39);
 		panel.add(textField_2);
-		
+
 		JLabel lblIdProyectoExistente = new JLabel("ID Proyecto Existente:");
 		lblIdProyectoExistente.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblIdProyectoExistente.setBounds(687, 544, 299, 62);
 		panel.add(lblIdProyectoExistente);
-		
+
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBackground(new Color(211, 233, 250));
 		textField_3.setBounds(1006, 564, 299, 39);
 		panel.add(textField_3);
 
-
-		
-
 	}
+
+	/**
+	 * metodo que hará visible la vista
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshará de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá al home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador1(home x) {
 		añadirAlumnosHome escuchador = new añadirAlumnosHome();
 		escuchador.setVentanaUsuario(x, this);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista altas
+	 */
 	public void setControlador2(altas x) {
 		altasAlumnosAñadir escuchador = new altasAlumnosAñadir();
 		escuchador.setVentanaUsuario(x, this);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a consultas
+	 * 
+	 * @param x la vista consultas
+	 */
 	public void setControlador3(consultas x) {
 		altasAlumnosConsultas escuchador = new altasAlumnosConsultas();
 		escuchador.setVentanaUsuario(x, this);
 		button3.addActionListener(escuchador);
 	}
+
+	/**
+	 * getter del botton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del botton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * metodo que cambia la vista al home
+	 * 
+	 * @param home la vista home
+	 */
 	public void setHome(home home) {
-		//boton que vuelve a home
-	    setControlador1(home);
+		// boton que vuelve a home
+		setControlador1(home);
 	}
+
+	/**
+	 * metodo que cambia la vista a altas
+	 * 
+	 * @param alta la vista altas
+	 */
 	public void setAltas(altas alta) {
-		//boton que va a altas
+		// boton que va a altas
 		setControlador2(alta);
-		
+
 	}
+
+	/**
+	 * metodo que cambia la vista a consultas
+	 * 
+	 * @param con la vista consultas
+	 */
 	public void setConsultas(consultas con) {
-		//boton que va a consultas
+		// boton que va a consultas
 		setControlador3(con);
-	
-	
-	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
-	button4.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla ALUMNOS
-	        accesoBBDD.insertarDatosAlumnos();
-	    }
-	});
-}
+
+		final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+		button4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla ALUMNOS
+				accesoBBDD.insertarDatosAlumnos();
+			}
+		});
+	}
 }

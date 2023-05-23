@@ -8,22 +8,33 @@ import mvc.vistas.altasAreas;
 import mvc.vistas.consultas;
 import mvc.vistas.home;
 
+/**
+ * Clase controlador que implementa ActionListener que cambiará de la vista
+ * altasAreas al home
+ * 
+ * @author alexjun09
+ *
+ */
 public class altasAreasHome implements ActionListener {
 	altasAreas aa;
 	home h;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param altasAreas la vista altasAreas
+	 * @param home       la vista home
 	 */
-	public void setVentanaUsuario (altasAreas altasAreas, home home) {
-		aa=altasAreas;
-		h=home;
+	public void setVentanaUsuario(altasAreas altasAreas, home home) {
+		aa = altasAreas;
+		h = home;
 	}
-	@Override
+
+	/**
+	 * metodo actionPerformed que se deshará de la vista altasAreas y abrirá la
+	 * vista home
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		aa.dispose();
 		h.hacerVisible();
 

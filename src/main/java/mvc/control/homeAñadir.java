@@ -6,23 +6,33 @@ import java.awt.event.ActionListener;
 import mvc.vistas.altas;
 import mvc.vistas.home;
 
-
+/**
+ * clase que Implementa actionListener y cambia de vistas de home a altas
+ * 
+ * @author alexjun09
+ *
+ */
 public class homeAñadir implements ActionListener {
 
 	home v;
 	altas a;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * metodo que actualiza los valores de las dos vistas para posteriormete poder
+	 * ser utilizadas
+	 * 
+	 * @param vista vista home
+	 * @param altas vista altas
 	 */
-	public void setVentanaUsuario (home vista, altas altas) {
-		v=vista;
-		a=altas;
+	public void setVentanaUsuario(home vista, altas altas) {
+		v = vista;
+		a = altas;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista a altas
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		v.dispose();
 		a.hacerVisible();
 

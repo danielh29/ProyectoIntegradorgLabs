@@ -9,21 +9,33 @@ import mvc.vistas.consultas;
 import mvc.vistas.editarPI;
 import mvc.vistas.home;
 
+/**
+ * clase que Implementa actionListener y cambia de vistas de editarPI al home
+ * 
+ * @author alexjun09
+ *
+ */
 public class editarPIHome implements ActionListener {
 
 	home h;
 	editarPI ePI;
+
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * metodo que actualiza los valores de las dos vistas para posteriormete poder
+	 * ser utilizadas
+	 * 
+	 * @param home     vista home
+	 * @param editarPI vista editarPI
 	 */
-	public void setVentanaUsuario (home home, editarPI editarPI) {
-		h=home;
-		ePI=editarPI;
+	public void setVentanaUsuario(home home, editarPI editarPI) {
+		h = home;
+		ePI = editarPI;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista al home
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		ePI.dispose();
 		h.hacerVisible();
 

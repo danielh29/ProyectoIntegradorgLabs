@@ -11,31 +11,40 @@ import mvc.vistas.buscarPI;
 import mvc.vistas.editarAlumnos;
 import mvc.vistas.consultas;
 
+/**
+ * clase que almacena los datos de las consultas de los proyectos integradores
+ * 
+ * @author alexjun09
+ *
+ */
 public class consultasPIB implements ActionListener {
 
 	consultas c;
 	buscarPI pi;
 	ArrayList<datosPI> listaPI = new ArrayList<>();
 
+	/**
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param consultas vista consultas
+	 * @param buscar    vista buscar
+	 */
+	public void setVentanaUsuario(consultas consultas, buscarPI buscar) {
+		c = consultas;
+		pi = buscar;
+	}
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * metodo que cambia de vistas y almacena los datos de los proyectos
+	 * integradores
 	 */
-	public void setVentanaUsuario (consultas consultas, buscarPI buscar) {
-		c=consultas;
-		pi=buscar;
-	}
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		AccesoBBDD acceso = new AccesoBBDD();
-		
-		listaPI=acceso.obtenerDatosPI();
-		
+
+		listaPI = acceso.obtenerDatosPI();
+
 		pi.setListaPI(listaPI);
-		
+
 		c.dispose();
 		pi.hacerVisible();
 

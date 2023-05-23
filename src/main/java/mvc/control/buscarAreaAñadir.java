@@ -7,23 +7,31 @@ import mvc.vistas.altas;
 import mvc.vistas.buscarArea;
 import mvc.vistas.home;
 
+/**
+ * 
+ * @author alexjun09
+ *
+ */
 public class buscarAreaAñadir implements ActionListener {
 
 	buscarArea ba;
 	altas a;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param buscarArea vista buscar areas
+	 * @param altas      vista altas
 	 */
-	public void setVentanaUsuario (buscarArea buscarArea, altas altas) {
-		ba=buscarArea;
-		a=altas;
+	public void setVentanaUsuario(buscarArea buscarArea, altas altas) {
+		ba = buscarArea;
+		a = altas;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista a altas
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		ba.dispose();
 		a.hacerVisible();
 

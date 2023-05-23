@@ -8,6 +8,13 @@ import mvc.vistas.altasPI;
 import mvc.vistas.editarAlumnos;
 import mvc.vistas.consultas;
 
+/**
+ * Clase que implementa actionListener y cambia de vistas de consultaAlumno a
+ * altas
+ * 
+ * @author alexjun09
+ *
+ */
 public class consultasAlumnoAñadir implements ActionListener {
 
 	editarAlumnos c;
@@ -15,16 +22,18 @@ public class consultasAlumnoAñadir implements ActionListener {
 
 	/**
 	 * Método que nos permite trabajar con una vista principal V
+	 * 
 	 * @param vista, Clase Vista Principal
 	 */
-	public void setVentanaUsuario (editarAlumnos consultas, altas altas) {
-		c=consultas;
-		a=altas;
+	public void setVentanaUsuario(editarAlumnos consultas, altas altas) {
+		c = consultas;
+		a = altas;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista a altas
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		c.dispose();
 		a.hacerVisible();
 

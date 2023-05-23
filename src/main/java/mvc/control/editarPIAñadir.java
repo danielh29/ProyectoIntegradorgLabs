@@ -9,22 +9,33 @@ import mvc.vistas.buscarArea;
 import mvc.vistas.consultas;
 import mvc.vistas.editarPI;
 
+/**
+ * clase que Implementa actionListener y cambia de vistas de editarPI a altas
+ * 
+ * @author alexjun09
+ *
+ */
 public class editarPIAñadir implements ActionListener {
 
 	altas a;
 	editarPI ePI;
+
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * metodo que actualiza los valores de las dos vistas para posteriormete poder
+	 * ser utilizadas
+	 * 
+	 * @param altas    vista altas
+	 * @param editarPI vista altas pi
 	 */
-	public void setVentanaUsuario (altas altas, editarPI editarPI) {
-		a=altas;
-		ePI=editarPI;
+	public void setVentanaUsuario(altas altas, editarPI editarPI) {
+		a = altas;
+		ePI = editarPI;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista a altas
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		ePI.dispose();
 		a.hacerVisible();
 

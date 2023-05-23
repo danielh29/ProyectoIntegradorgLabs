@@ -6,26 +6,37 @@ import java.awt.event.ActionListener;
 import mvc.vistas.altas;
 import mvc.vistas.altasAlumnos;
 
+/**
+ * Clase controlador que implementa ActionListener que cambiará de la vista
+ * altas a altasAlumnos
+ * 
+ * @author alexjun09
+ *
+ */
 public class altasAlumnosB implements ActionListener {
 
 	altas a;
 	altasAlumnos aa;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param altas La clase vista altas
+	 * @param aaa   La clase vista altasAlumnos
 	 */
-	public void setVentanaUsuario (altas altas, altasAlumnos aaa) {
-		a=altas;
-		aa=aaa;
+	public void setVentanaUsuario(altas altas, altasAlumnos aaa) {
+		a = altas;
+		aa = aaa;
 	}
-	@Override
+
+	/**
+	 * metodo actionPerformed que se deshará de la vista altas y abrirá la clase
+	 * altasAlumnos
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		a.dispose();
 		aa.hacerVisible();
-		
 
 	}
 

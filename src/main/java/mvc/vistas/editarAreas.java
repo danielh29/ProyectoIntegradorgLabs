@@ -16,6 +16,12 @@ import mvc.control.consultasAlumnosB;
 import mvc.control.consultasAreasB;
 import mvc.control.consultasAreasConsultas;
 
+/**
+ * clase que contiene las vistas de editar areas
+ * 
+ * @author alexjun09
+ *
+ */
 public class editarAreas {
 
 	private JFrame frame;
@@ -35,7 +41,8 @@ public class editarAreas {
 	private JButton button1_2;
 	private JLabel lblNuevoIdrea;
 	private JTextField textField_2;
-	
+
+	// setters y getters habituales
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -116,7 +123,6 @@ public class editarAreas {
 		this.textField_1 = textField_1;
 	}
 
-
 	public JButton getButton1_1() {
 		return button1_1;
 	}
@@ -144,7 +150,7 @@ public class editarAreas {
 	public void setButton3(JButton button3) {
 		this.button3 = button3;
 	}
-	
+
 	public JLabel getLblNuevoIdrea() {
 		return lblNuevoIdrea;
 	}
@@ -161,8 +167,10 @@ public class editarAreas {
 		this.textField_2 = textField_2;
 	}
 
+	/**
+	 * constructor del objeto editarAreas
+	 */
 	public editarAreas() {
-
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
@@ -184,8 +192,8 @@ public class editarAreas {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -272,12 +280,12 @@ public class editarAreas {
 		textField_1.setBackground(new Color(211, 233, 250));
 		textField_1.setBounds(314, 523, 727, 108);
 		panel.add(textField_1);
-		
+
 		lblNuevoIdrea = new JLabel("Nuevo ID Área:");
 		lblNuevoIdrea.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNuevoIdrea.setBounds(575, 431, 241, 62);
 		panel.add(lblNuevoIdrea);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBackground(new Color(211, 233, 250));
@@ -288,68 +296,132 @@ public class editarAreas {
 
 	}
 
+	/**
+	 * metodo que hace las vista visible
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
+
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * cambia la vista a altas
+	 * 
+	 * @param altas vista altas
+	 */
 	public void setAltas(altas altas) {
-		//boton que va a altas
+		// boton que va a altas
 		setControlador2(altas);
 	}
+
+	/**
+	 * cambia la vista al home
+	 * 
+	 * @param home vista home
+	 */
 	public void setHome(home home) {
-		//boton que vuelve a home
-	    setControlador1(home);
+		// boton que vuelve a home
+		setControlador1(home);
 	}
+
+	/**
+	 * cambia la vista a consultas
+	 * 
+	 * @param consultas vista consultas
+	 */
 	public void setConsultas(consultas consultas) {
-		//boton que vuelve a home
-	    setControlador3(consultas);
+		// boton que vuelve a home
+		setControlador3(consultas);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar altas
+	 * 
+	 * @param x vista altas
+	 */
 	public void setControlador2(altas x) {
 		consultaAreasAñadir escuchador = new consultaAreasAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar home
+	 * 
+	 * @param x vista home
+	 */
 	public void setControlador1(home x) {
 		consultaAreasHome escuchador = new consultaAreasHome();
 		escuchador.setVentanaUsuario(this, x);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar
+	 * consultas
+	 * 
+	 * @param x vista consultas
+	 */
 	public void setControlador3(consultas x) {
 		consultasAreasConsultas escuchador = new consultasAreasConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
-	
-	
-	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
-	button1_1.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla ALUMNOS
-	        accesoBBDD.editarDatosAreas();
-	    }
-	});
-	
-	button1_2.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla ALUMNOS
-	        accesoBBDD.borrarDatosAreas();
-	    }
-	});
-}
+
+		final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+		button1_1.addActionListener(new ActionListener() {
+			/**
+			 * metodo que edita los datos de areas de la base de datos
+			 * 
+			 * @param e
+			 */
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla ALUMNOS
+				accesoBBDD.editarDatosAreas();
+			}
+		});
+
+		button1_2.addActionListener(new ActionListener() {
+			/**
+			 * metodo que borra los datos de las ares de la bbdd
+			 */
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla ALUMNOS
+				accesoBBDD.borrarDatosAreas();
+			}
+		});
+	}
 }

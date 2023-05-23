@@ -16,6 +16,12 @@ import mvc.control.altasAreasHome;
 import mvc.control.homeAñadir;
 import mvc.control.homeConsultas;
 
+/**
+ * esta es la clase vista que dará de alta las areas
+ * 
+ * @author alexjun09
+ *
+ */
 public class altasAreas {
 
 	private JFrame frame;
@@ -32,7 +38,8 @@ public class altasAreas {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton button1_1;
-	
+
+	// setters y getters habituales
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -113,7 +120,6 @@ public class altasAreas {
 		this.textField_1 = textField_1;
 	}
 
-
 	public JButton getButton1_1() {
 		return button1_1;
 	}
@@ -134,9 +140,10 @@ public class altasAreas {
 		this.button3 = button3;
 	}
 
+	/**
+	 * constructor del objeto altasAreas
+	 */
 	public altasAreas() {
-		
-
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -159,8 +166,8 @@ public class altasAreas {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -170,8 +177,6 @@ public class altasAreas {
 		Image resizedAdd = imagenAdd.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
 		ImageIcon imagenConsultar = new ImageIcon("Imagenes/buscar.png");
 		Image resizedConsultar = imagenConsultar.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-		
-		
 
 		button1 = new JButton("");
 		button1.setBorderPainted(false);
@@ -196,112 +201,162 @@ public class altasAreas {
 		button3.setContentAreaFilled(false);
 		button3.setFocusPainted(false);
 		button3.setOpaque(false);
-		
+
 		ImageIcon imagenAnadirIcon = new ImageIcon("Imagenes/agregar.png");
 		Image resizedAnadirImage = imagenAnadirIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-		
+
 		button1_1 = new JButton("");
 		button1_1.setBorderPainted(false);
 		button1_1.setOpaque(false);
 		button1_1.setFocusPainted(false);
 		button1_1.setIcon(new ImageIcon(resizedAnadirImage));
 		button1_1.setContentAreaFilled(false);
-		
+
 		button1_1.setBounds(1236, 556, 90, 78);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-		
 		panel.add(button1);
-		
-		
-		
+
 		panel.add(button1_1);
 		panel.add(button2);
 		panel.add(button3);
-		
+
 		JLabel lblNewLabel = new JLabel("ID Área:");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNewLabel.setBounds(59, 431, 174, 62);
 		panel.add(lblNewLabel);
-		
+
 		JLabel lblNExpediente = new JLabel("Descripción:");
 		lblNExpediente.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNExpediente.setBounds(46, 528, 229, 62);
 		panel.add(lblNExpediente);
-		
+
 		textField = new JTextField();
 		textField.setBackground(new Color(211, 233, 250));
 		textField.setBounds(192, 445, 319, 39);
 		panel.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBackground(new Color(211, 233, 250));
 		textField_1.setBounds(270, 539, 727, 108);
 		panel.add(textField_1);
 
-		
-
 	}
 
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * metodo que hará la vista visible
+	 */
 	public void hacerVisible() {
-	    frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshará del la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista altas
+	 */
 	public void setControlador1(altas x) {
 		altasAreasAñadir escuchador = new altasAreasAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a consultas
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador2(consultas x) {
 		altasAreasConsultas escuchador2 = new altasAreasConsultas();
 		escuchador2.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador2);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá al home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador3(home x) {
 		altasAreasHome escuchador2 = new altasAreasHome();
 		escuchador2.setVentanaUsuario(this, x);
 		button1.addActionListener(escuchador2);
 	}
+
+	/**
+	 * metodo que cambia la vista a altas
+	 * 
+	 * @param a la vista altas
+	 */
 	public void setAltas(altas a) {
-        //Boton que va a altas
-        setControlador1(a);
+		// Boton que va a altas
+		setControlador1(a);
 	}
+
+	/**
+	 * metodo que cambia la vista a consultas
+	 * 
+	 * @param c la vista consultas
+	 */
 	public void setConsultas(consultas c) {
-        //Boton que va a consultas
-        setControlador2(c);
+		// Boton que va a consultas
+		setControlador2(c);
 	}
+
+	/**
+	 * metodo que cambia la vista al gome
+	 * 
+	 * @param h
+	 */
 	public void setHome(home h) {
-        //Boton que va a consultas
-        setControlador3(h);
-	
-	
-	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
-	button1_1.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla AREAS
-	        accesoBBDD.insertarDatosAreas();
-	    }
-	});
-}
+		// Boton que va a consultas
+		setControlador3(h);
+
+		final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+		button1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla AREAS
+				accesoBBDD.insertarDatosAreas();
+			}
+		});
+	}
 }

@@ -19,6 +19,12 @@ import mvc.control.consultasAlumnoConsultas;
 import mvc.control.consultasHome;
 import mvc.modelo.datosAlumno;
 
+/**
+ * clase que contiene las vistas de editar alumnos
+ * 
+ * @author alexjun09
+ *
+ */
 public class editarAlumnos {
 
 	private JFrame frame;
@@ -41,7 +47,7 @@ public class editarAlumnos {
 	private JLabel lblNuevoIdAlumno;
 	private JTextField textField_4;
 
-	
+	// setters y getters habituales
 	public JLabel getLblNuevoIdAlumno() {
 		return lblNuevoIdAlumno;
 	}
@@ -157,7 +163,7 @@ public class editarAlumnos {
 	public void setButton3(JButton button3) {
 		this.button3 = button3;
 	}
-	
+
 	public JButton getButton4() {
 		return button4;
 	}
@@ -181,7 +187,10 @@ public class editarAlumnos {
 	public void setTextField_3(JTextField textField_3) {
 		this.textField_3 = textField_3;
 	}
-	
+
+	/**
+	 * constructor del objeto editarAlumnos
+	 */
 	public editarAlumnos() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
@@ -205,8 +214,8 @@ public class editarAlumnos {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -242,10 +251,10 @@ public class editarAlumnos {
 		button3.setContentAreaFilled(false);
 		button3.setFocusPainted(false);
 		button3.setOpaque(false);
-		
+
 		ImageIcon imagenModificarIcon = new ImageIcon("Imagenes/lapiz.png");
 		Image resizedModImage = imagenModificarIcon.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH);
-		
+
 		button4 = new JButton("");
 		button4.setOpaque(false);
 		button4.setFocusPainted(false);
@@ -253,12 +262,10 @@ public class editarAlumnos {
 		button4.setIcon(new ImageIcon(resizedModImage));
 		button4.setBorderPainted(false);
 		button4.setBounds(1166, 551, 43, 39);
-		
+
 		ImageIcon imagenEliminarIcon = new ImageIcon("Imagenes/cancelar.png");
 		Image resizedEliminarImage = imagenEliminarIcon.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH);
 
-		
-		
 		button5 = new JButton("");
 		button5.setBorderPainted(false);
 		button5.setOpaque(false);
@@ -269,134 +276,196 @@ public class editarAlumnos {
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
-		
+
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
 		panel.add(button4);
 		panel.add(button5);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNewLabel.setBounds(46, 431, 174, 62);
 		panel.add(lblNewLabel);
-		
+
 		JLabel lblNExpediente = new JLabel("Nº Expediente:");
 		lblNExpediente.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNExpediente.setBounds(46, 528, 229, 62);
 		panel.add(lblNExpediente);
-		
+
 		JLabel lblIdAlumno = new JLabel("ID Alumno:");
 		lblIdAlumno.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblIdAlumno.setBounds(533, 431, 174, 62);
 		panel.add(lblIdAlumno);
-		
+
 		textField = new JTextField();
 		textField.setBackground(new Color(211, 233, 250));
 		textField.setBounds(176, 451, 303, 39);
 		panel.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBackground(new Color(211, 233, 250));
 		textField_1.setBounds(270, 539, 319, 39);
 		panel.add(textField_1);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBackground(new Color(211, 233, 250));
 		textField_2.setBounds(717, 451, 123, 39);
 		panel.add(textField_2);
-		
+
 		JLabel lblIdProyecto = new JLabel("ID Proyecto:");
 		lblIdProyecto.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblIdProyecto.setBounds(625, 528, 174, 62);
 		panel.add(lblIdProyecto);
-		
+
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBackground(new Color(211, 233, 250));
 		textField_3.setBounds(809, 548, 319, 39);
 		panel.add(textField_3);
-		
+
 		lblNuevoIdAlumno = new JLabel("Nuevo ID Alumno:");
 		lblNuevoIdAlumno.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNuevoIdAlumno.setBounds(867, 431, 240, 62);
 		panel.add(lblNuevoIdAlumno);
-		
+
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		textField_4.setBackground(new Color(211, 233, 250));
 		textField_4.setBounds(1117, 451, 123, 39);
 		panel.add(textField_4);
-		
-		
+
 		frame.setVisible(false);
 
 	}
 
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * metodo que hace la vista visible
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar home
+	 * 
+	 * @param x vista home
+	 */
 	public void setControlador(home x) {
 		consultaAlumnoHome escuchador = new consultaAlumnoHome();
 		escuchador.setVentanaUsuario(x, this);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar altas
+	 * 
+	 * @param x vista altas
+	 */
 	public void setControlador1(altas x) {
 		consultasAlumnoAñadir escuchador = new consultasAlumnoAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar
+	 * consultas
+	 * 
+	 * @param x vista consultas
+	 */
 	public void setControlador2(consultas x) {
 		consultasAlumnoConsultas escuchador2 = new consultasAlumnoConsultas();
 		escuchador2.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador2);
 	}
-	
+
+	/**
+	 * cambia la vista a la vista home
+	 * 
+	 * @param x vista home
+	 */
 	public void setHome(home x) {
 		setControlador(x);
 	}
+
+	/**
+	 * cambia la vista a la vista altas
+	 * 
+	 * @param a vista altas
+	 */
 	public void setAltas(altas a) {
-        //Boton que va a altas
-        setControlador1(a);
+		// Boton que va a altas
+		setControlador1(a);
 	}
+
+	/**
+	 * cambia la vista a la vista consultas
+	 * 
+	 * @param c vista consultas
+	 */
 	public void setConsultas(consultas c) {
-        //Boton que va a consultas
-        setControlador2(c);
-	
-	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
-	button4.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla ALUMNOS
-	        accesoBBDD.editarDatosAlumnos();
-	    }
-	});
-	
-	button5.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla ALUMNOS
-	        accesoBBDD.borrarDatosAlumnos();
-	    }
-	});
-}
+		// Boton que va a consultas
+		setControlador2(c);
+
+		final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+		button4.addActionListener(new ActionListener() {
+			/**
+			 * metodo action performed que accede a la base de datos y edita los datos de
+			 * alumnos
+			 */
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla ALUMNOS
+				accesoBBDD.editarDatosAlumnos();
+			}
+		});
+
+		button5.addActionListener(new ActionListener() {
+			/**
+			 * metodo que acede a la abse de datos y borra alumnos
+			 */
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla ALUMNOS
+				accesoBBDD.borrarDatosAlumnos();
+			}
+		});
+	}
 }

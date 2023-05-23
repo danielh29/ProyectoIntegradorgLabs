@@ -7,20 +7,33 @@ import mvc.vistas.altas;
 import mvc.vistas.altasAlumnos;
 
 /**
- * La clase {@code altasAlumnosAñadir} implementa la interfaz {@code ActionListener} y se utiliza como controlador para el evento de acción de agregar en la vista {@code altasAlumnos}.
+ * Clase controlador que implementa ActionListener que cambiará de la vista
+ * altasAlumnos a altas
+ * 
+ * @author alexjun09
+ *
  */
 public class altasAlumnosAñadir implements ActionListener {
 
 	altas a;
 	altasAlumnos aa;
-	
-	public void setVentanaUsuario (altas altas, altasAlumnos aaa) {
-		a=altas;
-		aa=aaa;
+
+	/**
+	 * Metodo que declara las vistas a cambiar
+	 * 
+	 * @param altas la clase vista de altas (menu)
+	 * @param aaa   la clase vista de altasAlumnos
+	 */
+	public void setVentanaUsuario(altas altas, altasAlumnos aaa) {
+		a = altas;
+		aa = aaa;
 	}
-	@Override
+
+	/**
+	 * meotodo actionPerformed que se deshará de la ventana de altasAlumnos y abrirá
+	 * la ventana de altas (menu)
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		aa.dispose();
 		a.hacerVisible();
 	}

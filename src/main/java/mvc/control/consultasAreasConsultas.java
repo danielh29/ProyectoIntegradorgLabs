@@ -7,22 +7,33 @@ import mvc.vistas.editarAreas;
 import mvc.vistas.consultas;
 import mvc.vistas.home;
 
+/**
+ * Clase que implementa actionListener y cambia de vistas de consultaAreas a
+ * consultas
+ * 
+ * @author alexjun09
+ *
+ */
 public class consultasAreasConsultas implements ActionListener {
 
 	editarAreas ca;
 	consultas c;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que actualiza los datos de las dos vistas a utilizar
+	 * 
+	 * @param consulArea vista consultasAreas
+	 * @param consultas  vista consultas
 	 */
-	public void setVentanaUsuario (editarAreas consulArea, consultas consultas) {
-		ca=consulArea;
-		c=consultas;
+	public void setVentanaUsuario(editarAreas consulArea, consultas consultas) {
+		ca = consulArea;
+		c = consultas;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista a consultas
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		ca.dispose();
 		c.hacerVisible();
 

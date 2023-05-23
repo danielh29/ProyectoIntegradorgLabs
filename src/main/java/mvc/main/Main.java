@@ -4,18 +4,26 @@ import java.awt.EventQueue;
 
 import mvc.vistas.*;
 
+/**
+ * Clase main que ejecutará el resto de clases. Esta clase declara todas las
+ * vista e incluye acceso a todas ellas
+ * 
+ * @author alexjun09
+ *
+ */
 public class Main {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 
-
-			@Override
+			/**
+			 * metodo que declara todas las clases y las pasa por parametros a otras clases
+			 */
 			public void run() {
-	
+
 				VistaPrincipal principal = new VistaPrincipal();
 				VistaLogin login = new VistaLogin();
 				VistaSignUp signup = new VistaSignUp();
-	
+
 				home vistaHome = new home();
 				consultas co = new consultas();
 				altas al = new altas();
@@ -29,25 +37,25 @@ public class Main {
 				buscarPI bp = new buscarPI();
 				editarAlumnos ea = new editarAlumnos();
 				editarPI ei = new editarPI();
-	
+
 				principal.hacerVisible();
-				
-				//Seteo de los botones de la vista principal
+
+				// Seteo de los botones de la vista principal
 				principal.setVistaLogin(login);
 				principal.setVistaSignUp(signup);
-				
-				//Seteo de los botones de Vista Login
+
+				// Seteo de los botones de Vista Login
 				login.setHome(vistaHome);
 				login.setVistaPrincipal(principal);
-				
-				//Seteo de los botones de VistaSingUp
+
+				// Seteo de los botones de VistaSingUp
 				signup.setVistaLogin(login);
 				signup.setVistaPrincipal(principal);
-				
+
 				// Seteo de los botones del home
 				vistaHome.setAltas(al);
 				vistaHome.setConsultas(co);
-	
+
 				// Seteo de los botones de la vista Consultas
 				co.setAltas(al);
 				co.setHome(vistaHome);
@@ -55,7 +63,7 @@ public class Main {
 				co.setBuscarAlumnos(ba);
 				co.setBuscarAreas(bar);
 				co.setBuscarPI(bp);
-	
+
 				// Seteo de los botones de la vista Altas
 				al.setConsultas(co);
 				al.setHome(vistaHome);
@@ -63,60 +71,60 @@ public class Main {
 				al.setAltasAlumnos(aa);
 				al.setAltasPI(ap);
 				al.setAltasAreas(aar);
-	
+
 				// Seteo de los botones de la vista altasAlumnos
 				aa.setHome(vistaHome);
 				aa.setAltas(al);
 				aa.setConsultas(co);
-	
+
 				// Seteo de los botones de la vista altasAreas
 				aar.setAltas(al);
 				aar.setConsultas(co);
 				aar.setHome(vistaHome);
-	
+
 				// Seteo de los botones de la vista altasPI
 				ap.setAltas(al);
 				ap.setHome(vistaHome);
 				ap.setConsultas(co);
-	
+
 				// Seteo de los botones de la vista consultaAlumno
 				ca.setHome(vistaHome);
 				ca.setAltas(al);
 				ca.setConsultas(co);
-	
+
 				// Seteo de los botones de la vista consultaAreas
 				car.setAltas(al);
 				car.setHome(vistaHome);
 				car.setConsultas(co);
-				
-				//Seteo de los botones de la vista buscarAlumno
+
+				// Seteo de los botones de la vista buscarAlumno
 				ba.setAltas(al);
 				ba.setHome(vistaHome);
 				ba.setConsultas(co);
 				ba.setEditarAlumnos(ea);
-				
-				//Seteo de los botones de la vista editarAlumnos
+
+				// Seteo de los botones de la vista editarAlumnos
 				ea.setAltas(al);
 				ea.setConsultas(co);
 				ea.setHome(vistaHome);
-				
-				//Seteo de los botones de la vista buscarAreas
+
+				// Seteo de los botones de la vista buscarAreas
 				bar.setAltas(al);
 				bar.setConsultas(co);
 				bar.setHome(vistaHome);
 				bar.setEditarAreas(car);
-				
-				//Seteo de los botones de la vista buscarPI
+
+				// Seteo de los botones de la vista buscarPI
 				bp.setHome(vistaHome);
 				bp.setAltas(al);
 				bp.setConsultas(co);
 				bp.setEditarPI(ei);
-				
-				//Seteo de los botones de las vista editarPI
+
+				// Seteo de los botones de las vista editarPI
 				ei.setAltas(al);
 				ei.setHome(vistaHome);
 				ei.setConsultas(co);
-			
+
 			}
 		});
 	}

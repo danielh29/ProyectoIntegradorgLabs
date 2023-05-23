@@ -6,21 +6,40 @@ import java.awt.event.ActionListener;
 import mvc.vistas.*;
 import BBDD.*;
 
+/**
+ * clase que implementa action listener y contiene la funcionalidad del signuo
+ * 
+ * @author alexjun09
+ *
+ */
 public class EscuchadorSignUp implements ActionListener {
 	// declaramos la vista principal
 	VistaSignUp s;
 	VistaLogin l;
 
+	/**
+	 * constructor vacío
+	 */
 	public EscuchadorSignUp() {
 
 	}
 
+	/**
+	 * metodo que actualiza los valores de las dos vistas para posteriormete poder
+	 * ser utilizadas
+	 * 
+	 * @param vista            vista vistasignup
+	 * @param vistaLogin`vista vistalogin
+	 */
 	public void setVistaPrincipal(VistaSignUp vista, VistaLogin vistaLogin) {
 		s = vista;
 		l = vistaLogin;
 	}
 
-	// le damos funcionalidad al boton
+	/**
+	 * metodo que cambia de vista y se cominica con la base de datos atraves de las
+	 * query dependiendo de varios escenarios diferentes
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// almacenamos el usuario y la contraseña que pone el usuario
 		String user = s.getTxtUser().getText();
@@ -40,7 +59,7 @@ public class EscuchadorSignUp implements ActionListener {
 			if (res == 2) {
 				s.getAlert().setText("Las contraseñas no coinciden, intentalo de nuevo.");
 			}
-			//contraseña menor a 5 caracteres
+			// contraseña menor a 5 caracteres
 			if (res == 3) {
 				s.getAlert().setText("Contraseña menor a 5 caracteres, intentalo de nuevo.");
 

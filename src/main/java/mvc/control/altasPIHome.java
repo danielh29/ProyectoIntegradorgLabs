@@ -8,23 +8,34 @@ import mvc.vistas.altasPI;
 import mvc.vistas.consultas;
 import mvc.vistas.home;
 
+/**
+ * Clase controlador que implementa ActionListener que cambiará de la vista
+ * altasPI al home
+ * 
+ * @author alexjun09
+ *
+ */
 public class altasPIHome implements ActionListener {
 
 	altasPI a;
 	home h;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param altasPI la vista de altasPI
+	 * @param home    la vista del home
 	 */
-	public void setVentanaUsuario (altasPI altasPI, home home) {
-		a=altasPI;
-		h=home;
+	public void setVentanaUsuario(altasPI altasPI, home home) {
+		a = altasPI;
+		h = home;
 	}
-	@Override
+
+	/**
+	 * metodo actionPerformed que se deshará de la vista altasPI y abrirá la vista
+	 * home
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		a.dispose();
 		h.hacerVisible();
 

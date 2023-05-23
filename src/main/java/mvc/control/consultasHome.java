@@ -6,23 +6,32 @@ import java.awt.event.ActionListener;
 import mvc.vistas.consultas;
 import mvc.vistas.home;
 
-public class consultasHome implements ActionListener{
+/**
+ * Clase que implementa actionListener y cambia de vistas de consulta al home
+ * 
+ * @author alexjun09
+ *
+ */
+public class consultasHome implements ActionListener {
 
 	home v;
 	consultas c;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que actualiza los datos de las dos vistas a utilizar
+	 * 
+	 * @param vista    vista home
+	 * @param consulta vista consulta
 	 */
-	public void setVentanaUsuario (home vista, consultas consulta) {
-		v=vista;
-		c=consulta;
+	public void setVentanaUsuario(home vista, consultas consulta) {
+		v = vista;
+		c = consulta;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista al home
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		c.dispose();
 		v.hacerVisible();
 
