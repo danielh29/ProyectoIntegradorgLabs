@@ -115,4 +115,3 @@ public class datosAlumno {
         return "ID ALUMNO: " + ID_Alumno + " | NºEXPEDIENTE: " + Numero_exp + " | NOMBRE: " + Nombre + " | ID PROYECTO: " + ID_Proyecto ;
     }
 }
-}
