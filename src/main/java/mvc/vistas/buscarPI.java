@@ -27,7 +27,6 @@ public class buscarPI {
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
-	private JButton buttonadd1;
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
 
@@ -102,21 +101,12 @@ public class buscarPI {
 		// BOTONES DE BUSCAR
 		ImageIcon imagenAnadir = new ImageIcon("Imagenes/lupa.png");
 		Image resizedAnadir = imagenAnadir.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-
-		buttonadd1 = new JButton("");
-		buttonadd1.setBorderPainted(false);
-		buttonadd1.setBounds(1185, 298, 90, 78);
-		buttonadd1.setIcon(new ImageIcon(resizedAnadir));
-		buttonadd1.setContentAreaFilled(false);
-		buttonadd1.setFocusPainted(false);
-		buttonadd1.setOpaque(false);
-
-		panel.add(buttonadd1);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
 
 		JScrollPane panelScroll2 = new JScrollPane();
+
 		panelScroll2.setBounds(46,200,1054,437);
 		frame.add(panelScroll2);
 		
@@ -126,13 +116,18 @@ public class buscarPI {
 		datosPI.setFont(new Font("Verdana", Font.PLAIN, 18));
 		
 	}
-	public void setListaPI(ArrayList<datosPI> listaPI) {
-		DefaultListModel<datosPI> modelo = new DefaultListModel<datosPI>();
-		modelo.addAll(listaPI);
-		//Esto no sé si puedes hacerlo o hay que hacer un foreach
-		datosPI.setModel(modelo);
+	private DefaultListModel<datosPI> modeloPI; // Agrega esta variable de instancia
 
+	public void setListaPI(ArrayList<datosPI> listaPI) {
+	    if (modeloPI == null) {
+	        modeloPI = new DefaultListModel<datosPI>();
+	        datosPI.setModel(modeloPI);
+	    }
+
+	    modeloPI.clear();
+	    modeloPI.addAll(listaPI);
 	}
+
 	public void hacerVisible() {
     	frame.setVisible(true);
 	}
