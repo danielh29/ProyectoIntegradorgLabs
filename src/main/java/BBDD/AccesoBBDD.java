@@ -508,7 +508,7 @@ public class AccesoBBDD {
 			Connection conexion = getConexion();
 
 			// Consulta para obtener los datos de los alumnos
-			String consulta = "SELECT ID_Proyecto, nombre, Nota_obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area  FROM proyecto";
+			String consulta = "SELECT ID_Proyecto, nombre, Nota_Obtenida, Ano, Grupo, URL_Proyecto, Curso, ID_Area  FROM proyecto";
 
 			// Crear el objeto PreparedStatement
 			PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
@@ -520,7 +520,7 @@ public class AccesoBBDD {
 			while (resultSet.next()) {
 				int ID_Proyecto = resultSet.getInt("ID_Proyecto");
 				String nombre = resultSet.getString("nombre");
-				int Nota_obtenida = resultSet.getInt("Nota_obtenida");
+				int Nota_obtenida = resultSet.getInt("Nota_Obtenida");
 				Date Ano = resultSet.getDate("Ano");
 				int Grupo = resultSet.getInt("Grupo");
 				String URL_Proyecto = resultSet.getString("URL_Proyecto");

@@ -507,7 +507,7 @@ public class editarPI {
 	public void setControlador1(consultas x) {
 		editarPIConsultas escuchador = new editarPIConsultas();
 		escuchador.setVentanaUsuario(x, this);
-		button2.addActionListener(escuchador);
+		button3.addActionListener(escuchador);
 	}
 
 	/**
@@ -518,7 +518,7 @@ public class editarPI {
 	public void setControlador2(altas x) {
 		editarPIAñadir escuchador2 = new editarPIAñadir();
 		escuchador2.setVentanaUsuario(x, this);
-		button3.addActionListener(escuchador2);
+		button2.addActionListener(escuchador2);
 
 		final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
 		button1_1.addActionListener(new ActionListener() {

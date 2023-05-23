@@ -65,7 +65,7 @@ public class buscarPIEditarPI implements ActionListener, ListSelectionListener {
 				// Obtener los datos del alumno seleccionado
 				datosPI pi = bi.datosPI.getModel().getElementAt(selectedIndex);
 
-				// Establecer los datos del alumno en los JTextFields de la ventana editarPI
+				// Establecer los datos del proyecto en los JTextFields de la ventana editarPI
 				ei.getTextField().setText(String.valueOf(pi.getID_Proyecto()));
 				ei.getTextField_3().setText(pi.getNombre());
 				ei.getTextField_4().setText(String.valueOf(pi.getNota_Obtenida()));

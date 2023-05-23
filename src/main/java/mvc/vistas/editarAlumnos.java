@@ -261,7 +261,7 @@ public class editarAlumnos {
 		button4.setContentAreaFilled(false);
 		button4.setIcon(new ImageIcon(resizedModImage));
 		button4.setBorderPainted(false);
-		button4.setBounds(1166, 551, 43, 39);
+		button4.setBounds(1150, 528, 71, 73);
 
 		ImageIcon imagenEliminarIcon = new ImageIcon("Imagenes/cancelar.png");
 		Image resizedEliminarImage = imagenEliminarIcon.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH);
@@ -272,7 +272,7 @@ public class editarAlumnos {
 		button5.setFocusPainted(false);
 		button5.setIcon(new ImageIcon(resizedEliminarImage));
 		button5.setContentAreaFilled(false);
-		button5.setBounds(1229, 551, 43, 39);
+		button5.setBounds(1231, 528, 71, 73);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
