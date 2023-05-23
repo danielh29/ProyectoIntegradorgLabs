@@ -117,12 +117,13 @@ public class buscarPI {
 		panel.add(button3);
 
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(400,250,417,437);
+		panelScroll2.setBounds(46,200,1054,437);
 		frame.add(panelScroll2);
 		
 		datosPI = new JList<datosPI>();
 		panelScroll2.setViewportView(datosPI);
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		datosPI.setFont(new Font("Verdana", Font.PLAIN, 18));
 		
 	}
 	public void setListaPI(ArrayList<datosPI> listaPI) {

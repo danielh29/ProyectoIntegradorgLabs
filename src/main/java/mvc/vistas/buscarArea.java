@@ -104,10 +104,11 @@ public class buscarArea {
 		panel.add(button3);
 		
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(400,250,417,437);
+		panelScroll2.setBounds(46,200,1054,437);
 		frame.getContentPane().add(panelScroll2);
 		
 		datosAreas = new JList<datosAreas>();
+		datosAreas.setFont(new Font("Verdana", Font.PLAIN, 18));
 		panelScroll2.setViewportView(datosAreas);
 		
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
