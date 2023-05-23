@@ -614,9 +614,11 @@ public class AccesoBBDD {
 	        conexion.close();
 	        
 	        System.out.println("Los datos del proyecto se han actualizado correctamente.");
+	        JOptionPane.showMessageDialog(null, "Los datos del proyecto se han actualizado correctamente");
 
 	    } catch (SQLException e) {
 	        System.out.println("Error al actualizar los datos: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
 	    }
 	}
 
@@ -648,13 +650,17 @@ public class AccesoBBDD {
 
 	        if (filasBorradas > 0) {
 	            System.out.println("Datos eliminados correctamente de la tabla Alumnos.");
+		        JOptionPane.showMessageDialog(null, "Datos eliminados correctamente de la tabla Alumnos ");
 	        } else {
 	            System.out.println("No se encontró ningún alumno con el ID especificado.");
+		        JOptionPane.showMessageDialog(null, "No se encontró ningún alumno con el ID especificado");
 	        }
 	    } catch (SQLException e) {
 	        System.out.println("Error al eliminar los datos: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al eliminar los datos: " + e.getMessage());
 	    } catch (NumberFormatException e) {
 	        System.out.println("Error de formato numérico: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error de formato numérico: " + e.getMessage());
 	    }
 	}
 
@@ -682,13 +688,17 @@ public class AccesoBBDD {
 
 	        if (filasBorradas > 0) {
 	            System.out.println("Datos eliminados correctamente de la tabla Areas.");
+		        JOptionPane.showMessageDialog(null, "Datos eliminados correctamente de la tabla Areas");
 	        } else {
 	            System.out.println("No se encontró ninguna área con el ID especificado.");
+		        JOptionPane.showMessageDialog(null, "No se encontró ninguna área con el ID especificado");
 	        }
 	    } catch (SQLException e) {
 	        System.out.println("Error al eliminar los datos: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al eliminar los datos: " + e.getMessage());
 	    } catch (NumberFormatException e) {
 	        System.out.println("Error de formato numérico: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error de formato numérico: " + e.getMessage());
 	    }
 	}
 
@@ -709,13 +719,16 @@ public class AccesoBBDD {
 	        conexion.close();
 	        
 	        if (filasBorradas > 0) {
-	            System.out.println("Los datos del proyecto se han borrado correctamente.");
-	        } else {
+	            System.out.println("Los datos del proyecto se han borrado correctamente");
+		        JOptionPane.showMessageDialog(null, "Los datos del proyecto se han borrado correctamente");
+		    } else {
 	            System.out.println("No se encontró ningún proyecto con el ID especificado.");
+		        JOptionPane.showMessageDialog(null, "No se encontró ningun proyecto con el ID especificado");
 	        }
 
 	    } catch (SQLException e) {
 	        System.out.println("Error al borrar los datos: " + e.getMessage());
+	        JOptionPane.showMessageDialog(null, "Error al eliminar los datos: " + e.getMessage());
 	    }
 	}
 
