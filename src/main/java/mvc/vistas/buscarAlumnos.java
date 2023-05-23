@@ -115,12 +115,13 @@ public class buscarAlumnos {
 		panel.add(button3);
 
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(400, 250, 417, 437);
+		panelScroll2.setBounds(46,200,1054,437);
 		frame.getContentPane().add(panelScroll2);
 
 		datosAlumnos = new JList<datosAlumno>();
 		panelScroll2.setViewportView(datosAlumnos);
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+    datosAlumnos.setFont(new Font("Verdana", Font.PLAIN, 18));
 
 	}
 

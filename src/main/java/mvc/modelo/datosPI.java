@@ -199,9 +199,7 @@ public class datosPI {
 	 * @return todos los datos del area en forma de string
 	 */
 	public String toString() {
-		return "datosPI{" + "ID_Proyecto=" + ID_Proyecto + ", Nombre='" + Nombre + '\'' + ", Nota_Obtenida="
-				+ Nota_Obtenida + ", Ano=" + Ano + ", Grupo=" + Grupo + ", URL_Proyecto='" + URL_Proyecto + '\''
-				+ ", Curso=" + Curso + ", ID_Area=" + ID_Area + '}';
+	    return "ID_PROYECTO: " + ID_Proyecto +" | NOMBRE: " + Nombre + " | NOTA: " + Nota_Obtenida +" | AÑO: " + Ano + " | GRUPO: " + Grupo + " | URL: " + URL_Proyecto +" | CURSO: " + Curso + " | ID AREA: " + ID_Area ;
 	}
 
 }

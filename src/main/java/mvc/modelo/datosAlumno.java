@@ -112,7 +112,7 @@ public class datosAlumno {
 	 * @return todos los datos del alumno en forma de string
 	 */
 	public String toString() {
-		return "datosAlumno [idAlumno=" + ID_Alumno + ", numeroExp=" + Numero_exp + ", nombre=" + Nombre
-				+ ", idProyecto=" + ID_Proyecto + "]";
-	}
+        return "ID ALUMNO: " + ID_Alumno + " | NºEXPEDIENTE: " + Numero_exp + " | NOMBRE: " + Nombre + " | ID PROYECTO: " + ID_Proyecto ;
+    }
+}
 }
