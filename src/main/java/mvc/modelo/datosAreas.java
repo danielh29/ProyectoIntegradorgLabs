@@ -31,7 +31,7 @@ public class datosAreas {
 		}
 		@Override
 	    public String toString() {
-	        return "datosAreas [ID_Area= " + ID_Area + ", DESCRIPCION= " + DESCRIPCION+" ]";
+	        return "ID_AREA: " + ID_Area + " | DESCRIPCION: " + DESCRIPCION;
 	    }
 
 }
