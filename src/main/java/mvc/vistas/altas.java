@@ -16,6 +16,12 @@ import mvc.control.altasHome;
 import mvc.control.altasPIB;
 import mvc.control.homeAñadir;
 
+/**
+ * Esta clase es la vista de altas (menu)
+ * 
+ * @author alexjun09
+ *
+ */
 public class altas {
 	private JFrame frame;
 	private JPanel panel;
@@ -28,16 +34,14 @@ public class altas {
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
-	
+
 	private home h;
 	private consultas c;
+
 	public altas() {
 //		this.h = home;
 //		this.c = consulta;
-		
 
-		
-		
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
@@ -59,8 +63,8 @@ public class altas {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -78,9 +82,7 @@ public class altas {
 		button1.setContentAreaFilled(false);
 		button1.setFocusPainted(false);
 		button1.setOpaque(false);
-		
 
-	        
 		button2 = new JButton("");
 		button2.setBorderPainted(false);
 		button2.setBounds(600, 677, 90, 78);
@@ -96,7 +98,6 @@ public class altas {
 		button3.setContentAreaFilled(false);
 		button3.setFocusPainted(false);
 		button3.setOpaque(false);
-		
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
@@ -162,77 +163,158 @@ public class altas {
 
 	}
 
-    public void hacerVisible() {
-    	frame.setVisible(true);
+	/**
+	 * Metodo que hará la vista visible
+	 */
+	public void hacerVisible() {
+		frame.setVisible(true);
 	}
-    public void hacerInVisible() {
-    	frame.setVisible(false);
+
+	/**
+	 * metodo que hará la vista invisble
+	 */
+	public void hacerInVisible() {
+		frame.setVisible(false);
 	}
+
+	/**
+	 * metodo que se deshará de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá al home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador(home x) {
 		altasHome escuchador = new altasHome();
 		escuchador.setVentanaUsuario(x, this);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá al consultas
+	 * 
+	 * @param x la vista consultas
+	 */
 	public void setControlador2(consultas x) {
 		altasConsultas escuchador = new altasConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altasAlumnos
+	 * 
+	 * @param x la vista altasAlumnos
+	 */
 	public void setControlador3(altasAlumnos x) {
 		altasAlumnosB escuchador = new altasAlumnosB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altasAreas
+	 * 
+	 * @param x la vista altasAreas
+	 */
 	public void setControlador5(altasAreas x) {
 		altasAreasB escuchador = new altasAreasB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altasPI
+	 * 
+	 * @param x la vista altasPI
+	 */
 	public void setControlador4(altasPI x) {
 		altasPIB escuchador = new altasPIB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd3.addActionListener(escuchador);
 	}
+
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del botton2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del botton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * metodo que cambia la vista al home
+	 * 
+	 * @param home la vista home
+	 */
 	public void setHome(home home) {
-		h=home;
-		//boton que vuelve a home
-	    setControlador(h);
+		h = home;
+		setControlador(h);
 	}
+
+	/**
+	 * metodo que cambia la vista a consultas
+	 * 
+	 * @param con la vista consultas
+	 */
 	public void setConsultas(consultas con) {
-		c=con;
-		//boton que va a consultas
+		c = con;
+		// boton que va a consultas
 		setControlador2(c);
 	}
-	public void setAltasAlumnos (altasAlumnos altaAlum) {
-		//Boton que va a altasAlumnos
+
+	/**
+	 * metodo que cambia la vista a altasAlumnos
+	 * 
+	 * @param altaAlum la vista altasAlumnos
+	 */
+	public void setAltasAlumnos(altasAlumnos altaAlum) {
+		// Boton que va a altasAlumnos
 		setControlador3(altaAlum);
 	}
-	public void setAltasPI (altasPI altasPI) {
-		//Boton que va a altasPI
+
+	/**
+	 * metodo que cambia la vista a altasPI
+	 * 
+	 * @param altasPI la vista altasPI
+	 */
+	public void setAltasPI(altasPI altasPI) {
+		// Boton que va a altasPI
 		setControlador4(altasPI);
 	}
-	public void setAltasAreas (altasAreas altasArea) {
-		//Boton que va a AltasAreas
+
+	/**
+	 * metodo que cambia la vista a altasArea
+	 * 
+	 * @param altasArea la visya altasArea
+	 */
+	public void setAltasAreas(altasAreas altasArea) {
+		// Boton que va a AltasAreas
 		setControlador5(altasArea);
 	}
 }

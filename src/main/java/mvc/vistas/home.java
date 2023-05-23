@@ -12,6 +12,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import mvc.control.homeConsultas;
 import mvc.control.homeAñadir;
 
+/**
+ * clase que contiene la vista del home y sus correcpondientes accesos
+ * 
+ * @author alexjun09
+ *
+ */
 public class home {
 	private JFrame frame;
 	private JPanel panel;
@@ -21,10 +27,11 @@ public class home {
 	private altas a;
 	private consultas c;
 
+	/**
+	 * constructor del objeto home
+	 */
 	public home() {
-		
 
-		
 		// Creacion de clases
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -47,12 +54,12 @@ public class home {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
-		
-		//Iconos de los botones
+
+		// Iconos de los botones
 		ImageIcon imagenHome = new ImageIcon("Imagenes/home.png");
 		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
 		ImageIcon imagenAdd = new ImageIcon("Imagenes/mas.png");
@@ -92,46 +99,86 @@ public class home {
 
 	}
 
+	/**
+	 * metodo que hace la vista visible
+	 */
 	public void hacerVisible() {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * metodo que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setVisible(false);
 	}
 
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2_1;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3_1;
 	}
 
-	// Metodo que crea un nuevo controlador
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar altas
+	 * 
+	 * @param x vista de altas
+	 */
 	public void setControlador1(altas x) {
 		homeAñadir escuchador = new homeAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2_1.addActionListener(escuchador);
 	}
 
-	// Metodo que crea un nuevo controlador
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar
+	 * consultas
+	 * 
+	 * @param x vista de consultas
+	 */
 	public void setControlador2(consultas x) {
 		homeConsultas escuchador2 = new homeConsultas();
 		escuchador2.setVentanaUsuario(this, x);
 		button3_1.addActionListener(escuchador2);
 	}
 
+	/**
+	 * metodo que cambia de vista a altas
+	 * 
+	 * @param altas vista de altas
+	 */
 	public void setAltas(altas altas) {
 		a = altas;
 		// Boton que va a altas
 		setControlador1(a);
 	}
 
+	/**
+	 * metodo que cambia de vista a consultas
+	 * 
+	 * @param con vista de consultas
+	 */
 	public void setConsultas(consultas con) {
 		c = con;
 		// Boton que va a consultas

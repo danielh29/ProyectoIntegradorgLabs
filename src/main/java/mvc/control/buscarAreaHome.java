@@ -7,23 +7,32 @@ import mvc.vistas.buscarAlumnos;
 import mvc.vistas.buscarArea;
 import mvc.vistas.home;
 
+/**
+ * Clase que implementa actionListener y cambia de vistas de buscarArea al home
+ * 
+ * @author alexjun09
+ *
+ */
 public class buscarAreaHome implements ActionListener {
 
 	buscarArea ba;
 	home h;
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param buscarArea vista buscar area
+	 * @param home       vista home
 	 */
-	public void setVentanaUsuario (buscarArea buscarArea, home home) {
-		ba=buscarArea;
-		h=home;
+	public void setVentanaUsuario(buscarArea buscarArea, home home) {
+		ba = buscarArea;
+		h = home;
 	}
-	@Override
+
+	/**
+	 * metodo que cambia de vista al home
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		ba.dispose();
 		h.hacerVisible();
 

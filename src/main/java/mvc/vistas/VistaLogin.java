@@ -15,6 +15,12 @@ import mvc.control.EscuchadorSignUp;
 import mvc.control.loginBack;
 import mvc.vistas.*;
 
+/**
+ * clase que contiene la vista del login y sus correspondientes accesos
+ * 
+ * @author alexjun09
+ *
+ */
 public class VistaLogin extends JFrame {
 	private JTextField txtUser;
 	private JPasswordField txtPass;
@@ -23,18 +29,24 @@ public class VistaLogin extends JFrame {
 	private JButton btn_atras;
 	private home home;
 	private VistaPrincipal VistaPrincipal;
-    private static JButton botonFondo;
-    private static List<ImageIcon> frames;
-    private static int currentFrameIndex;
-    private static final int ICON_WIDTH = 167;
-    private static final int ICON_HEIGHT = 79;
+	private static JButton botonFondo;
+	private static List<ImageIcon> frames;
+	private static int currentFrameIndex;
+	private static final int ICON_WIDTH = 167;
+	private static final int ICON_HEIGHT = 79;
 	EscuchadorLogIn comprobar;
-	
+
+	/**
+	 * constructor del objeto vistalogin
+	 */
 	public VistaLogin() {
 		inicializar();
 
 	}
 
+	/**
+	 * metodo con toda la funcionalidad de la vista
+	 */
 	public void inicializar() {
 		JPanel panel = new JPanel() {
 			@Override
@@ -47,16 +59,15 @@ public class VistaLogin extends JFrame {
 				super.paintComponent(g);
 			}
 		};
-		
+
 		setContentPane(panel);
 		setSize(1350, 820);
 		getContentPane().setLayout(null);
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		setIconImage(icon.getImage());
-		
-		
+
 		JLabel labelUser = new JLabel("Usuario");
 		labelUser.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 50));
 		labelUser.setBounds(517, 374, 153, 46);
@@ -77,8 +88,7 @@ public class VistaLogin extends JFrame {
 		txtPass.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		txtPass.setBounds(659, 494, 252, 45);
 		getContentPane().add(txtPass);
-		
-		
+
 //Botón atras
 		btn_atras = new JButton("");
 		btn_atras.setBorderPainted(false);
@@ -86,107 +96,131 @@ public class VistaLogin extends JFrame {
 		btn_atras.setContentAreaFilled(false);
 		btn_atras.setFocusPainted(false);
 		btn_atras.setOpaque(false);
-          ImageIcon imagenHome = new ImageIcon("Imagenes/back.png");
-  		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+		ImageIcon imagenHome = new ImageIcon("Imagenes/back.png");
+		Image resizedImage = imagenHome.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
 		btn_atras.setIcon(new ImageIcon(resizedImage));
 		getContentPane().add(btn_atras);
-		
-		
-		
-		//BOTÓN PRINCIPAL
-  		btn = new JButton("");
-  		btn.setBounds(601, 613, 167, 79);
-  		getContentPane().add(btn);
-          // Establecer la opacidad del botón
-          btn.setOpaque(false);
-          btn.setContentAreaFilled(false);
-          btn.setBorderPainted(false);
 
-          // Establecer el fondo del botón como transparente
-          btn.setBackground(new Color(0, 0, 0, 0));
-        
-        //BOTÖN FONDO
+		// BOTÓN PRINCIPAL
+		btn = new JButton("");
+		btn.setBounds(601, 613, 167, 79);
+		getContentPane().add(btn);
+		// Establecer la opacidad del botón
+		btn.setOpaque(false);
+		btn.setContentAreaFilled(false);
+		btn.setBorderPainted(false);
+
+		// Establecer el fondo del botón como transparente
+		btn.setBackground(new Color(0, 0, 0, 0));
+
+		// BOTÖN FONDO
 		frames = new ArrayList<>();
 
-        // Carga las imágenes del GIF en una lista
-        for (int i = 1; i <= 2; i++) {
-            String imagePath = "ImagenesGifL/imagen (" + i + ").png";
-            ImageIcon frame = new ImageIcon(imagePath);
-            ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
-            frames.add(scaledFrame);
-        }
+		// Carga las imágenes del GIF en una lista
+		for (int i = 1; i <= 2; i++) {
+			String imagePath = "ImagenesGifL/imagen (" + i + ").png";
+			ImageIcon frame = new ImageIcon(imagePath);
+			ImageIcon scaledFrame = scaleImageIcon(frame, ICON_WIDTH, ICON_HEIGHT);
+			frames.add(scaledFrame);
+		}
 
-        // Configura el primer frame como icono inicial del botón
-        currentFrameIndex = 0;
+		// Configura el primer frame como icono inicial del botón
+		currentFrameIndex = 0;
 
-        // Inicia un temporizador para cambiar automáticamente los frames
-        int delay = 3000; // Intervalo en milisegundos entre cada cambio de frame
-        Timer timer = new Timer(delay, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                botonFondo.doClick(); // Simula un clic en el botón para cambiar el frame
-            }
-        });
-        timer.start();
-        
-		
-		        botonFondo = new JButton();
-		        botonFondo.setBounds(601, 613, 170, 70);
-		        botonFondo.addActionListener(new ActionListener() {
-		            @Override
-		            public void actionPerformed(ActionEvent e) {
-		                // Cambia la imagen del botón al siguiente frame
-		                currentFrameIndex = (currentFrameIndex + 1) % frames.size();
-		                botonFondo.setIcon(frames.get(currentFrameIndex));
-		            }
-		        });
-		        botonFondo.setIcon(frames.get(currentFrameIndex));
-		        
-		          botonFondo.setOpaque(false);
-		          botonFondo.setContentAreaFilled(false);
-		          botonFondo.setBorderPainted(false);
-		          botonFondo.setBackground(new Color(0, 0, 0, 0));
-		        
-		        getContentPane().add(botonFondo);
-		        
-		        alert = new JLabel("");
-				alert.setBounds(486, 450, 337, 16);
-				getContentPane().add(alert);
+		// Inicia un temporizador para cambiar automáticamente los frames
+		int delay = 3000; // Intervalo en milisegundos entre cada cambio de frame
+		Timer timer = new Timer(delay, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				botonFondo.doClick(); // Simula un clic en el botón para cambiar el frame
+			}
+		});
+		timer.start();
 
-		
+		botonFondo = new JButton();
+		botonFondo.setBounds(601, 613, 170, 70);
+		botonFondo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Cambia la imagen del botón al siguiente frame
+				currentFrameIndex = (currentFrameIndex + 1) % frames.size();
+				botonFondo.setIcon(frames.get(currentFrameIndex));
+			}
+		});
+		botonFondo.setIcon(frames.get(currentFrameIndex));
+
+		botonFondo.setOpaque(false);
+		botonFondo.setContentAreaFilled(false);
+		botonFondo.setBorderPainted(false);
+		botonFondo.setBackground(new Color(0, 0, 0, 0));
+
+		getContentPane().add(botonFondo);
+
+		alert = new JLabel("");
+		alert.setBounds(486, 450, 337, 16);
+		getContentPane().add(alert);
+
 	}
 
+	/**
+	 * metodo que hace la clase visible
+	 */
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * metodo que hace la clase invisble
+	 */
 	public void hacerInisible() {
 		setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá al home
+	 * 
+	 * @param x vista home
+	 */
 	public void setControlador(home x) {
 		EscuchadorLogIn escuchador = new EscuchadorLogIn();
 		escuchador.setVistaPrincipal(this, x);
 		btn.addActionListener(escuchador);
 	}
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a la vista
+	 * principal
+	 * 
+	 * @param x vista vistaprincipal
+	 */
 	public void setControlador2(VistaPrincipal vp) {
 		loginBack escuchador = new loginBack();
 		escuchador.setVistaPrincipal(this, vp);
 		btn_atras.addActionListener(escuchador);
 	}
-	
-	
+
+	/**
+	 * metodo que cambia de vista al home
+	 * 
+	 * @param x vista home
+	 */
 	public void setHome(home x) {
 		home = x;
 		setControlador(x);
 	}
-	
-	public void setVistaPrincipal (VistaPrincipal vp) {
+
+	/**
+	 * metodo que cambia la vista al la vista principal
+	 * 
+	 * @param vp vista vistaprincipal
+	 */
+	public void setVistaPrincipal(VistaPrincipal vp) {
 		VistaPrincipal = vp;
 		setControlador2(vp);
-		
+
 	}
-	
+
+	// setters y getters habituales
 	public JLabel getAlert() {
 		return alert;
 	}
@@ -210,15 +244,15 @@ public class VistaLogin extends JFrame {
 	public void setTxtPass(JPasswordField txtPass) {
 		this.txtPass = txtPass;
 	}
-	
+
 	public JButton getBtn_atras() {
 		return btn_atras;
 	}
-	
+
 	private static ImageIcon scaleImageIcon(ImageIcon icon, int width, int height) {
-        Image image = icon.getImage();
-        Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return new ImageIcon(scaledImage);
-    }
+		Image image = icon.getImage();
+		Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+		return new ImageIcon(scaledImage);
+	}
 
 }

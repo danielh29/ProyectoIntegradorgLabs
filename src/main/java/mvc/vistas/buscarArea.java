@@ -19,6 +19,12 @@ import mvc.control.consultasHome;
 import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 
+/**
+ * clase que contiene las vistas de buscarArea
+ * 
+ * @author alexjun09
+ *
+ */
 public class buscarArea {
 	private JFrame frame;
 	private JPanel panel;
@@ -27,13 +33,17 @@ public class buscarArea {
 	private JButton button3;
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
-	
+
 	private JScrollPane scrollPane;
-	public JList <datosAreas> datosAreas;
+	public JList<datosAreas> datosAreas;
 
 	private home h;
 	private altas a;
 	private consultas c;
+
+	/**
+	 * constructor del objeto buscarAreas
+	 */
 	public buscarArea() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
@@ -57,8 +67,8 @@ public class buscarArea {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -102,81 +112,153 @@ public class buscarArea {
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
-		
+
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(400,250,417,437);
+		panelScroll2.setBounds(400, 250, 417, 437);
 		frame.getContentPane().add(panelScroll2);
-		
+
 		datosAreas = new JList<datosAreas>();
 		panelScroll2.setViewportView(datosAreas);
-		
+
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
-		
+
 	}
+
+	/**
+	 * 
+	 * @param listaAreas
+	 */
 	public void setListaArea(ArrayList<datosAreas> listaAreas) {
 		DefaultListModel<datosAreas> modelo = new DefaultListModel<datosAreas>();
 		modelo.addAll(listaAreas);
-		//Esto no sé si puedes hacerlo o hay que hacer un foreach
+		// Esto no sé si puedes hacerlo o hay que hacer un foreach
 		datosAreas.setModel(modelo);
 
 	}
+
+	/**
+	 * metodo que hace la vista visible
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador(home x) {
 		buscarAreaHome escuchador = new buscarAreaHome();
 		escuchador.setVentanaUsuario(this, x);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista altas
+	 */
 	public void setControlador2(altas x) {
 		buscarAreaAñadir escuchador = new buscarAreaAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a consultas
+	 * 
+	 * @param x la vista consultas
+	 */
 	public void setControlador3(consultas x) {
 		buscarAreaConsulta escuchador = new buscarAreaConsulta();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editarAreas
+	 * 
+	 * @param x la vista editarAreas
+	 */
 	public void setControlador4(editarAreas x) {
 		buscarAreaEditarArea escuchador = new buscarAreaEditarArea();
 		escuchador.setVentana(this, x);
 		datosAreas.addListSelectionListener(escuchador);
 	}
+
+	/**
+	 * metodo que cambiará la vista a editarAreas
+	 * 
+	 * @param editarAreas la vista editarAreas
+	 */
 	public void setEditarAreas(editarAreas editarAreas) {
 		setControlador4(editarAreas);
 	}
+
+	/**
+	 * metodo que cambiará la vista a altas
+	 * 
+	 * @param altas la vista altas
+	 */
 	public void setAltas(altas altas) {
-		a=altas;
-		//boton que va a altas
+		a = altas;
+		// boton que va a altas
 		setControlador2(a);
 	}
+
+	/**
+	 * metodo que cambiará a la vista home
+	 * 
+	 * @param home la vista home
+	 */
 	public void setHome(home home) {
-		h=home;
-		//boton que vuelve a home
-	    setControlador(h);
+		h = home;
+		// boton que vuelve a home
+		setControlador(h);
 	}
-	public void setConsultas (consultas consultas) {
-		c=consultas;
+
+	/**
+	 * metodo que cambiará la vista a consultas
+	 * 
+	 * @param consultas la vista consultas
+	 */
+	public void setConsultas(consultas consultas) {
+		c = consultas;
 		setControlador3(c);
 	}
+
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}

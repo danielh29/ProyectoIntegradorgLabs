@@ -21,6 +21,12 @@ import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 import mvc.modelo.datosPI;
 
+/**
+ * clase que contiene las vistas de buscarPI
+ * 
+ * @author alexjun09
+ *
+ */
 public class buscarPI {
 	private JFrame frame;
 	private JPanel panel;
@@ -31,11 +37,15 @@ public class buscarPI {
 	private JTextField txtHola;
 
 	private JScrollPane scrollPane;
-	public JList <datosPI> datosPI;
-	
+	public JList<datosPI> datosPI;
+
 	private home h;
 	private altas a;
 	private consultas c;
+
+	/**
+	 * constructor del objeto buscarPI
+	 */
 	public buscarPI() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
@@ -59,8 +69,8 @@ public class buscarPI {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -106,84 +116,154 @@ public class buscarPI {
 		panel.add(button3);
 
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(400,250,417,437);
+		panelScroll2.setBounds(400, 250, 417, 437);
 		frame.getContentPane().add(panelScroll2);
-		
+
 		datosPI = new JList<datosPI>();
 		panelScroll2.setViewportView(datosPI);
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
+
 	}
+
 	private DefaultListModel<datosPI> modeloPI; // Agrega esta variable de instancia
 
+	/**
+	 * 
+	 * @param listaPI
+	 */
 	public void setListaPI(ArrayList<datosPI> listaPI) {
-	    if (modeloPI == null) {
-	        modeloPI = new DefaultListModel<datosPI>();
-	        datosPI.setModel(modeloPI);
-	    }
+		if (modeloPI == null) {
+			modeloPI = new DefaultListModel<datosPI>();
+			datosPI.setModel(modeloPI);
+		}
 
-	    modeloPI.clear();
-	    modeloPI.addAll(listaPI);
+		modeloPI.clear();
+		modeloPI.addAll(listaPI);
 	}
 
+	/**
+	 * metodo que hará la vista visible
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshará de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador(home x) {
 		buscarPIHome escuchador = new buscarPIHome();
 		escuchador.setVentanaUsuario(this, x);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista alta
+	 */
 	public void setControlador2(altas x) {
 		buscarPIAñadir escuchador = new buscarPIAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a consultas
+	 * 
+	 * @param x la vista consultas
+	 */
 	public void setControlador3(consultas x) {
 		buscarPIConsultas escuchador = new buscarPIConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
-	
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editarPI
+	 * 
+	 * @param x la vista editarPI
+	 */
 	public void setControlador4(editarPI x) {
 		buscarPIEditarPI escuchador = new buscarPIEditarPI();
 		escuchador.setVentana(this, x);
 		datosPI.addListSelectionListener(escuchador);
 	}
-	
-	public void setEditarPI ( editarPI editarPI) {
+
+	/**
+	 * metodo que cambia de vista a editar pi
+	 * 
+	 * @param editarPI la vista editarPI
+	 */
+	public void setEditarPI(editarPI editarPI) {
 		setControlador4(editarPI);
 	}
-	
+
+	/**
+	 * metodo que cambia de vista a altas
+	 * 
+	 * @param altas la vista altas
+	 */
 	public void setAltas(altas altas) {
-		a=altas;
-		//boton que va a altas
+		a = altas;
+		// boton que va a altas
 		setControlador2(a);
 	}
+
+	/**
+	 * metodo que cambia la vista al home
+	 * 
+	 * @param home la vista home
+	 */
 	public void setHome(home home) {
-		h=home;
-		//boton que vuelve a home
-	    setControlador(h);
+		h = home;
+		// boton que vuelve a home
+		setControlador(h);
 	}
-	public void setConsultas (consultas consultas) {
-		c=consultas;
+
+	/**
+	 * metodo que cambia la vista a consultas
+	 * 
+	 * @param consultas la vista consultas
+	 */
+	public void setConsultas(consultas consultas) {
+		c = consultas;
 		setControlador3(c);
 	}
+
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}

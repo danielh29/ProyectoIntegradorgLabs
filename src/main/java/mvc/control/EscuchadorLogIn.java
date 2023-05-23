@@ -7,22 +7,42 @@ import mvc.vistas.*;
 import mvc.main.*;
 import BBDD.*;
 
+/**
+ * clase que implementa action listener y contiene toda la funcionalidad del
+ * login
+ * 
+ * @author alexjun09
+ *
+ */
 public class EscuchadorLogIn implements ActionListener {
 	// declaramos la vista principal
 	VistaLogin v;
 	home h;
 	int counter = 3;
 
+	/**
+	 * constructor vacío
+	 */
 	public EscuchadorLogIn() {
 
 	}
 
+	/**
+	 * metodo que actualiza los valores de las dos vistas para posteriormete poder
+	 * ser utilizadas
+	 * 
+	 * @param vista vista vistalogin
+	 * @param home  vista home
+	 */
 	public void setVistaPrincipal(VistaLogin vista, home home) {
 		v = vista;
 		h = home;
 	}
 
-	// le damos funcionalidad al boton
+	/**
+	 * metodo que cambia de vista y se comunica con la bbdd atraves de las queries
+	 * dependiendo de los datos introducidos
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// almacenamos el usuario y la contraseña que pone el usuario
 		String user = v.getTxtUser().getText();
@@ -30,7 +50,8 @@ public class EscuchadorLogIn implements ActionListener {
 
 		AccesoBBDD bbdd = new AccesoBBDD();
 		bbdd.getConexion();
-		//dependiendo de lo que devuelva el metodo query, haremos visible una pantalla u otra, o editaremos el JLabel oara hacerle saber al usuario del error.
+		// dependiendo de lo que devuelva el metodo query, haremos visible una pantalla
+		// u otra, o editaremos el JLabel oara hacerle saber al usuario del error.
 		try {
 			// acceso conseguido
 			if (bbdd.logIn(user, pass) == 1) {

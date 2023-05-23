@@ -20,6 +20,12 @@ import mvc.control.consultasHome;
 import mvc.modelo.datosAlumno;
 import mvc.modelo.datosAreas;
 
+/**
+ * clase que contiene la vista de buscar alumnos
+ * 
+ * @author alexjun09
+ *
+ */
 public class buscarAlumnos {
 	private JFrame frame;
 	private JPanel panel;
@@ -28,13 +34,17 @@ public class buscarAlumnos {
 	private JButton button3;
 	private JLabel lblNewLabel_1;
 	private JTextField txtHola;
-	
+
 	private JScrollPane scrollPane;
-	public JList <datosAlumno> datosAlumnos;
+	public JList<datosAlumno> datosAlumnos;
 
 	private home h;
 	private altas a;
 	private consultas c;
+
+	/**
+	 * constructor del objeto altasAlumnos
+	 */
 	public buscarAlumnos() {
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
@@ -58,8 +68,8 @@ public class buscarAlumnos {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -103,80 +113,142 @@ public class buscarAlumnos {
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
-		
+
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(400,250,417,437);
+		panelScroll2.setBounds(400, 250, 417, 437);
 		frame.getContentPane().add(panelScroll2);
-		
+
 		datosAlumnos = new JList<datosAlumno>();
 		panelScroll2.setViewportView(datosAlumnos);
 		panelScroll2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
 	}
-	
+
 	public void setListaAlumnos(ArrayList<datosAlumno> alumnos) {
 		DefaultListModel<datosAlumno> modelo = new DefaultListModel<datosAlumno>();
 		modelo.addAll(alumnos);
-		//Esto no sé si puedes hacerlo o hay que hacer un foreach
+		// Esto no sé si puedes hacerlo o hay que hacer un foreach
 		datosAlumnos.setModel(modelo);
 	}
-	
-	
+
+	/**
+	 * metodo que hace la vista invisible
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador(home x) {
 		buscarAlumnosHome escuchador = new buscarAlumnosHome();
 		escuchador.setVentanaUsuario(this, x);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista altas
+	 */
 	public void setControlador2(altas x) {
 		buscarAlumnosAñadir escuchador = new buscarAlumnosAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a consultas
+	 * 
+	 * @param x la vista consultas
+	 */
 	public void setControlador3(consultas x) {
 		buscarAlumnosConsultas escuchador = new buscarAlumnosConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a editar alumnos
+	 * 
+	 * @param x la vista editaralumnos
+	 */
 	public void setControlador4(editarAlumnos x) {
 		buscarAlumnoEditarAlumno escuchador = new buscarAlumnoEditarAlumno();
 		escuchador.setVentana(this, x);
 		datosAlumnos.addListSelectionListener(escuchador);
 	}
-	public void setEditarAlumnos ( editarAlumnos editarAlumnos) {
+
+	/**
+	 * metodo que cambia la vista a editar alumnos
+	 * 
+	 * @param editarAlumnos la vista editarAlumnos
+	 */
+	public void setEditarAlumnos(editarAlumnos editarAlumnos) {
 		setControlador4(editarAlumnos);
 	}
+
 	public void setAltas(altas altas) {
-		a=altas;
-		//boton que va a altas
+		a = altas;
+		// boton que va a altas
 		setControlador2(a);
 	}
+
+	/**
+	 * metodo que cambia la vista aal home
+	 * 
+	 * @param altas la vista home
+	 */
 	public void setHome(home home) {
-		h=home;
-		//boton que vuelve a home
-	    setControlador(h);
+		h = home;
+		// boton que vuelve a home
+		setControlador(h);
 	}
-	public void setConsultas (consultas consultas) {
-		c=consultas;
+
+	/**
+	 * metodo que cambia la vista a consultas
+	 * 
+	 * @param consultas la vista consultas
+	 */
+	public void setConsultas(consultas consultas) {
+		c = consultas;
 		setControlador3(c);
 	}
+
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}

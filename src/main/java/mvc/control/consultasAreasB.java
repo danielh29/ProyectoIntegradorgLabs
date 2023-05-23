@@ -12,30 +12,40 @@ import mvc.vistas.editarAlumnos;
 import mvc.vistas.editarAreas;
 import mvc.vistas.consultas;
 
+/**
+ * clase que almacena los datos de las consultas de las areas
+ * 
+ * @author alexjun09
+ *
+ */
 public class consultasAreasB implements ActionListener {
 
 	consultas c;
 	buscarArea ba;
 	ArrayList<datosAreas> listaAreas = new ArrayList<>();
 
+	/**
+	 * Método que declarará las vistas con las que queremos trabjar
+	 * 
+	 * @param consultas  vista consultas
+	 * @param buscarArea vista buscarAreas
+	 */
+	public void setVentanaUsuario(consultas consultas, buscarArea buscarArea) {
+		c = consultas;
+		ba = buscarArea;
+	}
 
 	/**
-	 * Método que nos permite trabajar con una vista principal V
-	 * @param vista, Clase Vista Principal
+	 * metodo que cambia de vista y almacena los datos de la query
 	 */
-	public void setVentanaUsuario (consultas consultas, buscarArea buscarArea) {
-		c=consultas;
-		ba=buscarArea;
-	}
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		AccesoBBDD acceso = new AccesoBBDD();
-		
-		listaAreas=acceso.obtenerDatosAreas();
-		
+
+		listaAreas = acceso.obtenerDatosAreas();
+
 		ba.setListaArea(listaAreas);
-		
+
 		c.dispose();
 		ba.hacerVisible();
 

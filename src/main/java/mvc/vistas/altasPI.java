@@ -18,6 +18,12 @@ import mvc.control.altasPIHome;
 import mvc.control.altasPiAñadir;
 import mvc.control.altasPiConsultas;
 
+/**
+ * Clase que contiene la vista de altasPI
+ * 
+ * @author alexjun09
+ *
+ */
 public class altasPI {
 
 	private JFrame frame;
@@ -45,7 +51,8 @@ public class altasPI {
 	private JTextField textField_7;
 	private JLabel lblGrupo_2;
 	private JTextField textField_8;
-	
+
+	// setters y getters habituales
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -234,9 +241,10 @@ public class altasPI {
 		this.button3 = button3;
 	}
 
+	/**
+	 * constructor del objeto altasPI
+	 */
 	public altasPI() {
-		
-
 
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -259,8 +267,8 @@ public class altasPI {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -270,8 +278,6 @@ public class altasPI {
 		Image resizedAdd = imagenAdd.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
 		ImageIcon imagenConsultar = new ImageIcon("Imagenes/buscar.png");
 		Image resizedConsultar = imagenConsultar.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-		
-		
 
 		button1 = new JButton("");
 		button1.setBorderPainted(false);
@@ -296,182 +302,233 @@ public class altasPI {
 		button3.setContentAreaFilled(false);
 		button3.setFocusPainted(false);
 		button3.setOpaque(false);
-		
+
 		ImageIcon imagenAnadirIcon = new ImageIcon("Imagenes/agregar.png");
 		Image resizedAnadirImage = imagenAnadirIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-		
+
 		button1_1 = new JButton("");
 		button1_1.setBorderPainted(false);
 		button1_1.setOpaque(false);
 		button1_1.setFocusPainted(false);
 		button1_1.setIcon(new ImageIcon(resizedAnadirImage));
 		button1_1.setContentAreaFilled(false);
-		
+
 		button1_1.setBounds(1168, 628, 90, 78);
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-		
 		panel.add(button1);
-		
-		
-		
+
 		panel.add(button1_1);
 		panel.add(button2);
 		panel.add(button3);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNewLabel.setBounds(46, 231, 174, 62);
 		panel.add(lblNewLabel);
-		
+
 		JLabel lblNExpediente = new JLabel("URL:");
 		lblNExpediente.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblNExpediente.setBounds(46, 528, 90, 62);
 		panel.add(lblNExpediente);
-		
+
 		JLabel lblIdAlumno = new JLabel("ID Área:");
 		lblIdAlumno.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblIdAlumno.setBounds(46, 339, 174, 62);
 		panel.add(lblIdAlumno);
-		
+
 		lblGrupo = new JLabel("Año:");
 		lblGrupo.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblGrupo.setBounds(441, 339, 83, 62);
 		panel.add(lblGrupo);
-		
+
 		lblGrupo_1 = new JLabel("Grupo:");
 		lblGrupo_1.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblGrupo_1.setBounds(798, 332, 174, 62);
 		panel.add(lblGrupo_1);
-		
+
 		textField = new JTextField();
 		textField.setBackground(new Color(211, 233, 250));
 		textField.setBounds(192, 249, 926, 39);
 		panel.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBackground(new Color(211, 233, 250));
 		textField_1.setBounds(128, 539, 1130, 39);
 		panel.add(textField_1);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBackground(new Color(211, 233, 250));
 		textField_2.setBounds(168, 350, 261, 39);
 		panel.add(textField_2);
-		
+
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		textField_4.setBackground(new Color(211, 233, 250));
 		textField_4.setBounds(516, 350, 261, 39);
 		panel.add(textField_4);
-		
+
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
 		textField_5.setBackground(new Color(211, 233, 250));
 		textField_5.setBounds(910, 350, 261, 39);
 		panel.add(textField_5);
-		
+
 		lblCurso = new JLabel("Curso:");
 		lblCurso.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblCurso.setBounds(46, 420, 174, 62);
 		panel.add(lblCurso);
-		
+
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
 		textField_6.setBackground(new Color(211, 233, 250));
 		textField_6.setBounds(168, 431, 261, 39);
 		panel.add(textField_6);
-		
+
 		lblIdProyecto = new JLabel("ID Proyecto:");
 		lblIdProyecto.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblIdProyecto.setBounds(441, 420, 174, 62);
 		panel.add(lblIdProyecto);
-		
+
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
 		textField_7.setBackground(new Color(211, 233, 250));
 		textField_7.setBounds(625, 437, 261, 39);
 		panel.add(textField_7);
-		
+
 		lblGrupo_2 = new JLabel("Nota:");
 		lblGrupo_2.setFont(new Font("SansSerif", Font.PLAIN, 30));
 		lblGrupo_2.setBounds(910, 420, 99, 62);
 		panel.add(lblGrupo_2);
-		
+
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
 		textField_8.setBackground(new Color(211, 233, 250));
 		textField_8.setBounds(1003, 431, 261, 39);
 		panel.add(textField_8);
 
-		
-
 	}
 
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * metodo que hace la vista visible
+	 */
 	public void hacerVisible() {
-	    frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metodo que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador(home x) {
 		altasPIHome escuchador = new altasPIHome();
 		escuchador.setVentanaUsuario(this, x);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a consultas
+	 * 
+	 * @param x la vista consultas
+	 */
 	public void setControlador2(consultas x) {
 		altasPiConsultas escuchador = new altasPiConsultas();
 		escuchador.setVentanaUsuario(this, x);
 		button3.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista altas
+	 */
 	public void setControlador3(altas x) {
 		altasPiAñadir escuchador = new altasPiAñadir();
 		escuchador.setVentanaUsuario(this, x);
 		button2.addActionListener(escuchador);
 	}
+
+	/**
+	 * metodo que cambia la vista al home
+	 * 
+	 * @param home la vista home
+	 */
 	public void setHome(home home) {
-		//boton que vuelve a home
-	    setControlador(home);
+		// boton que vuelve a home
+		setControlador(home);
 	}
+
+	/**
+	 * metodo que cambia la vista a consultas
+	 * 
+	 * @param home la vista consultas
+	 */
 	public void setConsultas(consultas con) {
-		//boton que va a consultas
+		// boton que va a consultas
 		setControlador2(con);
 	}
-	public void setAltas (altas altas) {
-		//boton que va a altas
+
+	/**
+	 * metodo que cambia la vista a altas
+	 * 
+	 * @param altas la vista altas
+	 */
+	public void setAltas(altas altas) {
+		// boton que va a altas
 		setControlador3(altas);
-	
-	final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
-	button1_1.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	        // Insertar los datos en la tabla PROYECTO
-	        try {
-				accesoBBDD.insertarDatosPI();
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+
+		final AccesoBBDD accesoBBDD = new AccesoBBDD(this);
+		button1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Insertar los datos en la tabla PROYECTO
+				try {
+					accesoBBDD.insertarDatosPI();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-	    }
-	});
- }
+		});
+	}
 }

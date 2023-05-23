@@ -16,6 +16,12 @@ import mvc.control.consultasAreasB;
 import mvc.control.consultasHome;
 import mvc.control.consultasPIB;
 
+/**
+ * clase que contiene las vistas de consultas y sus correspondientes metodos
+ * 
+ * @author alexjun09
+ *
+ */
 public class consultas {
 	private JFrame frame;
 	private JPanel panel;
@@ -31,9 +37,12 @@ public class consultas {
 
 	private home h;
 	private altas a;
-	
+
+	/**
+	 * constructor del objeto consultas
+	 */
 	public consultas() {
-		//this.h = home;
+		// this.h = home;
 		///////////////////// MENÚ Y FONDO/////////////////////////////77
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
@@ -55,8 +64,8 @@ public class consultas {
 				super.paintComponent(g);
 			}
 		};
-		
-		//Cambia el icono de la ventana de Java
+
+		// Cambia el icono de la ventana de Java
 		ImageIcon icon = new ImageIcon("Imagenes/7.png");
 		frame.setIconImage(icon.getImage());
 
@@ -74,7 +83,6 @@ public class consultas {
 		button1.setContentAreaFilled(false);
 		button1.setFocusPainted(false);
 		button1.setOpaque(false);
-		
 
 		button2 = new JButton("");
 		button2.setBorderPainted(false);
@@ -83,7 +91,6 @@ public class consultas {
 		button2.setContentAreaFilled(false);
 		button2.setFocusPainted(false);
 		button2.setOpaque(false);
-		
 
 		button3 = new JButton("");
 		button3.setBorderPainted(false);
@@ -157,76 +164,154 @@ public class consultas {
 		frame.setVisible(false);
 
 	}
+
+	/**
+	 * metodo que hace la vista visible
+	 */
 	public void hacerVisible() {
-    	frame.setVisible(true);
+		frame.setVisible(true);
 	}
+
+	/**
+	 * metood* que se deshace de la vista
+	 */
 	public void dispose() {
 		frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		frame.setVisible(false);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a home
+	 * 
+	 * @param x la vista home
+	 */
 	public void setControlador(home x) {
 		consultasHome escuchador = new consultasHome();
 		escuchador.setVentanaUsuario(x, this);
 		button1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a altas
+	 * 
+	 * @param x la vista altas
+	 */
 	public void setControlador2(altas x) {
 		consultasAltas escuchador = new consultasAltas();
 		escuchador.setVentanaUsuario(x, this);
 		button2.addActionListener(escuchador);
 	}
+
+	/**
+	 * getter del boton 1
+	 * 
+	 * @return button1 el boton 1
+	 */
 	public JButton getButton1() {
 		return button1;
 	}
 
+	/**
+	 * getter del boton 2
+	 * 
+	 * @return button2 el boton 2
+	 */
 	public JButton getButton2() {
 		return button2;
 	}
 
+	/**
+	 * getter del boton 3
+	 * 
+	 * @return button3 el boton 3
+	 */
 	public JButton getButton3() {
 		return button3;
 	}
+
+	/**
+	 * metodo que cambia la vista a altas
+	 * 
+	 * @param altas la vista altas
+	 */
 	public void setAltas(altas altas) {
-		a=altas;
-		//boton que va a altas
+		a = altas;
+		// boton que va a altas
 		setControlador2(a);
 	}
+
+	/**
+	 * metodo que cambia la vista al home
+	 * 
+	 * @param home la vista home
+	 */
 	public void setHome(home home) {
-		h=home;
-		//boton que vuelve a home
-	    setControlador(h);
+		h = home;
+		// boton que vuelve a home
+		setControlador(h);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a buscarAlumnos
+	 * 
+	 * @param x la vista buscar alumnos
+	 */
 	public void setControlador3(buscarAlumnos x) {
 		consultasAlumnosB escuchador = new consultasAlumnosB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd1.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a buscarAreas
+	 * 
+	 * @param x la vista buscarArea
+	 */
 	public void setControlador4(buscarArea x) {
 		consultasAreasB escuchador = new consultasAreasB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd2.addActionListener(escuchador);
 	}
-	//Metodo que crea un nuevo controlador
+
+	/**
+	 * metodo que creará una nuevo controlador (boton) que redigirá a buscarPI
+	 * 
+	 * @param x la vista buscarPI
+	 */
 	public void setControlador5(buscarPI x) {
 		consultasPIB escuchador = new consultasPIB();
 		escuchador.setVentanaUsuario(this, x);
 		buttonadd3.addActionListener(escuchador);
 	}
-	
+
+	/**
+	 * metodo que cambiará de vista a buscarArea
+	 * 
+	 * @param x la vista buscarArea
+	 */
 	public void setBuscarAreas(buscarArea x) {
-		//boton que vuelve a home
-	    setControlador4(x);
+		// boton que vuelve a home
+		setControlador4(x);
 	}
+
+	/**
+	 * metodo que cambiará de vista a buscarAlumnos
+	 * 
+	 * @param x la vista buscarAlumnos
+	 */
 	public void setBuscarAlumnos(buscarAlumnos x) {
-		//boton que vuelve a home
-	    setControlador3(x);
+		// boton que vuelve a home
+		setControlador3(x);
 	}
+
+	/**
+	 * metodo que canbiará de vista a buscarPI
+	 * 
+	 * @param x la vista buscarPI
+	 */
 	public void setBuscarPI(buscarPI x) {
-		//boton que vuelve a home
-	    setControlador5(x);
+		// boton que vuelve a home
+		setControlador5(x);
 	}
-	
+
 }
